@@ -25,7 +25,7 @@
     "watch:html": "onchange 'src/main/**/*.html' '!src/main/coverage/**' '!src/main/doc/**' -- grunt install",
     "watch:js": "onchange 'src/main/**/*.js' '!src/main/**/*.test.js' '!src/main/coverage/**' '!src/main/doc/**' -- npm run lint",
     "watch:less": "onchange 'src/main/**/*.less' -- npm run less",
-    "watch:test": "onchange 'src/main/**/*.test.js' '!src/main/coverage/**' '!src/main/doc/**' -- npm run unit-tests all",
+    "watch:test": "onchange 'src/main/**/*.test.js' '!src/main/coverage/**' '!src/main/doc/**' -- npm run unit-tests all",    
     "livereload": "cd src/main ; ../../node_modules/instant-server/bin/instant 8888",
     "jenkins-protractor": "cd src/test/ ; ./protractor-jenkins.sh",
     "protractor": "cd src/test/ ; ./protractor-local.sh; "

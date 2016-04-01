@@ -6,11 +6,57 @@
 
 <!-- Default Styles (DO NOT TOUCH) -->
 <link rel="stylesheet" type="text/css" href="/css/app.css">
+<!-- Angular Material CSS now available via Google CDN; version 0.9.4 used here -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+
+<style type="text/css">
+
+
+
+.buttondemoBasicUsage section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54; }
+
+
+	
+
+</style>    
+
 <!-- RequireJS // -->
 <script src="/vendor/requirejs/require.js" data-main="main"></script>
 </head>
-<body>
-	<div class="wrapper">
+<body ng-app="test">
+
+<!-- Body --> 
+
+
+<div ng-controller="AppCtrl">
+	<md-button class="md-raised md-primary">Primary</md-button>	
+</div>
+
+
+
+
+
+<!-- End Body --> 
+
+
+<!--	<div class="wrapper">
 		<div class="navbar nav">
 			<div class="container-fluid">
 				<div style="position: absolute; top: 0; left: 0; z-index: 50; font-size: 24px; margin-top: 24px; margin-left: 20px;">
@@ -22,7 +68,7 @@
 			</div>
 		</div>
 		<div class="contain">
-			<!-- BEGIN PAGE CONTENT -->
+			<!- BEGIN PAGE CONTENT ->
 			<div class="content">
 
 				<div protected-content>
@@ -30,12 +76,31 @@
 					<ng-view></ng-view>
 				</div>
 			</div>
-			<!-- END PAGE CONTENT -->
+			<!- END PAGE CONTENT ->
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Default JS (DO NOT TOUCH) -->
 	<script src="/vendor/jquery/dist/jquery.min.js?bust=release.version"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js?bust=release.version"></script>
+	<!-- Angular Material Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+    
+    <!-- Angular Material Javascript now available via Google CDN; version 0.9.4 used here -->
+    <script src="//ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+    <script type="text/javascript">
+
+angular.module('test', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
+
+    </script>
+
 </body>
 </html>
