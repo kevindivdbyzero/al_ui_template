@@ -19,7 +19,7 @@
     "release:build": "npm version patch && npm run build",
     "start": "ws -p 8888 -d src/main/",
     "test": "npm run lint && npm run karma",
-    "unit-tests": "",
+    "unit-tests": "npm run lint",
     "watch": "parallelshell 'npm run watch:html' 'npm run watch:less' 'npm run watch:js' 'npm run watch:test' 'npm start'",
     "watch:design": "parallelshell 'npm run watch:less' 'npm start'",
     "watch:dev": "parallelshell 'npm run watch:js' 'npm run watch:test' 'npm start'",

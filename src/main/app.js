@@ -20,31 +20,33 @@
 
 define([ 'angular',
          'config/config',
-         'ngRoute', 'ngResource', 'LocalStorageModule',
-         'tmdb/services/TMDBAPIService',
-         'tmdb/partials/search/SearchController',
-         'tmdb/partials/home/HomeController',
-         'tmdb/partials/movie/MovieController',
-         'tmdb/partials/person/PersonController',
-         'tmdb/partials/remoteImageLoader/RemoteImageLoader',
-         'tmdb/directives/search',
-         'tmdb/directives/popularMovies',
-         'tmdb/directives/personDetail',
-         'tmdb/directives/personCrew',
-         'tmdb/directives/personCast',
-         'tmdb/directives/movieDetail',
-         'tmdb/directives/similarMovies',
-         'tmdb/directives/movieCast',
-         'tmdb/directives/movieCrew' ], 
-    function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, SearchController, HomeController, MovieController, PersonController, 
-              RemoteImageLoader, searchDirective, popularMoviesDirective, 
+         'ngRoute', 'ngResource', 'LocalStorageModule', 'ngMaterial',
+         'mfinder/services/TMDBAPIService',
+         'mfinder/partials/navigation/navigationController',
+         'mfinder/partials/search/SearchController',
+         'mfinder/partials/home/HomeController',
+         'mfinder/partials/movie/MovieController',
+         'mfinder/partials/person/PersonController',
+         'mfinder/partials/remoteImageLoader/RemoteImageLoader',
+         'mfinder/directives/navigation',
+         'mfinder/directives/search',
+         'mfinder/directives/popularMovies',
+         'mfinder/directives/personDetail',
+         'mfinder/directives/personCrew',
+         'mfinder/directives/personCast',
+         'mfinder/directives/movieDetail',
+         'mfinder/directives/similarMovies',
+         'mfinder/directives/movieCast',
+         'mfinder/directives/movieCrew' ], 
+    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial,
+              TMDBAPIService, navigationController, SearchController, HomeController, MovieController, PersonController, 
+              RemoteImageLoader, navigationDirective, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective ) {
     	"use strict";
 
         /** @constructs app */
-        var angularModules = config.standardAngularModules.concat( 'LocalStorageModule' );
+        var angularModules = config.standardAngularModules.concat( 'LocalStorageModule', 'ngMaterial');
 
         /** @constructs app */
         var app = angular.module("app", angularModules );
@@ -58,6 +60,9 @@ define([ 'angular',
 
         app.service( "TMDBAPIService", TMDBAPIService);
 
+        app.controller( "navigationController", navigationController);
+        app.directive( "navigation", navigationDirective );
+    
         app.controller( "SearchController", SearchController);
         app.directive( "search", searchDirective );
 
@@ -76,9 +81,9 @@ define([ 'angular',
         app.directive( "movieCrew", movieCrewDirective );
 
         app.config(['$routeProvider', function($routeProvider) {
-            $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
-            $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
-            $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
+            $routeProvider.when( '/', { templateUrl: '/mfinder/partials/home/home.html', controller: 'HomeController' } );
+            $routeProvider.when( '/movie/:id', { templateUrl: '/mfinder/partials/movie/movie.html', controller: 'MovieController' } );
+            $routeProvider.when( '/person/:id', { templateUrl: '/mfinder/partials/person/person.html', controller: 'PersonController' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';
