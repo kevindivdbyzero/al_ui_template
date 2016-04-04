@@ -98,7 +98,7 @@ define( [ 'angular' ],
                     'angular': { deps: [], exports: 'angular' },
                     'ngAnimate': {deps: ['angular']},
                     'ngAria': {deps: ['angular']},
-                    'ngMaterial': {deps: ['angular']}, //
+                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //   
                     'ui.bootstrap': {deps: ['angular']},
                     'ui.select': {deps: ['angular']},
                     'LocalStorageModule': {deps: ['angular']},

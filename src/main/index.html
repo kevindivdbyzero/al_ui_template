@@ -25,23 +25,19 @@
     
     <div class="superContenedor" layout="column">
         
+        <!-- HeaderNav -->
+        <div > <navigation/> </div>        
+        <!-- Fin HeaderNav -->
         
-        <div flex>
-        <navigation id="headerNav"/>
-        </div>        
-     
+ 
         
-        
-            
-    
-      
-        
-        
-         <md-content md-whiteframe=5 class="contenidos">           
+        <!--Contenido-->            
+         <md-content md-whiteframe=5 class="contenidos">  
             <div protected-content>
                 <ng-view></ng-view>
             </div>                    
-        </md-content>
+        </md-content> 
+        <!-- Fin Contenido--> 
         
 
         
@@ -53,22 +49,11 @@
 	<!-- Default JS (DO NOT TOUCH) -->
 	<script src="/vendor/jquery/dist/jquery.min.js?bust=release.version"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js?bust=release.version"></script>
-    <script src="mfinder/src/js/carousel.js"></script>
+   
+    <!-- Custom Scripts -->
+    <script src="mfinder/src/js/carousel.js"></script>   
     
-    
-    <script>
-        
-        jQuery(document).ready(function($){	       
-            
-        $('.crsl-items').carousel({ visible: 5, itemMinWidth: 200, itemMargin: 10 });
-            
-            
-        });
-    
-    </script>
-
-
-    
+    <!-- End Custom Scripts -->
     
     
 
