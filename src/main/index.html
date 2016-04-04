@@ -7,8 +7,12 @@
 <!-- Default Styles (DO NOT TOUCH) -->
 <link rel="stylesheet" type="text/css" href="/css/app.css"> 
     
+    
+<link href='https://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
+    
+<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>    
+    
 
-<link rel="stylesheet" type="text/css" href="mfinder/src/css/jquery.bxslider.css">
 
 
 <!-- RequireJS // -->
@@ -25,27 +29,19 @@
         <div flex>
         <navigation id="headerNav"/>
         </div>        
+     
         
-        <div class="slider1">
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar1"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar2"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar3"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar4"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar5"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar6"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar7"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar8"></div>
-          <div class="slide"><img src="http://placehold.it/300x300&text=FooBar9"></div>
-        </div>
         
-        <!--
-        <md-content md-whiteframe=5 id="contenido">           
+            
+    
+      
+        
+        
+         <md-content md-whiteframe=5 class="contenidos">           
             <div protected-content>
                 <ng-view></ng-view>
             </div>                    
         </md-content>
-        -->
-        
         
 
         
@@ -57,20 +53,21 @@
 	<!-- Default JS (DO NOT TOUCH) -->
 	<script src="/vendor/jquery/dist/jquery.min.js?bust=release.version"></script>
 	<script src="/vendor/bootstrap/dist/js/bootstrap.min.js?bust=release.version"></script>
+    <script src="mfinder/src/js/carousel.js"></script>
     
-    <script src="mfinder/src/js/jquery.bxslider.js">
-    </script>
     
     <script>
-        $(document).ready(function(){
-  $('.slider1').bxSlider({
-    slideWidth: 300,
-    minSlides: 2,
-    maxSlides: 4,
-    slideMargin: 10
-  });
-});
+        
+        jQuery(document).ready(function($){	       
+            
+        $('.crsl-items').carousel({ visible: 5, itemMinWidth: 200, itemMargin: 10 });
+            
+            
+        });
+    
     </script>
+
+
     
     
     

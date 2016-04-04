@@ -1,8 +1,80 @@
-<div>
-    <h1 ng-if="movieList">Explore Popular Movies</h1>
-    <div ng-repeat="movie in movieList track by $index">
-        <a href="#/movie/{{ movie.id }}" title="{{ movie.title }}" ng-if="movie.poster_path">
-            <img style="float: left; margin: 10px;" src="{{view.images}}{{ movie.poster_path }}" width="150" height="225" title="{{ movie.title }}" />
-        </a>
+<div class="crslCont" layout="column">                
+                
+    <div class="titl" flex>
+        <span>Peliculas</span>
     </div>
+                          
+            
+    <div id="nav-p" class="crsl-nav" layout="row" flex>
+
+        <div class="divLeft " flex>
+            <a class="previous glyphicon glyphicon-backward "></a>
+        </div >
+
+        <div class="divRight"flex >
+            <a class="next glyphicon glyphicon-forward"></a>
+        </div>        
+                
+    </div> 
+            
+        <div id="PopMG"class="crsl-items" data-navigation="nav-p" flex>  
+
+
+            <div class="crsl-wrap">
+
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+                <figure class="crsl-item">
+                    <div class="card-container">
+                    <md-card>
+                        <img ng-src="mfinder/img/leon-poster.jpg" class="md-card-image" alt="Hey Apple!">
+                      </md-card>
+                    </div>    
+                </figure>
+                
+
+
+
+            </div>                                
+        </div>
+                
 </div>
+
