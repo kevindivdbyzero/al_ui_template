@@ -16,22 +16,22 @@
  */
 
 define( [ 'angular',
-          'mfinder/partials/popularMovies/popularMoviesController.js' ], 
-    function( angular, popularMoviesController ) {
+          'mfinder/partials/remoteImageLoader/RemoteImageLoader' ], 
+    function( angular, RemoteImageLoader ) {
         "use strict";
 
         return function() {
             return {
                 transclude: true,
                 replace: true,
-                controller: popularMoviesController,
+                controller: RemoteImageLoader,
                 templateUrl: '/mfinder/partials/popularMovies/popularMovies.html',
                 restrict: 'E',
                 scope: {
-                    
+                    movieList: '=ngModel'
                 },
                 link: function(){            
-                    $('.crsl-items').carousel({ visible: 10, itemMinWidth: 200, itemMargin:  10 });
+                    $('.crsl-items').carousel({ visible: 10, itemMinWidth: 200, itemMargin: 10 });
                    } // fin link
                 };            
             };
