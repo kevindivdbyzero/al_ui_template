@@ -81,6 +81,7 @@ define( [ 'angular' ],
                     'ngAnimate': 'vendor/angular-animate/angular-animate.min',
                     'ngAria': 'vendor/angular-aria/angular-aria.min',
                     'ngMaterial': 'vendor/angular-material/angular-material.min',
+                    'ocNgRepeat': 'vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',
                     'ui.bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls.min',
                     'ui.select': 'vendor/angular-ui-select/dist/select',
                     'LocalStorageModule': 'vendor/angular-local-storage/dist/angular-local-storage.min',
@@ -88,13 +89,15 @@ define( [ 'angular' ],
                     'angular-mocks': 'vendor/angular-mocks/angular-mocks',
                     'ngResource': 'vendor/angular-resource/angular-resource.min',
                     'ngRoute': 'vendor/angular-route/angular-route.min',
-                    'ngSanitize': 'vendor/angular-sanitize/angular-sanitize.min'
+                    'ngSanitize': 'vendor/angular-sanitize/angular-sanitize.min',
+                    'mwheel': 'mfinder/src/js/jquery.mousewheel.min'
                 },
                 shim: {
                     'angular': { deps: [], exports: 'angular' },
                     'ngAnimate': {deps: ['angular']},
                     'ngAria': {deps: ['angular']},
-                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //   
+                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, // 
+                    'ocNgRepeat': {deps: ['angular','ngAnimate']}, // 
                     'ui.bootstrap': {deps: ['angular']},
                     'ui.select': {deps: ['angular']},
                     'LocalStorageModule': {deps: ['angular']},
@@ -102,7 +105,8 @@ define( [ 'angular' ],
                     'angular-mocks': {deps: ['angular']},
                     'ngResource': {deps: ['angular']},
                     'ngRoute': {deps: ['angular']},
-                    'ngSanitize': {deps: ['angular']}
+                    'ngSanitize': {deps: ['angular']},
+                    'mwheel': {deps: []}
                 }
             };
 

@@ -30,7 +30,8 @@
     "moment": "~2.12.0",
     "angular-material": "^1.0.7",
     "angular-messages": "^1.5.3",
-    "angular-aria": "^1.5.3"
+    "angular-aria": "^1.5.3",
+    "ng-repeat-owl-carousel": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.10"
