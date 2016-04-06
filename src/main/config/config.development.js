@@ -73,6 +73,8 @@ define( [ 'angular' ],
                 paths: {
                     'angular': 'vendor/angular/angular.min',
                     'ngAnimate': 'vendor/angular-animate/angular-animate.min',
+                    'ngAria': 'vendor/angular-aria/angular-aria.min',
+                    'ngMaterial': 'vendor/angular-material/angular-material.min',
                     'ui.bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls.min',
                     'ui.select': 'vendor/angular-ui-select/dist/select',
                     'LocalStorageModule': 'vendor/angular-local-storage/angular-local-storage.min',
@@ -95,6 +97,8 @@ define( [ 'angular' ],
                 shim: {
                     'angular': { deps: [], exports: 'angular' },
                     'ngAnimate': {deps: ['angular']},
+                    'ngAria': {deps: ['angular']},
+                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //   
                     'ui.bootstrap': {deps: ['angular']},
                     'ui.select': {deps: ['angular']},
                     'LocalStorageModule': {deps: ['angular']},
