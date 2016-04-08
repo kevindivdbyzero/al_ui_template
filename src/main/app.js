@@ -20,7 +20,7 @@
 
 define([ 'angular',
          'config/config',
-         'ngRoute', 'ngResource', 'LocalStorageModule', 'ngMaterial', 'ng-repeat-owl-carousel',
+         'ngRoute', 'ngResource', 'LocalStorageModule', 'ngMaterial', 'ocNgRepeat',
          'mfinder/services/TMDBAPIService',
          'mfinder/partials/navigation/navigationController',
          'mfinder/partials/search/SearchController',
@@ -38,7 +38,9 @@ define([ 'angular',
          'mfinder/directives/similarMovies',
          'mfinder/directives/movieCast',
          'mfinder/directives/movieCrew' ], 
-    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ngRepeatOwlCarousel,
+
+    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat,
+
               TMDBAPIService, navigationController, SearchController, HomeController, MovieController, PersonController, 
               RemoteImageLoader, navigationDirective, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
@@ -46,7 +48,9 @@ define([ 'angular',
     	"use strict";
 
         /** @constructs app */
-        var angularModules = config.standardAngularModules.concat( 'LocalStorageModule', 'ngMaterial','ngRepeatOwlCarousel');
+
+        var angularModules = config.standardAngularModules.concat( 'LocalStorageModule', 'ngMaterial','ocNgRepeat');
+
 
         /** @constructs app */
         var app = angular.module("app", angularModules );
