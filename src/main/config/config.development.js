@@ -75,6 +75,7 @@ define( [ 'angular' ],
                     'ngAnimate': 'vendor/angular-animate/angular-animate.min',
                     'ngAria': 'vendor/angular-aria/angular-aria.min',
                     'ngMaterial': 'vendor/angular-material/angular-material.min',
+                    'ng-repeat-owl-carousel':'vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',
                     'ui.bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls.min',
                     'ui.select': 'vendor/angular-ui-select/dist/select',
                     'LocalStorageModule': 'vendor/angular-local-storage/angular-local-storage.min',
@@ -98,7 +99,8 @@ define( [ 'angular' ],
                     'angular': { deps: [], exports: 'angular' },
                     'ngAnimate': {deps: ['angular']},
                     'ngAria': {deps: ['angular']},
-                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //   
+                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //  
+                    'ng-repeat-owl-carousel': {deps: ['angular','ngAnimate']}, //  Falta probar este modulo
                     'ui.bootstrap': {deps: ['angular']},
                     'ui.select': {deps: ['angular']},
                     'LocalStorageModule': {deps: ['angular']},
