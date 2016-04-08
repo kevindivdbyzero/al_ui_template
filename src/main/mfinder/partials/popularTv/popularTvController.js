@@ -2,7 +2,7 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
     function ( angular, config, ocNgRepeat){
     "use strict";
     
-    var popularMoviesController = function($scope, TMDBAPIService, $routeParams ) 
+    var popularTvController = function($scope, TMDBAPIService, $routeParams ) 
     {
         
         
@@ -11,11 +11,11 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         
         
         
-        $scope.carouselInitializer =  function() {
+        $scope.tvcarouselInitializer =  function() {
             
-            var car = $(".movie-carousel");
+            var tvcar = $(".tv-carousel");
             
-            car.owlCarousel({                            
+            tvcar.owlCarousel({
                             
               //nav: true,                              
               //navText: ["<a class='btn btn-primary'> < </a>", "<a class='btn btn-primary'> > </a>"],
@@ -44,11 +44,11 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
             }    
             });
             
-            car.on('mousewheel', '.owl-stage', function(e){
+            tvcar.on('mousewheel', '.owl-stage', function(e){
                 if (e.deltaY<0){                     
-                    car.trigger('next.owl.carousel');
+                    tvcar.trigger('next.owl.carousel');
                 }else{
-                    car.trigger('prev.owl.carousel');
+                    tvcar.trigger('prev.owl.carousel');
                 }
                 e.preventDefault();
             });
@@ -60,9 +60,9 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         
     };
 
-    popularMoviesController.$inject = [ '$scope','$routeParams' ];
+    popularTvController.$inject = [ '$scope','$routeParams' ];
     
-    return popularMoviesController;
+    return popularTvController;
           
                   
 });

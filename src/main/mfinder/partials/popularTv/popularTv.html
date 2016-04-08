@@ -1,0 +1,20 @@
+
+   <div class="tv-carousel">
+
+       
+    <div ng-repeat="show in tvList track by $index" ng-repeat-owl-carousel carousel-init="tvcarouselInitializer">
+
+           
+       
+      <md-card style="width:250px;"title="{{ show.title }}" ng-if="show.poster_path"   >
+       <a  href="#/tv/{{ show.id }}" >
+          <img  ng-src="{{view.images}}{{ show.poster_path }}" title="{{ show.title }}" />
+       </a>
+        
+      </md-card>
+        
+        
+        
+    </div>
+    
+</div>

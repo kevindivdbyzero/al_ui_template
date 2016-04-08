@@ -26,11 +26,18 @@ define( [ 'angular',
          
             $scope.view   = {
                 movies: [],
+                tv:[]
             };
 
             var api = TMDBAPIService.Discover();
+            
             api.discover.movies().then(function ( response ) {
                 $scope.view.movies = response.data;
+            });
+
+
+            api.discover.tv().then(function ( response ) {
+                $scope.view.tv = response.data;
             });
             
         };

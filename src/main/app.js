@@ -28,9 +28,12 @@ define([ 'angular',
          'mfinder/partials/movie/MovieController',
          'mfinder/partials/person/PersonController',
          'mfinder/partials/remoteImageLoader/RemoteImageLoader',
+         'mfinder/partials/popularMovies/popularMoviesController',
+         'mfinder/partials/popularTv/popularTvController',
          'mfinder/directives/navigation',
          'mfinder/directives/search',
          'mfinder/directives/popularMovies',
+         'mfinder/directives/popularTv',
          'mfinder/directives/personDetail',
          'mfinder/directives/personCrew',
          'mfinder/directives/personCast',
@@ -42,7 +45,8 @@ define([ 'angular',
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat,
 
               TMDBAPIService, navigationController, SearchController, HomeController, MovieController, PersonController, 
-              RemoteImageLoader, navigationDirective, searchDirective, popularMoviesDirective, 
+              RemoteImageLoader, popularMoviesController, popularTvController, navigationDirective, searchDirective, popularMoviesDirective,
+              popularTvDirective,
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective ) {
     	"use strict";
@@ -70,12 +74,21 @@ define([ 'angular',
         app.controller( "SearchController", SearchController);
         app.directive( "search", searchDirective );
 
+        app.controller( "popularMoviesController", popularMoviesController);
+        app.directive( "popularMovies", popularMoviesDirective );
+
+        app.controller( "popularTvController", popularTvController);
+        app.directive( "popularTv", popularTvDirective );
+
+
+
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
 
-        app.directive( "popularMovies", popularMoviesDirective );
+
+
         app.directive( "personDetail", personDetailDirective );
         app.directive( "personCrew", personCrewDirective );
         app.directive( "personCast", personCastDirective );
