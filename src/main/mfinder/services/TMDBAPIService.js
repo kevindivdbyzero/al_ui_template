@@ -104,9 +104,21 @@ define( [ 'angular',
                         return $http.get( uri );
                     };
 
+                    /* Extended API */
+                    /*http://docs.themoviedb.apiary.io/reference/people/personpopular/get*/
+                    var getPopular = function ( page ) {
+                        if ( page === undefined ) {
+                            page = 1;
+                        }
+                        var uri = serviceBase.url + '/person/popular?page=' + page + '&api_key=' + serviceBase.apiKey;
+                        return $http.get( uri );
+                    };
+
+
                     return {
                         person: {
-                            person: getPerson
+                            person: getPerson,
+                            popular: getPopular
                         }
                     };
                 });

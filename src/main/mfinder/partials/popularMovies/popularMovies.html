@@ -5,8 +5,7 @@
     <div ng-repeat="movie in movieList track by $index" ng-repeat-owl-carousel carousel-init="carouselInitializer">
        
        
-           
-       
+
       <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path"   >        
        <a  href="#/movie/{{ movie.id }}" >
           <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />

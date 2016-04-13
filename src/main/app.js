@@ -30,10 +30,12 @@ define([ 'angular',
          'mfinder/partials/remoteImageLoader/RemoteImageLoader',
          'mfinder/partials/popularMovies/popularMoviesController',
          'mfinder/partials/popularTv/popularTvController',
+         'mfinder/partials/popularPeople/popularPeopleController',
          'mfinder/directives/navigation',
          'mfinder/directives/search',
          'mfinder/directives/popularMovies',
          'mfinder/directives/popularTv',
+         'mfinder/directives/popularPeople',
          'mfinder/directives/personDetail',
          'mfinder/directives/personCrew',
          'mfinder/directives/personCast',
@@ -45,8 +47,8 @@ define([ 'angular',
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat,
 
               TMDBAPIService, navigationController, SearchController, HomeController, MovieController, PersonController, 
-              RemoteImageLoader, popularMoviesController, popularTvController, navigationDirective, searchDirective, popularMoviesDirective,
-              popularTvDirective,
+              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, navigationDirective, searchDirective, popularMoviesDirective,
+              popularTvDirective, popularPeopleDirective,
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective ) {
     	"use strict";
@@ -79,6 +81,9 @@ define([ 'angular',
 
         app.controller( "popularTvController", popularTvController);
         app.directive( "popularTv", popularTvDirective );
+
+        app.controller( "popularPeopleController", popularPeopleController);
+        app.directive( "popularPeople", popularPeopleDirective );
 
 
 
