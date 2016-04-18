@@ -80,8 +80,8 @@ define( [ 'angular' ],
                     'angular': 'vendor/angular/angular.min',
                     'ngAnimate': 'vendor/angular-animate/angular-animate.min',
                     'ngAria': 'vendor/angular-aria/angular-aria.min',
-                    'ngMaterial': 'vendor/angular-material/angular-material.min',
-                    'ocNgRepeat': 'vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',
+                    'ngMaterial': 'vendor/angular-material/angular-material.min',//
+                    'ocNgRepeat': 'vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',//
                     'ui.bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls.min',
                     'ui.select': 'vendor/angular-ui-select/dist/select',
                     'LocalStorageModule': 'vendor/angular-local-storage/dist/angular-local-storage.min',
@@ -90,7 +90,7 @@ define( [ 'angular' ],
                     'ngResource': 'vendor/angular-resource/angular-resource.min',
                     'ngRoute': 'vendor/angular-route/angular-route.min',
                     'ngSanitize': 'vendor/angular-sanitize/angular-sanitize.min',
-                    'mwheel': 'mfinder/src/js/jquery.mousewheel.min'
+                    'mwheel': 'mfinder/src/js/jquery.mousewheel.min'//
                 },
                 shim: {
                     'angular': { deps: [], exports: 'angular' },
@@ -106,7 +106,7 @@ define( [ 'angular' ],
                     'ngResource': {deps: ['angular']},
                     'ngRoute': {deps: ['angular']},
                     'ngSanitize': {deps: ['angular']},
-                    'mwheel': {deps: []}
+                    'mwheel': {deps: []}//
                 }
             };
 

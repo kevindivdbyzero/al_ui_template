@@ -27,6 +27,8 @@ require(
         allTestFiles.push("ngRoute");
         allTestFiles.push("ngSanitize");
         allTestFiles.push("gettext");
+        allTestFiles.push("ngMaterial");
+        allTestFiles.push("ocNgRepeat");
 
         var shouldIncludeTest = function( candidateFile ) {
             if ( excludeTests.length + includeTests.length === 0 ) {
@@ -68,6 +70,7 @@ require(
             paths:{
                 'angular': '/base/src/main/vendor/angular/angular',
                 'ngAnimate': '/base/src/main/vendor/angular-animate/angular-animate.min',
+                'ngAria': '/base/src/main/vendor/angular-aria/angular-aria.min', //
                 'ui.bootstrap': '/base/src/main/vendor/angular-bootstrap/ui-bootstrap.min',
                 'ui.select': '/base/src/main/vendor/angular-ui-select/dist/select',
                 'LocalStorageModule': '/base/src/main/vendor/angular-local-storage/dist/angular-local-storage.min',
@@ -77,11 +80,16 @@ require(
                 'ngRoute': '/base/src/main/vendor/angular-route/angular-route.min',
                 'ngSanitize': '/base/src/main/vendor/angular-sanitize/angular-sanitize.min',
                 'angular-ui-utils': '/base/src/main/vendor/angular-ui-utils/ui-utils.min',
-                'translations': '/base/src/main/translations'
+                'translations': '/base/src/main/translations',
+                'ngMaterial': '/base/src/main/vendor/angular-material/angular-material.min',//
+		'ocNgRepeat': '/base/src/main/vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',//
+		'mwheel': '/base/src/main/mfinder/src/js/jquery.mousewheel.min',//
+		
             },
             shim:{
                 'angular': { deps: [], exports: 'angular' },
                 'ngAnimate': {deps: ['angular']},
+		'ngAria': {deps: ['angular']},	//
                 'ui.bootstrap': {deps: ['angular']},
                 'LocalStorageModule': {deps: ['angular']},
                 'ui.select': {deps: ['angular']},
@@ -90,7 +98,10 @@ require(
                 'ngRoute': {deps: ['angular']},
                 'ngSanitize': {deps: ['angular']},
                 'angular-ui-utils': {deps: ['angular']},
-                'gettext': {deps: ['angular']}
+                'gettext': {deps: ['angular']},
+                'ngMaterial': {deps: ['angular','ngAnimate','ngAria']},//
+		'ocNgRepeat': {deps: ['angular','ngAnimate']}, //
+		'mwheel': {deps: []}//
             }
         }, allTestFiles, function () {
             console.log("Starting Karma test suite!" );

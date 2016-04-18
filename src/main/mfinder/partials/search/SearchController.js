@@ -26,6 +26,29 @@ define( [ 'angular',
         var SearchController = function($scope, TMDBAPIService, $routeParams, $timeout, $q ) {
 
 
+            var self = this;
+
+            var apiSearch = TMDBAPIService.Search();
+            var apiPerson = TMDBAPIService.Person();
+            var searchPromise;
+
+
+            self.listResults = [];
+
+
+            function getData() {
+                return self.listResults;
+            }
+
+            function searchTextChange(text) {
+                console.log('Text changed to ' + text);
+            }
+            function selectedItemChange(item) {
+                console.log('Item changed to ' + JSON.stringify(item));
+            }
+            function selectedItem(item) {
+                console.log('Selected item is -> ' + JSON.stringify(item));
+            }
 
 
             
@@ -41,14 +64,7 @@ define( [ 'angular',
             };
 
 
-            var self = this;
 
-            var apiSearch = TMDBAPIService.Search();
-            var apiPerson = TMDBAPIService.Person();
-            var searchPromise;
-
-
-            self.listResults = [];
 
             // Watch over searchText
             $scope.$watch('view.searchText',function(newValue,oldValue){
@@ -68,9 +84,7 @@ define( [ 'angular',
             });
             
             
-            function getData() {                
-                return self.listResults;
-            };
+
 
 
             self.search = function(query){
@@ -97,53 +111,6 @@ define( [ 'angular',
                 });
                 return deferred.promise;
             };
-
-
-            // self.search = function(q){
-            //     var searchResults;
-            //     if(q == ""){
-            //         searchResults= [];
-            //     }
-            //     var deferred = $q.defer();
-            //     apiSearch.search.multi(q).then(function(response){
-            //
-            //         searchResults = response.data.results;
-            //         searchResults.forEach(function(item){
-            //             if (item.media_type === "person") {
-            //                 // Get images for persons
-            //                 apiPerson.person.person(item.id).then( function(r) {
-            //                     item.foto = r.data.profile_path;
-            //                     console.log(r.data.profile_path);
-            //                 });
-            //             }
-            //             else {
-            //                 item.foto = item.poster_path;
-            //             }
-            //         });
-            //
-            //         deferred.resolve(searchResults);
-            //
-            //     });
-            //     return deferred.promise;
-            // };
-
-            
-            
-            function searchTextChange(text) {
-                console.log('Text changed to ' + text);
-            }
-            function selectedItemChange(item) {
-                console.log('Item changed to ' + JSON.stringify(item));
-            }
-            function selectedItem(item) {
-                console.log('Selected item is -> ' + JSON.stringify(item));
-            }
-
-
-
-
-
-
 
 
 
