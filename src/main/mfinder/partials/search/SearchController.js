@@ -34,8 +34,6 @@ define( [ 'angular',
 
 
             
-
-
             function getData() {
                 return $scope.view.listResults;
             }
