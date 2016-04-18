@@ -33,34 +33,30 @@ define( [ 'angular',
             var searchPromise;
 
 
-            self.listResults = [];
+            
 
 
             function getData() {
-                return self.listResults;
+                return $scope.view.listResults;
             }
 
             function searchTextChange(text) {
-                console.log('Text changed to ' + text);
-            }
-            function selectedItemChange(item) {
-                console.log('Item changed to ' + JSON.stringify(item));
-            }
-            function selectedItem(item) {
-                console.log('Selected item is -> ' + JSON.stringify(item));
+                console.log('Text changed to ' + text);                
             }
 
+
+
+            this.getData = getData;
 
             
             // Visible data
             $scope.view = {
                 isDisabled: false,
-                getData: getData,
-                selectedItemChange: selectedItemChange,
-                searchTextChange: searchTextChange,
-                selectedItem: selectedItem,
+                getData: getData,                
+                searchTextChange: searchTextChange,                
                 searchText: "",
                 images: config.apiImg,
+                listResults: [],
             };
 
 
@@ -77,7 +73,7 @@ define( [ 'angular',
                     if (newValue) {
                         if (newValue.length >= 3) {
                             console.log("Realizando busqueda");
-                            self.listResults = self.search($scope.view.searchText);
+                            $scope.view.listResults = self.search($scope.view.searchText);
                         }
                     }
                 },500);
@@ -92,8 +88,8 @@ define( [ 'angular',
                 var deferred = $q.defer();
                 apiSearch.search.multi(query).then(function(response){
 
-                    self.listResults = response.data.results;
-                    self.listResults.forEach(function(item){
+                    $scope.view.listResults = response.data.results;
+                    $scope.view.listResults.forEach(function(item){
                         if (item.media_type === "person") {
                             // Get images for persons
                             apiPerson.person.person(item.id).then( function(r) {
@@ -106,7 +102,7 @@ define( [ 'angular',
                         }
                     });
 
-                    deferred.resolve(self.listResults);
+                    deferred.resolve($scope.view.listResults);
 
                 });
                 return deferred.promise;

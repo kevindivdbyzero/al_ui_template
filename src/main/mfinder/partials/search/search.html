@@ -2,10 +2,8 @@
     <md-autocomplete
             ng-disabled="view.isDisabled"
             md-no-cache="true"
-            md-selected-item="view.selectedItem"
             md-search-text-change="view.searchTextChange(view.searchText)"
             md-search-text="view.searchText"
-            md-selected-item-change="view.selectedItemChange(item)"
             md-items="item in view.getData()"
             md-item-text="item.title || item.name"
             md-min-length="3"
@@ -20,10 +18,10 @@
           </span>
           <span class="item-metadata">
             <span class="item-metastat">
-              <span class="badge">{{item.media_type}}</span>
+              <span aria-label="media type" class="badge">{{item.media_type}}</span>
             </span>
             <span class="item-metastat">
-              <span class="badge">Rate: {{item.vote_average || item.popularity}}</span>
+              <span aria-label="rate" class="badge">Rate: {{item.vote_average || item.popularity}}</span>
             </span>
           </span>
           </a>
