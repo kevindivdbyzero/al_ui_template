@@ -5,7 +5,7 @@
 define([ 'angular',
          'config/config',
          'mfinder/partials/search/SearchController' ], 
-    function( angular, config, SearchController ) {
+    function( angular, config, SearchController, $q ) {
         "use strict";
         describe("The SearchController", function () {
 		
@@ -64,28 +64,43 @@ define([ 'angular',
 
                 var values = {
                     isDisabled: false,
-                    getData: jasmine.any(Function),
-                    searchTextChange: jasmine.any(Function),
+                    getData: jasmine.any(Function),                    
                     searchText: "",
                     images: config.apiImg,
                     listResults: [],
                 };
 
                 expect(scope.view).toEqual(values);
+
+                console.log("Cool! initial values are ok :D");
                 
 
             });
 
             // Testing getData function
-            it('can retrieve values from getData function',function (){
+            it('should retrieve values from getData function',function (){
                 scope.view.listResults = [1,2,3];
                 var data = scope.view.getData();
                 expect(data).toEqual([1,2,3]);
-                console.log("Great! getData() works! :D");
+                console.log("Great! the function getData works! :D");
             });
             
-            it('',function (){
+            
+            
+            // Testing watch over searchText
+            it('should show the changes on searchText',function (){
+
+
+
                 
+            });
+
+            // Testing search function
+            it('should retrieve values from TMDBService when search is called',function (){
+
+
+
+
             });
 
 

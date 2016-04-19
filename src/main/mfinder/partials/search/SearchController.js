@@ -38,27 +38,19 @@ define( [ 'angular',
                 return $scope.view.listResults;
             }
 
-            function searchTextChange(text) {
-                console.log('Text changed to ' + text);                
-            }
-
-
-
-            this.getData = getData;
 
             
             // Visible data
             $scope.view = {
                 isDisabled: false,
-                getData: getData,                
-                searchTextChange: searchTextChange,                
+                getData: getData,
                 searchText: "",
                 images: config.apiImg,
                 listResults: [],
             };
 
 
-
+          
 
             // Watch over searchText
             $scope.$watch('view.searchText',function(newValue,oldValue){
@@ -66,45 +58,46 @@ define( [ 'angular',
                 $timeout.cancel(searchPromise);
 
                 searchPromise = $timeout(function(){
-                    searchPromise = undefined;
+                    
+                    searchPromise = undefined;                    
                     console.log("newValue="+newValue+",oldValue="+oldValue);
-                    if (newValue) {
-                        if (newValue.length >= 3) {
-                            console.log("Realizando busqueda");
-                            $scope.view.listResults = self.search($scope.view.searchText);
-                        }
-                    }
+                    $scope.view.listResults = self.search($scope.view.searchText);
+                        
                 },500);
             });
             
             
+            
 
 
-
-            self.search = function(query){
+            self.search = function(query) {
 
                 var deferred = $q.defer();
-                
-                apiSearch.search.multi(query).then(function(response){
 
-                    $scope.view.listResults = response.data.results;
-                    
-                    $scope.view.listResults.forEach(function(item){
-                        if (item.media_type === "person") {
-                            // Get images for persons
-                            apiPerson.person.person(item.id).then( function(r) {
-                                item.foto = r.data.profile_path;
-                                console.log(r.data.profile_path);
+                if(query){
+                    if(query.length>=3){
+                        apiSearch.search.multi(query).then(function (response) {
+
+                            $scope.view.listResults = response.data.results;
+
+                            $scope.view.listResults.forEach(function (item) {
+                                if (item.media_type === "person") {
+                                    // Get images for persons
+                                    apiPerson.person.person(item.id).then(function (r) {
+                                        item.foto = r.data.profile_path;
+                                        console.log(r.data.profile_path);
+                                    });
+                                }
+                                else {
+                                    item.foto = item.poster_path;
+                                }
                             });
-                        }
-                        else {
-                            item.foto = item.poster_path;
-                        }
-                    });
 
-                    deferred.resolve($scope.view.listResults);
+                            deferred.resolve($scope.view.listResults);
 
-                });
+                        });
+                    }
+                }
                 return deferred.promise;
             };
 
