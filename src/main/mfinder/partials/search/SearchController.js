@@ -84,9 +84,11 @@ define( [ 'angular',
             self.search = function(query){
 
                 var deferred = $q.defer();
+                
                 apiSearch.search.multi(query).then(function(response){
 
                     $scope.view.listResults = response.data.results;
+                    
                     $scope.view.listResults.forEach(function(item){
                         if (item.media_type === "person") {
                             // Get images for persons

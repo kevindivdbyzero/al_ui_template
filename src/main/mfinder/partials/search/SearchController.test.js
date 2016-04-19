@@ -58,12 +58,36 @@ define([ 'angular',
                 }]);
             });
 
-            /*s
-            * Test default initialization variables
-            */
-            it("should have matching defaults", function () {
-                expect(scope.view.searchText).toEqual("");
+                        
+            // Testing the initial visible values
+            it("should have initial values", function () {
+
+                var values = {
+                    isDisabled: false,
+                    getData: jasmine.any(Function),
+                    searchTextChange: jasmine.any(Function),
+                    searchText: "",
+                    images: config.apiImg,
+                    listResults: [],
+                };
+
+                expect(scope.view).toEqual(values);
+                
+
             });
+
+            // Testing getData function
+            it('can retrieve values from getData function',function (){
+                scope.view.listResults = [1,2,3];
+                var data = scope.view.getData();
+                expect(data).toEqual([1,2,3]);
+                console.log("Great! getData() works! :D");
+            });
+            
+            it('',function (){
+                
+            });
+
 
             /*
             * Test base functionality
