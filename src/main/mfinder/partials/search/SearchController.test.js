@@ -9,7 +9,7 @@ define([ 'angular',
         "use strict";
         describe("The SearchController", function () {
 		
-            var searchcontroller, scope, mockService;
+            var searchcontroller, scope, mockService, q;
 
             beforeEach(function () {
                 /**
@@ -21,37 +21,47 @@ define([ 'angular',
                 /**
                 * Injection
                 */
-                inject(["$rootScope", "$controller", function ($rootScope, $controller) {
+                inject(["$rootScope", "$controller", "$q", function ($rootScope, $controller, $q) {
                     //instantiate the controller with a newly created scope
                     scope       = $rootScope.$new();
+
+
                     mockService = {
-						Search: function () {
-                            return {
-                                search: {
-                                    multi: function () {
-                                        return {
-                                            then: function () {
-                                                return {};
-                                            }
-                                        };
-                                    }
-                                }
-                            };
-                        },                        
                         Person: function () {
                             return {
                                 person: {
                                     person: function () {
-                                        return {
-                                            then: function () {
-                                                return {};
-                                            }
-                                        };
+                                        return $q.when({data:readJSON('src/main/mocks/data/person/person-aniston.json')});
+                                    }
+                                }
+                            };
+                        },
+                        Search: function () {
+                            return {
+                                search: {
+                                    multi: function (data) {
+                                        if (data === "aniston"){
+                                            return $q.when({
+                                                data:{
+                                                    results:readJSON('src/main/mocks/data/movies/search-multi-person.json')
+                                                }
+                                            });
+                                        } else {
+                                            return $q.when({
+                                                data:{
+                                                    results:readJSON('src/main/mocks/data/movies/search-multi.json')
+                                                }
+                                            });
+                                        }
                                     }
                                 }
                             };
                         }
                     };
+                    
+                    
+                    
+                    
                     searchcontroller = $controller(SearchController, {$scope: scope, 
                                                                   TMDBAPIService: mockService}
                                      );
@@ -60,22 +70,22 @@ define([ 'angular',
 
                         
             // Testing the initial visible values
-            it("should have initial values", function () {
-
-                var values = {
-                    isDisabled: false,
-                    getData: jasmine.any(Function),                    
-                    searchText: "",
-                    images: config.apiImg,
-                    listResults: [],
-                };
-
-                expect(scope.view).toEqual(values);
-
-                console.log("Cool! initial values are ok :D");
-                
-
-            });
+            // it("should have initial values", function () {
+            //
+            //     var values = {
+            //         isDisabled: false,
+            //         getData: jasmine.any(Function),                    
+            //         searchText: "",
+            //         images: config.apiImg,
+            //         listResults: [],
+            //     };
+            //
+            //     expect(scope.view).toEqual(values);
+            //
+            //     console.log("Cool! initial values are ok :D");
+            //    
+            //
+            // });
 
             // Testing getData function
             it('should retrieve values from getData function',function (){
@@ -88,25 +98,85 @@ define([ 'angular',
             
             
             // Testing watch over searchText
-            it('should show the changes on searchText',function (){
+            it('should give a result list when the length of the search text are more than 2',function (){
+
+                
+                scope.$apply();
+                scope.view.searchText = "a";
+                scope.$apply();
+                scope.view.searchText = "av";
+                scope.$apply();
+                scope.view.searchText = "avatar";
+                scope.$apply();
 
 
+                scope.performSearch();
 
+                scope.$apply();
+
+                expect(scope.view.listResults).not.toEqual([]);
+
+                console.log(" Awesome! listResults are not empty when the length of the search text are more than 2 ");
+                
                 
             });
 
+
+
+            // Testing watch over searchText
+            it('should show error when the length of the search text are less than 2',function (){
+
+                
+                scope.$apply();
+                scope.view.searchText = "a";
+                scope.$apply();
+                scope.view.searchText = "av";
+                scope.$apply();
+
+
+                scope.performSearch();
+
+                scope.$apply();
+
+                expect(scope.view.listResults).toEqual([]);
+
+                console.log(" Yay! listResults are empty when the length of the search text are less than 2 ");
+
+
+            });
+            
+            
+            
+            
+            
+
             // Testing search function
-            it('should retrieve values from TMDBService when search is called',function (){
+            it('should bring information about Jennifer Aniston',function () {
 
 
+                scope.$apply();
+                scope.view.searchText = "aniston";
+                scope.$apply();
 
+
+                scope.performSearch();
+
+                scope.$apply();
+
+                expect(scope.view.listResults[0].name).toBe('Jennifer Aniston');
+                expect(scope.view.listResults[0].popularity).toBe(10.830772);
+                expect(scope.view.listResults[0].media_type).toBe('person');
+                expect(scope.view.listResults[0].foto).toBe('/4d4wvNyDuvN86DoneawbLOpr8gH.jpg');
+
+
+                console.log("perform search on aniston works :D");
 
             });
 
 
-            /*
-            * Test base functionality
-            */
+                /*
+                * Test base functionality
+                */
 
         
 			

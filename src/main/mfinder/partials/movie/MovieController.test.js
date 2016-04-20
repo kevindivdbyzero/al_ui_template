@@ -4,7 +4,7 @@
 */
 define([ 'angular',
          'config/config',
-         'tmdb/partials/movie/MovieController' ], 
+         'mfinder/partials/movie/MovieController' ], 
     function( angular, config, MovieController ) {
         "use strict";
         describe("the moviecontroller", function () {

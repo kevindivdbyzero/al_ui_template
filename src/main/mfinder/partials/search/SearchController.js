@@ -61,12 +61,16 @@ define( [ 'angular',
                     
                     searchPromise = undefined;                    
                     console.log("newValue="+newValue+",oldValue="+oldValue);
-                    $scope.view.listResults = self.search($scope.view.searchText);
-                        
+                    self.performSearch();
                 },500);
             });
             
-            
+
+            $scope.performSearch = function () {
+                self.search($scope.view.searchText);
+            };
+
+
             
 
 
@@ -84,8 +88,7 @@ define( [ 'angular',
                                 if (item.media_type === "person") {
                                     // Get images for persons
                                     apiPerson.person.person(item.id).then(function (r) {
-                                        item.foto = r.data.profile_path;
-                                        console.log(r.data.profile_path);
+                                        item.foto = r.data.profile_path;                                        
                                     });
                                 }
                                 else {

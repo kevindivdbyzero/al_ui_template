@@ -19,7 +19,7 @@
 define( [ 'angular',
           'ngRoute',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
+          'mfinder/services/TMDBAPIService'],
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
