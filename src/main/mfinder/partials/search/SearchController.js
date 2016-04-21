@@ -61,7 +61,7 @@ define( [ 'angular',
                     
                     searchPromise = undefined;                    
                     console.log("newValue="+newValue+",oldValue="+oldValue);
-                    self.performSearch();
+                    $scope.performSearch();
                 },500);
             });
             

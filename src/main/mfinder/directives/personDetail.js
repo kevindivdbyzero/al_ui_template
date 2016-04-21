@@ -16,7 +16,7 @@
  */
 
 define( [ 'angular',
-          'tmdb/partials/remoteImageLoader/RemoteImageLoader' ], 
+          'mfinder/partials/remoteImageLoader/RemoteImageLoader' ], 
     function( angular, RemoteImageLoader ) {
         "use strict";
 
@@ -25,7 +25,7 @@ define( [ 'angular',
                 transclude: true,
                 replace: true,
                 controller: RemoteImageLoader,
-                templateUrl: '/tmdb/partials/person/detail.html',
+                templateUrl: '/mfinder/partials/person/detail.html',
                 restrict: 'E',
                 scope: {
                     detail: '=ngModel'
