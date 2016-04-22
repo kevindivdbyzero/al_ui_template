@@ -31,6 +31,7 @@ define([ 'angular',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
          'tmdb/partials/awesomeSearch/AwesomeSearchResultsController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
+         'tmdb/partials/movie/YearController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
          'tmdb/directives/personDetail',
@@ -43,15 +44,16 @@ define([ 'angular',
          'tmdb/directives/money',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults',
-         'tmdb/directives/movieTrailer'], 
+         'tmdb/directives/movieTrailer',
+         'tmdb/directives/year'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, movieTrailerController,
               MoneyController, PersonController, AwesomeSearchController,
-              AwesomeSearchResultsController, RemoteImageLoader, searchDirective,
+              AwesomeSearchResultsController, RemoteImageLoader, YearController, searchDirective,
               popularMoviesDirective, personDetailDirective, personCrewDirective,
               personCastDirective, movieDetailDirective, similarMoviesDirective,
               movieCastDirective, movieCrewDirective, moneyDirective, awesomeSearchDirective,
-              awesomeSearchResultsDirective, movieTrailerDirective ) {
+              awesomeSearchResultsDirective, movieTrailerDirective, yearDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -69,10 +71,6 @@ define([ 'angular',
 
         app.service( "TMDBAPIService", TMDBAPIService);
 
-
-       
-    
-       
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
         app.controller( "AwesomeSearchController", AwesomeSearchController );
         app.controller( "SearchController", SearchController);
@@ -84,8 +82,12 @@ define([ 'angular',
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
+
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
+
+        app.controller("YearController", YearController);
+
         app.controller( "MoneyController", MoneyController );
 
         app.directive( "popularMovies", popularMoviesDirective );
@@ -96,17 +98,17 @@ define([ 'angular',
         app.directive( "similarMovies", similarMoviesDirective );
         app.directive( "movieCast", movieCastDirective );
         app.directive( "movieCrew", movieCrewDirective );
+        app.directive("year", yearDirective);
         app.directive("money", moneyDirective);
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
         app.directive( "awesomeSearch", awesomeSearchDirective );
         app.directive( "search", searchDirective );
-        
-        
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
+            //$routeProvider.when( '/movie/:name/:id', { templateUrl: '/tmdb/partials/simpleMovie/simpleMovie.html', controller: 'SimpleMovieController' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';
