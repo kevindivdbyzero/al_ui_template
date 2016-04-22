@@ -1,5 +1,5 @@
-
-   <div class="movie-carousel">
+<div>
+<div class="movie-carousel">
 
        
     <div ng-repeat="movie in movieList track by $index" ng-repeat-owl-carousel carousel-init="carouselInitializer">
@@ -7,15 +7,21 @@
        
 
       <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path"   >        
-       <a  href="#/movie/{{ movie.id }}" >
+       <!--<a  href="#/movie/{{ movie.id }}" data-toggle="modal" data-target="#{{movie.id}}" >-->
+       <a  href="#{{movie.id}}" data-toggle="modal" data-target="#{{movie.id}}" >
           <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
-           
        </a>
-        
+
       </md-card>
+
+
+        <!--<movie-trailer ng-model="movie.id"> </movie-trailer>-->
+
         
         
         
     </div>
     
+</div>
+<movie-trailer ng-repeat="movie in movieList track by $index" ng-model="movie.id"> </movie-trailer>
 </div>

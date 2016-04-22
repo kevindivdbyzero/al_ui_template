@@ -26,6 +26,7 @@ define([ 'angular',
          'mfinder/partials/search/SearchController',
          'mfinder/partials/home/HomeController',
          'mfinder/partials/movie/MovieController',
+         'mfinder/partials/movieTrailer/movieTrailerController',
          'mfinder/partials/person/PersonController',
          'mfinder/partials/remoteImageLoader/RemoteImageLoader',
          'mfinder/partials/popularMovies/popularMoviesController',
@@ -42,15 +43,16 @@ define([ 'angular',
          'mfinder/directives/movieDetail',
          'mfinder/directives/similarMovies',
          'mfinder/directives/movieCast',
-         'mfinder/directives/movieCrew' ], 
+         'mfinder/directives/movieCrew',
+         'mfinder/directives/movieTrailer'], 
 
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat,
 
-              TMDBAPIService, navigationController, SearchController, HomeController, MovieController, PersonController, 
+              TMDBAPIService, navigationController, SearchController, HomeController, MovieController, movieTrailerController, PersonController, 
               RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, navigationDirective, searchDirective, popularMoviesDirective,
               popularTvDirective, popularPeopleDirective,
               personDetailDirective, personCrewDirective, personCastDirective,
-              movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective ) {
+              movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -84,6 +86,11 @@ define([ 'angular',
 
         app.controller( "popularPeopleController", popularPeopleController);
         app.directive( "popularPeople", popularPeopleDirective );
+
+
+        app.controller( "movieTrailerController", movieTrailerController);
+        app.directive( "movieTrailer", movieTrailerDirective);
+        
 
 
 
