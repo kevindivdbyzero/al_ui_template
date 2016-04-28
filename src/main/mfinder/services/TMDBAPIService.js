@@ -92,6 +92,7 @@ define( [ 'angular',
                 });
             };
 
+
             /* http://docs.themoviedb.apiary.io/reference/people */
             this.Person = function () {
                 return this.GetCachedService( "person", function () {
@@ -187,6 +188,32 @@ define( [ 'angular',
                 });
             };
 
+
+
+
+            /* Extended API */
+            /* http://docs.themoviedb.apiary.io/reference/tv */
+            this.Television = function () {
+                return this.GetCachedService( "tv", function () {
+                    var serviceVersion = "3";
+                    var serviceBase    = this._normalizeEndpoint( serviceVersion, "tv" );
+
+                    /*http://docs.themoviedb.apiary.io/#reference/tv/tvid/get */
+                    var getTv = function ( movie ) {
+                        var uri = serviceBase.url + '/tv/' + movie + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,videos,similar,images';
+                        return $http.get( uri );
+                    };
+
+                    return {
+                        tv: {
+                            tv: getTv
+                        }
+                    };
+                });
+            };
+            
+            
+            
             this.GetCachedService = function( serviceName, instantiateFunction ) {
 
                 if ( this.ServiceCache[serviceName] !== undefined ) {

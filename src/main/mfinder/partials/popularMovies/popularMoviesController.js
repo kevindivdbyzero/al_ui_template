@@ -8,6 +8,12 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         
         var config  = angular.module("config");
         $scope.view = {images: config.apiImg};
+
+        $scope.currentMovie = 0;
+        
+        $scope.setCurrentMovie = function(id){
+            $scope.currentMovie = id;
+        }
         
         
         

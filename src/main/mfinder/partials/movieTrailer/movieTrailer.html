@@ -1,5 +1,4 @@
-
-<div id="{{mov}}" class="modal fade" role="dialog">
+<div id="movieTrailerModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -10,17 +9,17 @@
             </div>
             <div class="modal-body">
 
+                <p>{{ detail.details.overview }}</p>
+
                 <div style="width:100%;margin: 0 auto;">
                     <iframe style="margin: 0 auto;" width="560" height="315" ng-src="{{ysrc}}" frameborder="0" allowfullscreen></iframe>
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <md-button class="md-raised" data-dismiss="modal">Close</md-button>
             </div>
         </div>
 
     </div>
 </div>
-
-

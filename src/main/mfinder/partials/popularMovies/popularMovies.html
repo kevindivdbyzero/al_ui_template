@@ -6,11 +6,16 @@
        
        
 
-      <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path"   >        
-       <!--<a  href="#/movie/{{ movie.id }}" data-toggle="modal" data-target="#{{movie.id}}" >-->
-       <a  href="#{{movie.id}}" data-toggle="modal" data-target="#{{movie.id}}" >
-          <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
-       </a>
+      <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path" ng-click="setCurrentMovie(movie.id)">
+
+      <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
+
+
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-raised" style="margin: 0 auto" href="#movieTrailerModal" data-toggle="modal" data-target="#movieTrailerModal"  >Trailer</md-button>
+        <md-button class="md-raised" style="margin: 0 auto" href="#/movie/{{ movie.id }}">Info</md-button>
+      </md-card-actions>
+
 
       </md-card>
 
@@ -23,5 +28,5 @@
     </div>
     
 </div>
-<movie-trailer ng-repeat="movie in movieList track by $index" ng-model="movie.id"> </movie-trailer>
+    <movie-trailer ng-model="currentMovie"> </movie-trailer>
 </div>

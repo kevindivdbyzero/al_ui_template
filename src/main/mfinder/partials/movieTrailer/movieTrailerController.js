@@ -6,18 +6,34 @@ define( [ 'angular',
         "use strict";
 
         var movieTrailerController = function($scope, TMDBAPIService, $routeParams, $sce ) {
-            
+
+            // movie details
             $scope.details = {};
-            $scope.ysrc = $sce.trustAsResourceUrl("http://www.youtube.com/embed/dQw4w9WgXcQ");
-            
+
+            // youtube source key
+            $scope.ysrc = undefined;
+
+
+            $scope.$watch('mov',function(newValue,oldValue){
+                getData();
+            });
 
             var api = TMDBAPIService.Movie();
-            api.movie.movie($scope.mov).then( function ( response ) {
-                $scope.details = response.data;                
-                $scope.ysrc = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+response.data.videos.results[0].key);
-            });
+
+                        
             
-            
+
+
+            var getData = function(){
+                api.movie.movie($scope.mov).then( function ( response ) {
+                    $scope.details = response.data;
+                    $scope.ysrc = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+response.data.videos.results[0].key+"/?rel=0&autoplay=1");
+                });
+            }
+
+
+
+
 
         };
 

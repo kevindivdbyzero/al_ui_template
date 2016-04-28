@@ -12,12 +12,15 @@
                 </md-tab>
 
                 <md-tab label="Videos">
+
                     <md-content>
 
-
-
+                        <div class="movieTrailer" ng-repeat="trailer in view.trailers">
+                            <iframe class="youtubeFrame" ng-src="{{trailer}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
 
                     </md-content>
+
                 </md-tab>
 
                 <md-tab label="Credits">
