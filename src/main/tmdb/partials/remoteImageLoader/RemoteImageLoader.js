@@ -23,7 +23,7 @@ define( [ 'angular',
 
             var config  = angular.module("config");
             $scope.view = {images: config.apiImg};
-            
+            console.log($scope.similarMovies);
         };
 
         RemoteImageLoader.$inject = [ '$scope' ];
