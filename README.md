@@ -4,6 +4,7 @@
 
 ### Requirements
 
+- You must be at least the age of 21 and own a fast car.
 - You must have XCode installed and accept the licensing agreement before continuing with this document.  Be advised that XCode is a massive download!
 - You must have a [Github](https://github.com/) account, with SSH keys configured.
 
