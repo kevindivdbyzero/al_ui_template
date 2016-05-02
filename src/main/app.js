@@ -28,6 +28,7 @@ define([ 'angular',
          'tmdb/partials/person/PersonController',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
          'tmdb/partials/awesomeSearch/AwesomeSearchResultsController',
+         'tmdb/partials/thumbnailCarousel/ThumbnailCarouselController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
@@ -39,14 +40,15 @@ define([ 'angular',
          'tmdb/directives/movieCast',
          'tmdb/directives/movieCrew',
          'tmdb/directives/awesomeSearch',
-         'tmdb/directives/awesomeSearchResults'], 
+         'tmdb/directives/awesomeSearchResults',
+         'tmdb/directives/thumbnailCarousel'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, 
-              PersonController, AwesomeSearchController, AwesomeSearchResultsController,
+              PersonController, AwesomeSearchController, AwesomeSearchResultsController, ThumbnailCarouselController,
               RemoteImageLoader, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective,
-              movieCrewDirective, awesomeSearchDirective, awesomeSearchResultsDirective ) {
+              movieCrewDirective, awesomeSearchDirective, awesomeSearchResultsDirective, thumbnailCarouselDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -70,6 +72,9 @@ define([ 'angular',
 
         app.controller( "AwesomeSearchController", AwesomeSearchController );
         app.directive( "awesomeSearch", awesomeSearchDirective );
+
+        app.controller("ThumbnailCarouselController", ThumbnailCarouselController);
+        app.directive("thumbnailCarousel",thumbnailCarouselDirective);
 
         app.controller( "SearchController", SearchController);
         app.directive( "search", searchDirective );
