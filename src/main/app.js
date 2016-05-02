@@ -31,6 +31,7 @@ define([ 'angular',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
          'tmdb/partials/awesomeSearch/AwesomeSearchResultsController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
+         'tmdb/partials/resultsModal/ResultsModalController',
          'tmdb/partials/movie/YearController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
@@ -45,15 +46,20 @@ define([ 'angular',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults',
          'tmdb/directives/movieTrailer',
-         'tmdb/directives/year'], 
+         'tmdb/directives/year',
+         'tmdb/directives/resultsModal'
+         ], 
     function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, SearchController, HomeController, MovieController, movieTrailerController,
-              MoneyController, PersonController, AwesomeSearchController,
-              AwesomeSearchResultsController, RemoteImageLoader, YearController, searchDirective,
+              TMDBAPIService, SearchController, HomeController, MovieController, 
+              movieTrailerController,MoneyController, PersonController, 
+              AwesomeSearchController,AwesomeSearchResultsController, 
+              RemoteImageLoader,ResultsModalController, 
+              YearController, searchDirective,
               popularMoviesDirective, personDetailDirective, personCrewDirective,
               personCastDirective, movieDetailDirective, similarMoviesDirective,
               movieCastDirective, movieCrewDirective, moneyDirective, awesomeSearchDirective,
-              awesomeSearchResultsDirective, movieTrailerDirective, yearDirective ) {
+              awesomeSearchResultsDirective, movieTrailerDirective, yearDirective,
+              resultsModalDirective) {
     	"use strict";
 
         /** @constructs app */
@@ -74,22 +80,17 @@ define([ 'angular',
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
         app.controller( "AwesomeSearchController", AwesomeSearchController );
         app.controller( "SearchController", SearchController);
-
-        app.directive( "search", searchDirective );
-
         app.controller( "movieTrailerController", movieTrailerController);
         app.directive( "movieTrailer", movieTrailerDirective);
-
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
-
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
-
         app.controller("YearController", YearController);
-
+        app.controller("ResultsModalController", ResultsModalController);
         app.controller( "MoneyController", MoneyController );
 
+        app.directive( "search", searchDirective );
         app.directive( "popularMovies", popularMoviesDirective );
         app.directive( "personDetail", personDetailDirective );
         app.directive( "personCrew", personCrewDirective );
@@ -103,6 +104,7 @@ define([ 'angular',
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
         app.directive( "awesomeSearch", awesomeSearchDirective );
         app.directive( "search", searchDirective );
+        app.directive("resultsModal", resultsModalDirective);
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );

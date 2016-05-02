@@ -36,7 +36,7 @@ define( [ 'angular',
             $scope.searchPhrase = "";
 
             $scope.$watch('searchPhrase',function(newValue,oldValue){
-                console.log("newValue="+newValue+",oldValue="+oldValue);
+                //console.log("newValue="+newValue+",oldValue="+oldValue);
             
                 $timeout.cancel(searchPromise);
 

@@ -22,10 +22,17 @@ define( [ 'angular',
         "use strict";
 
         var AwesomeSearchResultsController = function($scope, TMDBAPIService ) {
-        	$scope.currentMovie = 0;
-        	$scope.setCurrentMovie = function(id) {
-                 $scope.currentMovie = id;   
-          };
+        // 	$scope.currentMovie = 0;
+        // 	$scope.setCurrentMovie = function(id) {
+        //          $scope.currentMovie = id;   
+        //     };
+            $scope.currentObject = undefined;
+            $scope.media_type = undefined;
+            $scope.setModalAction = function(media_type, id){
+                $scope.currentObject = id;
+                $scope.media_type = media_type;
+                console.log("media_type 1 "+ $scope.media_type);
+            };
         };
 
         AwesomeSearchResultsController.$inject = [ '$scope', 'TMDBAPIService' ];
