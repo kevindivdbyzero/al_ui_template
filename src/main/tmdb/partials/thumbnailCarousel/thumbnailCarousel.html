@@ -1,0 +1,23 @@
+<div>
+    <h1>Similar Movies</h1>
+	<div class="carousel slide" id="slider" style="width: 400px; margin: 0 auto">
+
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <div class="item" ng-repeat="similar in movieList" ng-class="{active : $first}">
+	    	<a href="#/movie/{{ similar.id }}" title="{{ similar.title }}">
+		      <img src="{{view.images}}{{ similar.poster_path }}" alt="{{ similar.title }}"  class="img-responsive">
+		    </a>
+		      <div class="carousel-caption">
+		      	<h3> {{ similar.title }} </h3>
+		      </div>
+	    </div>
+	  </div>
+
+	  <!-- Left and right controls -->
+	  
+    <a class="carousel-control right" href="#slider" data-slide="next"></a>
+    <a class="carousel-control left" href="#slider" data-slide="prev"></a>
+	 
+	</div>
+</div>
