@@ -28,8 +28,7 @@ define([ 'angular',
          'tmdb/partials/person/PersonController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
          'tmdb/partials/bloomSearch/BloomSearchController',
-         'tmdb/partials/bloomSearch/BloomSearchResultsController',
-         'tmdb/partials/bloomMovie/BloomMovieController',
+         'tmdb/partials/bloomSearch/BloomSearchResultsController',         
          'tmdb/partials/movieTrailer/MovieTrailerController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
@@ -46,7 +45,7 @@ define([ 'angular',
     function( angular, config, $location, $resource,  LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, PersonController,
               RemoteImageLoader,
-              BloomSearchController, BloomSearchResultsController, BloomMovieController,
+              BloomSearchController, BloomSearchResultsController,
               MovieTrailerController, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective,
@@ -77,7 +76,6 @@ define([ 'angular',
         app.controller("BloomSearchResultsController", BloomSearchResultsController);
         app.directive("bloomSearchResults", bloomSearchResultsDirective);
 
-        app.controller("BloomMovieController", BloomMovieController);
 
         app.controller("MovieTrailerController", MovieTrailerController);
         app.directive("movieTrailer", movieTrailerDirective);

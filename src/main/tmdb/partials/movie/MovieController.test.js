@@ -15,9 +15,7 @@ define([ 'angular',
                 * Load the required modules
                 */
                 module("config");
-                module("ngRoute");
-
-                console.log("Entro al beforeEach del test MovieControllertest==========");
+                module("ngRoute");              
 
                 /**
                 * Injection

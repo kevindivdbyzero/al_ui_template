@@ -7,7 +7,7 @@ define([ 'angular',
         "use strict";
         describe("Test for BloomSearchController", function () {
             var bloomSearchController, scope, mockService, q;
-            console.log("Antes del before");
+            
 
             beforeEach(function () {
                 /**
@@ -16,14 +16,12 @@ define([ 'angular',
                 module("config");
                 module("ngRoute");
 
-                console.log("despues del before");
-
+                
                 /**
                 * Injection
                 */
                 
                 inject(["$rootScope", "$controller", "$q",function ($rootScope, $controller, $q) {
-                    console.log("antes de...");
                     //instantiate the controller with a newly created scope
                     scope       = $rootScope.$new();
 
@@ -43,12 +41,24 @@ define([ 'angular',
                                     }
                                 }
                             };
+                        },
+                        Search: function () {
+                            return {
+                                search: {
+                                    multi: function () {
+                                        return {
+                                            then: function () {
+                                                return {};
+                                                // return $q.when({data:mockData});
+                                            }
+                                        };
+                                    }
+                                }
+                            };
                         }
                     };
                     bloomSearchController = $controller(BloomSearchController, {$scope: scope, 
-                                                                  TMDBAPIService: mockService});
-                    console.log("Instancia controlador====");
-                    console.log(bloomSearchController);
+                                                                  TMDBAPIService: mockService});                    
                 }]);
             });
 
@@ -57,16 +67,16 @@ define([ 'angular',
             */
             
             xit("should always set searchPhrase starts empty", function(){
-                //expect(scope.searchPhrase).toBe("");
+                expect(scope.searchPhrase).toBe("");
             });
 
-            // it("should search after hits enter key", function(){
-            //     // var mockEvent = {
-            //     //     which: 13
-            //     // };
-            //     // scope.performSearch(mockEvent);
-            //     // expect(scope.searchResults).toBeDefined();
-            // });
+            it("should search after hits enter key", function(){
+                var mockEvent = {
+                    which: 13
+                };
+                scope.performSearch(mockEvent);
+                expect(scope.searchResults).toBe(undefined);
+            });
 
             /*
             * Test base functionality
