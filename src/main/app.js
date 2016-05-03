@@ -32,6 +32,7 @@ define([ 'angular',
          'tmdb/partials/awesomeSearch/AwesomeSearchResultsController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
          'tmdb/partials/movie/YearController',
+         'tmdb/partials/timeBar/timeBarController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
          'tmdb/directives/personDetail',
@@ -45,15 +46,16 @@ define([ 'angular',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults',
          'tmdb/directives/movieTrailer',
+         'tmdb/directives/timeBar',
          'tmdb/directives/year'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, movieTrailerController,
               MoneyController, PersonController, AwesomeSearchController,
-              AwesomeSearchResultsController, RemoteImageLoader, YearController, searchDirective,
+              AwesomeSearchResultsController, RemoteImageLoader,timeBarController, YearController, searchDirective,
               popularMoviesDirective, personDetailDirective, personCrewDirective,
               personCastDirective, movieDetailDirective, similarMoviesDirective,
               movieCastDirective, movieCrewDirective, moneyDirective, awesomeSearchDirective,
-              awesomeSearchResultsDirective, movieTrailerDirective, yearDirective ) {
+              awesomeSearchResultsDirective, movieTrailerDirective,timeBarDirective, yearDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -87,6 +89,10 @@ define([ 'angular',
         app.controller( "RemoteImageLoader", RemoteImageLoader );
 
         app.controller("YearController", YearController);
+
+        app.controller("timeBarController",timeBarController);
+        app.directive("timeBar",timeBarDirective);
+
 
         app.controller( "MoneyController", MoneyController );
 
