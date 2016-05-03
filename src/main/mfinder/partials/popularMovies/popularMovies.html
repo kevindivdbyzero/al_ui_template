@@ -6,7 +6,8 @@
        
        
 
-      <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path" ng-click="setCurrentMovie(movie.id)">
+      <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path" ng-click="setCurrentMovie(movie.id)" ng-class="{'excellent': (movie.vote_average >= 6.5 && movie.popularity > 2.5 && movie.vote_count > 1000) ,
+       'good': (movie.vote_average < 6.5 && movie.vote_average >= 4 )}">
 
       <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
 
