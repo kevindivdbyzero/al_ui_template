@@ -26,12 +26,13 @@ define( [ 'angular',
         // 	$scope.setCurrentMovie = function(id) {
         //          $scope.currentMovie = id;   
         //     };
-            $scope.currentObject = undefined;
+            $scope.current_object = undefined;
             $scope.media_type = undefined;
             $scope.setModalAction = function(media_type, id){
-                $scope.currentObject = id;
+                $scope.current_object = id;
                 $scope.media_type = media_type;
-                console.log("media_type 1 "+ $scope.media_type);
+                console.log("media_type 1--"+ $scope.media_type);
+                console.log("object 1--"+ $scope.current_object);
             };
         };
 

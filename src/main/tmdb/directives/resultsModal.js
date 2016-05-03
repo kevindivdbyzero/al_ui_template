@@ -10,9 +10,9 @@ define( [ 'angular',
                 controller: ResultsModalController,
                 templateUrl: '/tmdb/partials/resultsModal/resultsModal.html',
                 restrict: 'E',
-                scope: {                    
-                    object: '=',
-                    media_type: '='
+                scope: {        
+                    media_type: '=',
+                    current_object: '=',
                 }
             };
         };

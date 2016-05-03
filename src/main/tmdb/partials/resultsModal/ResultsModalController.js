@@ -42,8 +42,9 @@ define( [ 'angular',
                 });
             };
      
-            $scope.$watch('object', function(newValue, oldValue) {
-                console.log("media type 2" + $scope.media_type);
+            $scope.$watch('current_object', function(newValue, oldValue) {
+                console.log("media type 2 --" + $scope.media_type);
+                console.log("object 2 --" + $scope.current_object);
                 if($scope.media_type === 'movie'){
                      getDataTrailer();
                  }else{
