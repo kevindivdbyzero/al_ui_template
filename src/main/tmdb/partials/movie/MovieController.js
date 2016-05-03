@@ -24,6 +24,7 @@ define( [ 'angular',
         "use strict";
 
         var MovieController = function($scope, TMDBAPIService, $routeParams ) {
+            
 
             $scope.view   = {
                 details: {},
@@ -32,6 +33,7 @@ define( [ 'angular',
             var api = TMDBAPIService.Movie();
             api.movie.movie($routeParams.id).then( function ( response ) {
                 $scope.view.details = response.data;
+                console.log("Videos:==="+response.data.videos);
             });
 
         };

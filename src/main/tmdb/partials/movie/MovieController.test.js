@@ -15,7 +15,7 @@ define([ 'angular',
                 * Load the required modules
                 */
                 module("config");
-                module("ngRoute");
+                module("ngRoute");              
 
                 /**
                 * Injection
