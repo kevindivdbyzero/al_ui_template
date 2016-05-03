@@ -27,6 +27,10 @@ define([ 'angular',
          'tmdb/partials/movie/MovieController',
          'tmdb/partials/person/PersonController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
+         'tmdb/partials/bloomSearch/BloomSearchController',
+         'tmdb/partials/bloomSearch/BloomSearchResultsController',
+         'tmdb/partials/bloomMovie/BloomMovieController',
+         'tmdb/partials/movieTrailer/MovieTrailerController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
          'tmdb/directives/personDetail',
@@ -35,12 +39,18 @@ define([ 'angular',
          'tmdb/directives/movieDetail',
          'tmdb/directives/similarMovies',
          'tmdb/directives/movieCast',
-         'tmdb/directives/movieCrew' ], 
-    function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, SearchController, HomeController, MovieController, PersonController, 
-              RemoteImageLoader, searchDirective, popularMoviesDirective, 
+         'tmdb/directives/movieCrew',
+         'tmdb/directives/bloomSearch',
+         'tmdb/directives/bloomSearchResults',
+         'tmdb/directives/movieTrailer' ], 
+    function( angular, config, $location, $resource,  LocalStorageModule, 
+              TMDBAPIService, SearchController, HomeController, MovieController, PersonController,
+              RemoteImageLoader,
+              BloomSearchController, BloomSearchResultsController, BloomMovieController,
+              MovieTrailerController, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
-              movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective ) {
+              movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective,
+              bloomSearchDirective, bloomSearchResultsDirective, movieTrailerDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -61,6 +71,17 @@ define([ 'angular',
         app.controller( "SearchController", SearchController);
         app.directive( "search", searchDirective );
 
+        app.controller("BloomSearchController", BloomSearchController);
+        app.directive("bloomSearch", bloomSearchDirective);
+
+        app.controller("BloomSearchResultsController", BloomSearchResultsController);
+        app.directive("bloomSearchResults", bloomSearchResultsDirective);
+
+        app.controller("BloomMovieController", BloomMovieController);
+
+        app.controller("MovieTrailerController", MovieTrailerController);
+        app.directive("movieTrailer", movieTrailerDirective);
+
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
         app.controller( "PersonController", PersonController);
@@ -75,10 +96,13 @@ define([ 'angular',
         app.directive( "movieCast", movieCastDirective );
         app.directive( "movieCrew", movieCrewDirective );
 
+
+
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
+            $routeProvider.when( '/bloomMovie/:id', { templateUrl: '/tmdb/partials/bloomMovie/bloomMovie.html', controller: 'BloomMovieController' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';

@@ -2,37 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>TMDB API Programming Test</title>
+<title>Bloom Movies DB</title>
 
 <!-- Default Styles (DO NOT TOUCH) -->
 <link rel="stylesheet" type="text/css" href="/css/app.css">
 <!-- RequireJS // -->
 <script src="/vendor/requirejs/require.js" data-main="main"></script>
+
+<style type="text/css">
+	
+.Three-Dee{ 
+	font-family: ABeeZee ;	
+	line-height: 1em; color: undefined; font-size: 65px; text-shadow:0px 0px 0 rgb(231,231,231),1px 1px 0 rgb(216,216,216),2px 2px 0 rgb(202,202,202),3px 3px 0 rgb(187,187,187),4px 4px 0 rgb(173,173,173),5px 5px 0 rgb(158,158,158), 6px 6px 0 rgb(144,144,144),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);}
+
+</style>
+
+
 </head>
 <body>
-	<div class="wrapper">
-		<div class="navbar nav">
-			<div class="container-fluid">
-				<div style="position: absolute; top: 0; left: 0; z-index: 50; font-size: 24px; margin-top: 24px; margin-left: 20px;">
-					<a href="#/" title="Start Over">TMDB API Programming Test</a>
+	<!-- <div class="wrapper">
+		
+		<bloom-search/>
+
+		<div class="contain"> -->
+			<!-- BEGIN PAGE CONTENT -->
+			<!-- <div class="content">
+
+				<div protected-content>
+
+					<ng-view></ng-view>
 				</div>
-				<div class="pull-right" style="margin-top: 21px;">
-            		<search />
-        		</div>
+			</div> -->
+			<!-- END PAGE CONTENT -->
+		<!-- </div>		
+	</div>
+	
+	<hr/> -->
+
+	
+	<div class="wrapper">
+	
+		<div class="navbar nav">
+			<div class="container-fluid">				
+				<bloom-search/>				
 			</div>
 		</div>
+		
 		<div class="contain">
 			<!-- BEGIN PAGE CONTENT -->
 			<div class="content">
 
 				<div protected-content>
-
 					<ng-view></ng-view>
 				</div>
 			</div>
 			<!-- END PAGE CONTENT -->
 		</div>
 	</div>
+	
 
 	<!-- Default JS (DO NOT TOUCH) -->
 	<script src="/vendor/jquery/dist/jquery.min.js?bust=release.version"></script>
