@@ -1,13 +1,16 @@
 <div>
-<div class="movie-carousel">
+<div class="movie-carousel popularMovies">
 
        
     <div ng-repeat="movie in movieList track by $index" ng-repeat-owl-carousel carousel-init="carouselInitializer">
        
        
 
-      <md-card style="width:250px;"title="{{ movie.title }}" ng-if="movie.poster_path" ng-click="setCurrentMovie(movie.id)" ng-class="{'excellent': (movie.vote_average >= 4.5 && movie.popularity > 2.5 && movie.vote_count > 1000) ,
-       'good': (movie.vote_average < 6.5 && movie.vote_average >= 4 )}">
+      <md-card class="card" title="{{ movie.title }}" ng-if="movie.poster_path" ng-click="setCurrentMovie(movie.id)"
+               ng-class="{'excellent': (movie.vote_average >= 4.5 && movie.popularity > 2.5 && movie.vote_count > 1000 && zoom),
+               'good': (movie.vote_average < 6.5 && movie.vote_average >= 4 && zoom ),
+               'zoom':zoom }" ng-mouseenter="zoom = true" ng-mouseleave="zoom = false">
+
 
       <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
 
