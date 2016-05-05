@@ -36,12 +36,12 @@ define( [ 'angular',
 
             $rootScope.$on( '$routeChangeSuccess', function() {
                 console.log("Route changed; looking for configuration data" );
-                var storedConfig = TMDBAPIService.getConfiguration()
-                .then(  function( configResponse ) {
-                            console.log("Got response!", configResponse );
-                        }, function( reason ) {
-                            console.log("FAIL!", reason );
-                        } );
+                TMDBAPIService.getConfiguration()
+                    .then(  function( configResponse ) {
+                                console.log("Got response!", configResponse );
+                            }, function( reason ) {
+                                console.log("FAIL!", reason );
+                            } );
                 var configuration = localStorage.get("config");
                 console.log("Configuration: ", configuration );
                 localStorage.set("config", "kevin was here" );
