@@ -13,7 +13,7 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         
         $scope.setCurrentMovie = function(id){
             $scope.currentMovie = id;
-        }
+        };
         
         
         
