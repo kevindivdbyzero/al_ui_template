@@ -90,6 +90,7 @@ define( [ 'angular',
                         apiSearch.search.multi($scope.searchPhrase).then(function(response){
 
                             $scope.searchResults = response.data.results;
+                            console.log(response.data.results[0]);
 
                             $scope.searchResults.forEach(function(item){
                                 if (item.media_type === "person") {

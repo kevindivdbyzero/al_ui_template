@@ -1,13 +1,16 @@
 <div class="awesome-search-results">
 	<div class="container">
-		<div ng-repeat="result in resultList" 
-		class="col-xs-3">
+		<div ng-repeat="result in resultList"  ng-class="{'col-xs-3':true, 
+		                                                  'block-buster': result.popularity > 2.5  && result.vote_count > 1000,
+		                                                  'bomb': result.vote_average < 3
+		                                                  }">
+			<!--{{result.vote_average}}-->
+			{{result.popularity}}
 			<a href="#{{result.id}}" data-toggle="modal" 
 			data-target="#{{result.id}}" 
 			ng-click="setModalAction(result.media_type, result.id)">
 			<img ng-src="{{result.foto}}" title="{{result.title}} as {{result.character}}" width="65" height="97" ng-if="result.foto" />
 			</a>
-			<span class="badge">{{result.media_type}}</span>
 			<span>
 			<a href="/#/movie/{{result.id}}" style="font-size:8pt">{{result.formatName}}</a>
 			</span>
