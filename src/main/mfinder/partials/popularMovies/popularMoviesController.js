@@ -1,12 +1,13 @@
-define(['angular','config/config','ocNgRepeat','mwheel'],
-    function ( angular, config, ocNgRepeat){
+define(['angular','config/config','ocNgRepeat','mfinder/services/TMDBAPIService','mwheel', 'LocalStorageModule'],
+    function ( angular, config, ocNgRepeat,TMDBAPIService){
     "use strict";
     
-    var popularMoviesController = function($scope, TMDBAPIService, $routeParams ) 
+    var popularMoviesController = function($scope, $rootScope ,TMDBAPIService, $routeParams, localStorage ) 
     {
         
         
         var config  = angular.module("config");
+
         $scope.view = {images: config.apiImg};
 
         $scope.currentMovie = 0;
@@ -14,6 +15,26 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         $scope.setCurrentMovie = function(id){
             $scope.currentMovie = id;
         };
+
+
+        $rootScope.$on('$routeChangeSuccess', function(){
+            console.log("Route Changed; looking for configuration data");
+
+            var storedConfig = TMDBAPIService.getConfiguration().then(
+                
+                function(configResponse){
+                    console.log("Got response", configResponse);
+                },function(reason){
+                    console.log("Fail", reason);   
+                }
+            );
+
+            var configuration = localStorage.get("config");
+            console.log("configuration: ", configuration);
+            localStorage.set("config","Andres was here");
+                        
+
+        });
         
         
         
@@ -66,7 +87,7 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
         
     };
 
-    popularMoviesController.$inject = [ '$scope','$routeParams' ];
+    popularMoviesController.$inject = [ '$scope','$rootScope', 'TMDBAPIService' ,'$routeParams', 'localStorageService' ];
     
     return popularMoviesController;
           
