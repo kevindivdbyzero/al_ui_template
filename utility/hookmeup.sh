@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Iterate up the directory structure until we find the root of the al_ui_template repo that we are being executed within
 while [[ $PWD != '/' && ! ( -f "$PWD/package.json" && -f "$PWD/bower.json" && "$PWD/karma.conf.js" ) ]]; do
