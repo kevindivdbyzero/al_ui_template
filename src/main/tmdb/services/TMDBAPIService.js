@@ -43,9 +43,62 @@ define( [ 'angular',
                 return $http( req );
             };
 
+<<<<<<< HEAD
             this.getMovieInfo = function(id){
                 var uri = serviceBase.url + '/movie/'+id + '?api_key'+ apiKey;
                 return $http( uri);
+=======
+            this.getChanges = function() {
+                var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
+                return $http.get( url );
+            };
+
+            this.getJobList = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/job/list",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowDetails = function( tvShowID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowSeasons = function( tvShowID ) {
+                return this.getTVShowDetails( tvShowID ).then( function( response ) {
+                    var seasons = [];
+                    angular.forEach( response.data.seasons, function( season ) {
+                        seasons.push( season );
+                    } );
+                    return seasons;
+                } );
+            };
+
+            this.getTVShowSeason = function( tvShowID, seasonIndex ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+
+>>>>>>> d81bf8c3902a0090839bcaea6fd8a369c6002349
             };
 
             /* http://docs.themoviedb.apiary.io/reference/discover */

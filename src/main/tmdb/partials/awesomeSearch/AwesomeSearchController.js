@@ -22,7 +22,7 @@ define( [ 'angular',
     function( angular, config, TMDBAPIService ) {
         "use strict";
 
-        var AwesomeSearchController = function($scope, $rootScope, TMDBAPIService, $timeout, localStorage ) {
+        var AwesomeSearchController = function($scope, $rootScope, TMDBAPIService, $timeout, localStorage, $q ) {
             //Reference variables
             var self = this;
             var apiSearch = TMDBAPIService.Search();
@@ -34,19 +34,6 @@ define( [ 'angular',
             var config  = angular.module("config");
             var defaultImage = "https://simpleicon.com/wp-content/uploads/movie-1.png";
 
-            $rootScope.$on( '$routeChangeSuccess', function() { //cuando cambia la ruta ejecuta la funcion
-                console.log("Route changed; looking for configuration data" );
-                TMDBAPIService.getConfiguration()
-                    .then(  function( configResponse ) {
-                                console.log(configResponse.data.images.base_url);
-                                console.log("Got response!", configResponse );
-                            }, function( reason ) {
-                                console.log("FAIL!", reason );
-                            } );
-                var configuration = localStorage.get("config");
-                console.log("Configuration: ", configuration );
-                localStorage.set("config", "kevin was here" );
-            } );
             $scope.searchPhrase = "";
 
             $scope.$watch('searchPhrase',function(newValue,oldValue){
@@ -125,7 +112,7 @@ define( [ 'angular',
 
         };
 
-        AwesomeSearchController.$inject = [ '$scope', '$rootScope', 'TMDBAPIService', '$timeout', 'localStorageService' ];
+        AwesomeSearchController.$inject = [ '$scope', '$rootScope', 'TMDBAPIService', '$timeout', 'localStorageService', '$q' ];
 
         return AwesomeSearchController;
     }
