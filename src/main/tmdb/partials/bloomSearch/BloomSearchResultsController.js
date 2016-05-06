@@ -34,7 +34,12 @@ define( [ 'angular',
               $scope.currentType = idType;
               
             };
-            
+
+            $scope.itemType = if($scope.itemNum==0){
+              return "item active";
+            }else{
+              return "item";
+            }
             
         };
 

@@ -19,9 +19,9 @@
 	</ol>
 
 	<!-- Wrapper for slides -->
-	<div class="carousel-inner" role="listbox" >
+	<div class="carousel-inner" role="listbox" ng-model="itemNum" ng-model="itemType">
 
-		<div ng-repeat="result in resultsList" ng-if="$index===0" class="item active">
+		<div ng-repeat="result in resultsList" ng-init="itemNum=$index" class="{{itemType}}">
 
 			<center>
 			<button type="button" class="btn btn-success">Tipo: {{result.media_type}} </button>
@@ -38,27 +38,6 @@
 			</center>
 
 		</div>
-
-		<div ng-repeat="result in resultsList" ng-if="$index>0" class="item">
-
-			<center>
-			<button type="button" class="btn btn-success">Tipo: {{result.media_type}} </button>
-			</center>
-
-			<img ng-src="{{ view.images }}{{ result.profile_path }}" ng-if="result.profile_path" alt="Slide {{ $index+1 }}" width="360" height="245">
-
-			<img ng-src="{{ view.images }}{{ result.poster_path }}" ng-if="result.poster_path" alt="Slide {{ $index+1 }}" width="360" height="245">
-
-			<center>
-
-			<button type="button" 
-			class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">{{ result.name || result.title }}
-			</button>
-			
-			</center>
-
-		</div>
-
 
 	</div>
 
