@@ -8,7 +8,7 @@
  * @requires config
  * @requires TMDBAPIService
  *
- * @author Barry Skidmore <bskidmore@alertlogic.com>
+ * @author Someone Else <bskidmore@alertlogic.com>
  *
  * @returns instance of the TelevisionController
  *
@@ -29,11 +29,8 @@ define( [ 'angular',
                 details: {},
             };
             
-            TMDBAPIService.getTVShowDetails( $routeParams.id ).then( function( response ) {
+            TMDBAPIService.getTVShowDetails( $routeParams.tvshow_id ).then( function( response ) {
                 console.log("Television!", response.data );
-                TMDBAPIService.getTVShowSeasons( $routeParams.id ).then( function( seasons ) {
-                    console.log("Seasons", seasons );
-                } );
             } );
 
         };

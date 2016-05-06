@@ -82,6 +82,19 @@ define( [ 'angular',
                 } );
             };
 
+            this.getTVShowSeason = function( tvShowID, tvSeasonID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + tvSeasonID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+
+            };
+
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
              * We support very little of this API, it has many many options.
