@@ -125,7 +125,7 @@ define([ 'angular',
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
 
             $routeProvider.when( '/television/:tvshow_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionController' } );
-            $routeProvider.when( '/television/:tvshow_id/season/:season_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionSeasonController' } );
+            $routeProvider.when( '/television/:tvshow_id/season/:season_number', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionSeasonController' } );
             $routeProvider.when( '/television/:tvshow_id/season/:season_id/episode/:episode_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionEpisodeController' } );
 
             //$routeProvider.when( '/movie/:name/:id', { templateUrl: '/tmdb/partials/simpleMovie/simpleMovie.html', controller: 'SimpleMovieController' } );

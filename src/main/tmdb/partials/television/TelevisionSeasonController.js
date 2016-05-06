@@ -31,8 +31,8 @@ define( [ 'angular',
             
 
             console.log("Route params: ", $routeParams );
-            /* ROUTE definition: '/television/:tvshow_id/season/:season_id' */
-            TMDBAPIService.getTVShowSeason( $routeParams.tvshow_id, $routeParams.season_id ).then( function( season ) {
+            /* ROUTE definition: '/television/:tvshow_id/season/:season_number' */
+            TMDBAPIService.getTVShowSeason( $routeParams.tvshow_id, $routeParams.season_number ).then( function( season ) {
                 console.log("Season information: ", season );
             } );
 
