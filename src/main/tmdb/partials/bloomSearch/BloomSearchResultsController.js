@@ -35,11 +35,13 @@ define( [ 'angular',
               
             };
 
-            $scope.itemType = if($scope.itemNum==0){
-              return "item active";
-            }else{
-              return "item";
-            }
+            $scope.getItemType = function(index){
+              if(index===0){                
+                return "item active";
+              }else{                
+                return "item";
+              }              
+            };
             
         };
 

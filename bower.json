@@ -1,5 +1,5 @@
 {
-  "name": "AL-UI-Template",
+  "name": "al-ui-template",
   "homepage": "https://github.com/alertlogic/al_ui_template",
   "main": "src/main/",
   "ignore": [

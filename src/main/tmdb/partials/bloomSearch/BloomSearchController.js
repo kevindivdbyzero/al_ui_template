@@ -43,10 +43,9 @@ define( [ 'angular',
 
                 searchPromise = $timeout(function() {
                     searchPromise = undefined;
-                    console.log(newValue);
+                    
                     if(newValue){
-                        if(newValue.length>2){
-                            console.log("Se puede buscar");
+                        if(newValue.length>2){                            
                             search();
                         }
                     }
