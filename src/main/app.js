@@ -26,6 +26,9 @@ define([ 'angular',
          'tmdb/partials/home/HomeController',
          'tmdb/partials/movie/MovieController',
          'tmdb/partials/movieTrailer/movieTrailerController',
+         'tmdb/partials/television/TelevisionController',
+         'tmdb/partials/television/TelevisionSeasonController',
+         'tmdb/partials/television/TelevisionEpisodeController',
          'tmdb/partials/money/MoneyController',
          'tmdb/partials/person/PersonController',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
@@ -33,6 +36,7 @@ define([ 'angular',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
          'tmdb/partials/resultsModal/ResultsModalController',
          'tmdb/partials/movie/YearController',
+         'tmdb/partials/timeBar/timeBarController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
          'tmdb/directives/personDetail',
@@ -46,20 +50,19 @@ define([ 'angular',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults',
          'tmdb/directives/movieTrailer',
-         'tmdb/directives/year',
-         'tmdb/directives/resultsModal'
-         ], 
+         'tmdb/directives/timeBar',
+         'tmdb/directives/year'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, SearchController, HomeController, MovieController, 
-              movieTrailerController,MoneyController, PersonController, 
-              AwesomeSearchController,AwesomeSearchResultsController, 
-              RemoteImageLoader,ResultsModalController, 
-              YearController, searchDirective,
+              TMDBAPIService, SearchController, HomeController, MovieController, movieTrailerController,
+              TelevisionController,
+              TelevisionSeasonController,
+              TelevisionEpisodeController,
+              MoneyController, PersonController, AwesomeSearchController,
+              AwesomeSearchResultsController, RemoteImageLoader,timeBarController, YearController, searchDirective,
               popularMoviesDirective, personDetailDirective, personCrewDirective,
               personCastDirective, movieDetailDirective, similarMoviesDirective,
               movieCastDirective, movieCrewDirective, moneyDirective, awesomeSearchDirective,
-              awesomeSearchResultsDirective, movieTrailerDirective, yearDirective,
-              resultsModalDirective) {
+              awesomeSearchResultsDirective, movieTrailerDirective,timeBarDirective, yearDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -84,10 +87,20 @@ define([ 'angular',
         app.directive( "movieTrailer", movieTrailerDirective);
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
+
+        app.controller( "TelevisionController", TelevisionController );
+        app.controller( "TelevisionSeasonController", TelevisionSeasonController );
+        app.controller( "TelevisionEpisodeController", TelevisionEpisodeController );
+
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
         app.controller("YearController", YearController);
-        app.controller("ResultsModalController", ResultsModalController);
+        //app.controller("ResultsModalController", ResultsModalController);
+
+        app.controller("timeBarController",timeBarController);
+        app.directive("timeBar",timeBarDirective);
+
+
         app.controller( "MoneyController", MoneyController );
 
         app.directive( "search", searchDirective );
@@ -104,12 +117,17 @@ define([ 'angular',
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
         app.directive( "awesomeSearch", awesomeSearchDirective );
         app.directive( "search", searchDirective );
-        app.directive("resultsModal", resultsModalDirective);
+        //app.directive("resultsModal", resultsModalDirective);
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
-            $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
+            $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
+
+            $routeProvider.when( '/television/:tvshow_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionController' } );
+            $routeProvider.when( '/television/:tvshow_id/season/:season_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionSeasonController' } );
+            $routeProvider.when( '/television/:tvshow_id/season/:season_id/episode/:episode_id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionEpisodeController' } );
+
             //$routeProvider.when( '/movie/:name/:id', { templateUrl: '/tmdb/partials/simpleMovie/simpleMovie.html', controller: 'SimpleMovieController' } );
             $routeProvider.otherwise( {
                 template: function() {

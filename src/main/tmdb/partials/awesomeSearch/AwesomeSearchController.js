@@ -17,11 +17,12 @@
 
 define( [ 'angular',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
+          'tmdb/services/TMDBAPIService',
+          'LocalStorageModule' ],
     function( angular, config, TMDBAPIService ) {
         "use strict";
 
-        var AwesomeSearchController = function($scope, TMDBAPIService, $timeout ) {
+        var AwesomeSearchController = function($scope, $rootScope, TMDBAPIService, $timeout, localStorage, $q ) {
             //Reference variables
             var self = this;
             var apiSearch = TMDBAPIService.Search();
@@ -111,7 +112,7 @@ define( [ 'angular',
 
         };
 
-        AwesomeSearchController.$inject = [ '$scope', 'TMDBAPIService', '$timeout' ];
+        AwesomeSearchController.$inject = [ '$scope', '$rootScope', 'TMDBAPIService', '$timeout', 'localStorageService', '$q' ];
 
         return AwesomeSearchController;
     }

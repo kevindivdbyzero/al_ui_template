@@ -27,7 +27,7 @@ define( [ 'angular',
 
             //console.log($scope.yearMovie);
 
-            var yearMovieArray = $scope.yearMovie.split("-");
+            var yearMovieArray = $scope.yearMovie ? $scope.yearMovie.split("-") : '';
             $scope.yearMovie = parseInt(yearMovieArray[0]);
             $scope.yearMovieArray = [];
 
