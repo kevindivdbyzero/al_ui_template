@@ -82,10 +82,10 @@ define( [ 'angular',
                 } );
             };
 
-            this.getTVShowSeason = function( tvShowID, tvSeasonID ) {
+            this.getTVShowSeason = function( tvShowID, seasonIndex ) {
                 var req = {
                     method: 'GET',
-                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + tvSeasonID,
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
                     params: {
                         api_key: apiKey
                     }

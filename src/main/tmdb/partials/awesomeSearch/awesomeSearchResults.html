@@ -9,7 +9,11 @@
 			</a>
 			<span class="badge">{{result.media_type}}</span>
 			<span>
-			<a href="/#/movie/{{result.id}}" style="font-size:8pt">{{result.formatName}}</a>
+            <span ng-if="result.media_type =='tv'">
+                <a href="/#/television/{{result.id}}" style="font-size:8pt">{{result.formatName}}</a>
+            </span>
+            <span ng-if="result.media_type =='movie'">
+                <a href="/#/movie/{{result.id}}" style="font-size:8pt">{{result.formatName}}</a>
 			</span>
 			
 		</div>
