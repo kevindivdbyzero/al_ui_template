@@ -43,11 +43,6 @@ define( [ 'angular',
                 return $http( req );
             };
 
-<<<<<<< HEAD
-            this.getMovieInfo = function(id){
-                var uri = serviceBase.url + '/movie/'+id + '?api_key'+ apiKey;
-                return $http( uri);
-=======
             this.getChanges = function() {
                 var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
                 return $http.get( url );
@@ -98,7 +93,6 @@ define( [ 'angular',
 
                 return $http( req );
 
->>>>>>> d81bf8c3902a0090839bcaea6fd8a369c6002349
             };
 
             /* http://docs.themoviedb.apiary.io/reference/discover */
