@@ -34,7 +34,6 @@ define([ 'angular',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
          'tmdb/partials/awesomeSearch/AwesomeSearchResultsController',
          'tmdb/partials/remoteImageLoader/RemoteImageLoader',
-         'tmdb/partials/resultsModal/ResultsModalController',
          'tmdb/partials/movie/YearController',
          'tmdb/partials/timeBar/timeBarController',
          'tmdb/directives/search',
@@ -83,19 +82,22 @@ define([ 'angular',
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
         app.controller( "AwesomeSearchController", AwesomeSearchController );
         app.controller( "SearchController", SearchController);
+
+        app.directive( "search", searchDirective );
+
         app.controller( "movieTrailerController", movieTrailerController);
         app.directive( "movieTrailer", movieTrailerDirective);
+
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
-
         app.controller( "TelevisionController", TelevisionController );
         app.controller( "TelevisionSeasonController", TelevisionSeasonController );
         app.controller( "TelevisionEpisodeController", TelevisionEpisodeController );
 
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
+
         app.controller("YearController", YearController);
-        //app.controller("ResultsModalController", ResultsModalController);
 
         app.controller("timeBarController",timeBarController);
         app.directive("timeBar",timeBarDirective);
@@ -103,7 +105,6 @@ define([ 'angular',
 
         app.controller( "MoneyController", MoneyController );
 
-        app.directive( "search", searchDirective );
         app.directive( "popularMovies", popularMoviesDirective );
         app.directive( "personDetail", personDetailDirective );
         app.directive( "personCrew", personCrewDirective );
@@ -117,7 +118,6 @@ define([ 'angular',
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
         app.directive( "awesomeSearch", awesomeSearchDirective );
         app.directive( "search", searchDirective );
-        //app.directive("resultsModal", resultsModalDirective);
 
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
