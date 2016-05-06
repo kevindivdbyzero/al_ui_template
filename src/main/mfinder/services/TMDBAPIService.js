@@ -36,7 +36,7 @@ define( [ 'angular',
             this.getConfiguration = function(){
                var req = {
                     method: "GET",
-                    url: apiBaseUrl + "/configutation",
+                    url: apiBaseUrl + "/configuration",
                     params:{
                         api_key: apiKey
                     }
