@@ -24,7 +24,15 @@ define( [ 'angular',
         var AwesomeSearchResultsController = function($scope, TMDBAPIService ) {
         	$scope.currentMovie = 0;
         	$scope.setCurrentMovie = function(id) {
-                 $scope.currentMovie = id;   
+                 $scope.currentMovie = id;
+                 var promise = TMDBAPIService.getMovieInfo(id);  
+                 var success = function(response){
+                  console.log(response.data);
+                 };
+                 var error = function(){
+                  console.log(arguments);
+                 }
+                 promise.then(success, error);
           };
         };
 

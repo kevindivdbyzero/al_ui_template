@@ -34,10 +34,11 @@ define( [ 'angular',
             var config  = angular.module("config");
             var defaultImage = "https://simpleicon.com/wp-content/uploads/movie-1.png";
 
-            $rootScope.$on( '$routeChangeSuccess', function() {
+            $rootScope.$on( '$routeChangeSuccess', function() { //cuando cambia la ruta ejecuta la funcion
                 console.log("Route changed; looking for configuration data" );
                 TMDBAPIService.getConfiguration()
                     .then(  function( configResponse ) {
+                                console.log(configResponse.data.images.base_url);
                                 console.log("Got response!", configResponse );
                             }, function( reason ) {
                                 console.log("FAIL!", reason );

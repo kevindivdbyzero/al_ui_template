@@ -43,6 +43,11 @@ define( [ 'angular',
                 return $http( req );
             };
 
+            this.getMovieInfo = function(id){
+                var uri = serviceBase.url + '/movie/'+id + '?api_key'+ apiKey;
+                return $http( uri);
+            };
+
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
              * We support very little of this API, it has many many options.
