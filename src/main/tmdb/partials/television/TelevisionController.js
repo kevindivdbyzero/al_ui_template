@@ -31,6 +31,9 @@ define( [ 'angular',
             
             TMDBAPIService.getTVShowDetails( $routeParams.id ).then( function( response ) {
                 console.log("Television!", response.data );
+                TMDBAPIService.getTVShowSeasons( $routeParams.id ).then( function( seasons ) {
+                    console.log("Seasons", seasons );
+                } );
             } );
 
         };

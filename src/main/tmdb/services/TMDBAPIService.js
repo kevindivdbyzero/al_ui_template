@@ -72,6 +72,16 @@ define( [ 'angular',
                 return $http( req );
             };
 
+            this.getTVShowSeasons = function( tvShowID ) {
+                return this.getTVShowDetails( tvShowID ).then( function( response ) {
+                    var seasons = [];
+                    angular.forEach( response.data.seasons, function( season ) {
+                        seasons.push( season );
+                    } );
+                    return seasons;
+                } );
+            };
+
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
              * We support very little of this API, it has many many options.
