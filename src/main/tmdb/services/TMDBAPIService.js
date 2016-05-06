@@ -43,6 +43,35 @@ define( [ 'angular',
                 return $http( req );
             };
 
+            this.getChanges = function() {
+                var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
+                return $http.get( url );
+            };
+
+            this.getJobList = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/job/list",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowDetails = function( tvShowID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
              * We support very little of this API, it has many many options.

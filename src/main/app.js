@@ -26,6 +26,7 @@ define([ 'angular',
          'tmdb/partials/home/HomeController',
          'tmdb/partials/movie/MovieController',
          'tmdb/partials/movieTrailer/movieTrailerController',
+         'tmdb/partials/television/TelevisionController',
          'tmdb/partials/money/MoneyController',
          'tmdb/partials/person/PersonController',
          'tmdb/partials/awesomeSearch/AwesomeSearchController',
@@ -50,6 +51,7 @@ define([ 'angular',
          'tmdb/directives/year'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, movieTrailerController,
+              TelevisionController,
               MoneyController, PersonController, AwesomeSearchController,
               AwesomeSearchResultsController, RemoteImageLoader,timeBarController, YearController, searchDirective,
               popularMoviesDirective, personDetailDirective, personCrewDirective,
@@ -84,6 +86,7 @@ define([ 'angular',
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
+        app.controller( "TelevisionController", TelevisionController );
 
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
@@ -113,6 +116,7 @@ define([ 'angular',
         app.config(['$routeProvider', function($routeProvider) {
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
+            $routeProvider.when( '/television/:id', { templateUrl: '/tmdb/partials/television/television.html', controller: 'TelevisionController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
             //$routeProvider.when( '/movie/:name/:id', { templateUrl: '/tmdb/partials/simpleMovie/simpleMovie.html', controller: 'SimpleMovieController' } );
             $routeProvider.otherwise( {
