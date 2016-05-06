@@ -17,25 +17,59 @@ define(['angular','config/config','ocNgRepeat','mfinder/services/TMDBAPIService'
         };
 
 
+
+
+        $rootScope.configFlag = false;
+        
+
         $rootScope.$on('$routeChangeSuccess', function(){
+
+
+
+
             console.log("Route Changed; looking for configuration data");
 
-            var storedConfig = TMDBAPIService.getConfiguration().then(
-                
-                function(configResponse){
-                    console.log("Got response", configResponse);
-                },function(reason){
-                    console.log("Fail", reason);   
-                }
-            );
+            if(!$rootScope.configFlag){
 
-            var configuration = localStorage.get("config");
-            console.log("configuration: ", configuration);
-            localStorage.set("config","Andres was here");
+                var storedConfig = TMDBAPIService.getConfiguration().then(
+
+                    function(configResponse){
+                        console.log("Got response", configResponse);
+
+                        console.log("Getting and storing configuration data from tmdb api.....");
+                        localStorage.set("img-base", configResponse.data.images.base_url);
+                        console.log("Done!");
+                        $rootScope.configFlag = true;
+
+                    },function(reason){
+                        console.log("Fail when trying to get configuration data from API: ", reason);
+                    }
+                );
+                
+                console.log("storedConfig",storedConfig);
+
+            }else{
+
+                console.log("Getting configuration data from localStorage.....");
+
+                console.log("Done!");
+
+            }
+
+
+            //var configuration = localStorage.get("config");
+            //console.log("configuration: ", configuration);
+            //localStorage.set("config","Andres was here");
+            console.log("---- configuration data ----");
+            console.log("img-base-url: ", localStorage.get("img-base"));
+            
                         
 
         });
-        
+
+
+        // Testing localstorage
+        //console.log("img-base-url: ", localStorage.get("img-base"));
         
         
         $scope.carouselInitializer =  function() {
