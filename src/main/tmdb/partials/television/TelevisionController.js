@@ -27,11 +27,18 @@ define( [ 'angular',
 
             $scope.view   = {
                 details: {},
+                id: $routeParams.tvshow_id,
             };
             
             TMDBAPIService.getTVShowDetails( $routeParams.tvshow_id ).then( function( response ) {
                 console.log("Television!", response.data );
+                $scope.view.details=response;
             } );
+
+            TMDBAPIService.getTVShowSeasons( $routeParams.tvshow_id ).then( function( response ) {
+                console.log ("Seasons", response);
+                $scope.view.seasons=response;
+            });
 
         };
 
