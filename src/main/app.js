@@ -46,13 +46,12 @@ define([ 'angular',
          'mfinder/directives/movieCrew',
          'mfinder/directives/movieTrailer'], 
 
-    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat,
-
-              TMDBAPIService, navigationController, SearchController, HomeController, MovieController, movieTrailerController, PersonController, 
-              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, navigationDirective, searchDirective, popularMoviesDirective,
-              popularTvDirective, popularPeopleDirective,
-              personDetailDirective, personCrewDirective, personCastDirective,
-              movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective ) {
+    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService,
+              navigationController, SearchController, HomeController, MovieController, movieTrailerController, PersonController, 
+              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController,
+              navigationDirective, searchDirective, popularMoviesDirective, popularTvDirective, popularPeopleDirective,
+              personDetailDirective, personCrewDirective, personCastDirective, movieDetailDirective,
+              similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -65,9 +64,7 @@ define([ 'angular',
 
         //  Configure $locationProvider and $routeProvider to allow top-level navigation within this route
     	app.config(['$locationProvider', function($locationProvider) {
-                            
-            $locationProvider.html5Mode(false);
-            
+            $locationProvider.html5Mode(false);            
     	}]);
 
         app.service( "TMDBAPIService", TMDBAPIService);
@@ -90,7 +87,7 @@ define([ 'angular',
 
         app.controller( "movieTrailerController", movieTrailerController);
         app.directive( "movieTrailer", movieTrailerDirective);
-        
+       
 
 
 

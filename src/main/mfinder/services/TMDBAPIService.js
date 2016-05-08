@@ -124,7 +124,7 @@ define( [ 'angular',
                         return $http.get( uri );
                     };
 
-                    /* Extended API */
+                    /* Extended APIService */
                     /*http://docs.themoviedb.apiary.io/reference/people/personpopular/get*/
                     var getPopular = function ( page ) {
                         if ( page === undefined ) {
@@ -210,7 +210,7 @@ define( [ 'angular',
 
 
 
-            /* Extended API */
+            /* Extended APIService */
             /* http://docs.themoviedb.apiary.io/reference/tv */
             this.Television = function () {
                 return this.GetCachedService( "tv", function () {

@@ -1,65 +1,120 @@
 .popularMovies{
 
+  padding: 5px;
+
+  .popularMoviesHeader{
+
+    color: darkorange !important;
+
+    .popularMoviesTitle{
+      //font-family: 'Alfa Slab One', cursive;
+      font-family: 'Audiowide', cursive;
+      font-weight: lighter;
+      font-size: 30px;
+      text-align: center;
+
+    }
+
+    .popularMoviesButtons{
+      text-decoration: none;
+      font-size: 40px;
+
+
+      .moviePrevBtn{
+        text-decoration: none;
+      }
+      .movieNextBtn{
+        text-decoration: none;
+      }
+    }
+
+  }
+
+
+  .movie-carousel{
+    margin: 0 auto;
+  }
+
 
   md-card.md-default-theme, md-card{
     background-color: #212121;
-
-
   }
 
   .card{
-    width: 250px;
-  }
-
-  .zoom{
-    width: 260px;
-  }
-
-  .excellent{
-    background-color: green;
-  }
-
-  .good{
-    background-color: white;
-  }
-
-  .bad{
-    background-color: red;
-  }
 
 
-
-
-
-  .md-raised.md-button.md-ink-ripple{
-    background-color: darkorange;
-
-    span{
-      font-weight: bold;
+    &.zoom{
+      transform:translateY(-5px);
     }
 
-  }
-
-
-  .modal-content{
-    //background-color: rgba(255,255,255,0.2);
-    background-color: rgba(0,0,0,0.6);
-
-    .modal-header{
-      border-bottom: 1px solid rgba(255, 125, 1, 0.5);
-      color: darkorange;
+    &.excellent{
+      background-color: green;
     }
 
-    .modal-footer{
-      border-top: 1px solid rgba(255, 125, 1, 0.5);
+    &.good{
+      background-color: #3d66ff;
+    }
+
+    &.bad{
+      background-color: red;
+    }
+
+
+
+    md-card-actions{
+      md-button{
+
+        margin: 0 auto;
+
+      }
 
       .md-button{
-        margin: 0 auto;
+
+          &.md-ink-ripple{
+
+          margin: 0 auto;
+          background-color: darkorange;
+          font-weight: bold;
+
+          &.md-focused{
+            background-color: darkorange;
+          }
+
+          &:hover{
+            background-color: #ff9c00;
+          }
+
+
+        }
+
+        &:not(.layout-column){
+
+          &:last-of-type{
+            &:not(.md-icon-button){
+              margin: 0 auto;
+            }
+          }
+
+          &:first-of-type{
+            &:not(.md-icon-button){
+              margin: 0 auto;
+            }
+          }
+
+
+        }
+
+
+
       }
 
     }
 
   }
+
+
+  // Loading movieTrailer css
+  @import "../movieTrailer/movieTrailer.less";
 
 
 }

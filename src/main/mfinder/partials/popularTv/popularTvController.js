@@ -44,14 +44,23 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
             }    
             });
             
-            tvcar.on('mousewheel', '.owl-stage', function(e){
-                if (e.deltaY<0){                     
-                    tvcar.trigger('next.owl.carousel');
-                }else{
-                    tvcar.trigger('prev.owl.carousel');
-                }
-                e.preventDefault();
-            });
+            // tvcar.on('mousewheel', '.owl-stage', function(e){
+            //     if (e.deltaY<0){                     
+            //         tvcar.trigger('next.owl.carousel');
+            //     }else{
+            //         tvcar.trigger('prev.owl.carousel');
+            //     }
+            //     e.preventDefault();
+            // });
+
+            $scope.nextTVS = function () {
+                tvcar.trigger('next.owl.carousel');
+            };
+
+            $scope.prevTVS = function () {
+                tvcar.trigger('prev.owl.carousel');
+            };
+            
             
         };
 

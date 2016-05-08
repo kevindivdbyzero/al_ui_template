@@ -22,7 +22,7 @@ define( [ 'angular',
                     $scope.ysrc = $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+response.data.videos.results[0].key+"/?rel=0&autoplay=1");
                 }, function ( fail ) {
                     console.log("Fail in movieTrailerController :", fail );
-                    $scope.ysrc = $sce.trustAsResourceUrl("http://www.youtube.com/embed/dQw4w9WgXcQ/?rel=0&autoplay=1"); 
+                    $scope.ysrc = ""; 
                 });
             };
 
@@ -33,8 +33,14 @@ define( [ 'angular',
 
 
 
-                        
-            
+
+            $("#movieTrailerModal").on('hide.bs.modal', function(){
+                $("#videoframe").attr('src', '');
+            });
+
+            $("#movieTrailerModal").on('show.bs.modal', function(){
+                $("#videoframe").attr('src', $scope.ysrc);
+            });
 
 
 

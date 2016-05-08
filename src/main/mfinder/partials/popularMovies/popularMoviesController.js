@@ -77,42 +77,41 @@ define(['angular','config/config','ocNgRepeat','mfinder/services/TMDBAPIService'
             var car = $(".movie-carousel");
             
             car.owlCarousel({                            
-                            
-              //nav: true,                              
-              //navText: ["<a class='btn btn-primary'> < </a>", "<a class='btn btn-primary'> > </a>"],
+
               responsive:{
                 0:{                    
                     items:1,
-                    margin: 0,
+                    margin: 10
                 },                  
                 640:{
                     items:3,
-                    margin: 10,
+                    margin: 10
                 },            
                 900:{
                     items:4,
-                    margin: 10,
+                    margin: 10
                 },
                 1200:{
                     items:5,
-                    margin: 10,
+                    margin: 10
                 },
                 1600:{
                     items:6,
-                    margin: 10,
+                    margin: 10
                 }  
                   
             }    
             });
+
             
-            car.on('mousewheel', '.owl-stage', function(e){
-                if (e.deltaY<0){                     
-                    car.trigger('next.owl.carousel');
-                }else{
-                    car.trigger('prev.owl.carousel');
-                }
-                e.preventDefault();
-            });
+            
+            $scope.nextMovie = function () {
+                car.trigger('next.owl.carousel');
+            };
+            
+            $scope.prevMovie = function () {
+                car.trigger('prev.owl.carousel');
+            };
             
         };
 
