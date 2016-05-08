@@ -76,8 +76,8 @@ define(['angular','config/config','ocNgRepeat','mfinder/services/TMDBAPIService'
             
             var car = $(".movie-carousel");
             
-            car.owlCarousel({                            
-
+            car.owlCarousel({
+              slideBy: 'page',
               responsive:{
                 0:{                    
                     items:1,

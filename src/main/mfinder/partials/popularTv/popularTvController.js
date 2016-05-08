@@ -16,9 +16,8 @@ define(['angular','config/config','ocNgRepeat','mwheel'],
             var tvcar = $(".tv-carousel");
             
             tvcar.owlCarousel({
-                            
-              //nav: true,                              
-              //navText: ["<a class='btn btn-primary'> < </a>", "<a class='btn btn-primary'> > </a>"],
+
+              slideBy: 'page',
               responsive:{
                 0:{                    
                     items:1,
