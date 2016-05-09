@@ -25,7 +25,75 @@ define( [ 'angular',
 
         var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location ) {
 
+            var config          = angular.module("config");
+            var serviceVersion  = 3;
+            var apiBaseUrl      = config.apiUrl + serviceVersion;
+            var apiKey          = config.apiKey;
             this.ServiceCache = [];
+
+            this.getConfiguration = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/configuration",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getChanges = function() {
+                var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
+                return $http.get( url );
+            };
+
+            this.getJobList = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/job/list",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowDetails = function( tvShowID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowSeasons = function( tvShowID ) {
+                return this.getTVShowDetails( tvShowID ).then( function( response ) {
+                    var seasons = [];
+                    angular.forEach( response.data.seasons, function( season ) {
+                        seasons.push( season );
+                    } );
+                    return seasons;
+                } );
+            };
+
+            this.getTVShowSeason = function( tvShowID, seasonIndex ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+
+            };
 
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
