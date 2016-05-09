@@ -1,0 +1,16 @@
+<div>
+    <div class="row">
+        <movie-detail ng-model="view" />
+    </div>
+    <ul class="list-group">
+        <li ng-repeat="season in view.seasons"  class="list-group-item"> <a ng-href="/#/television/{{view.id}}/season/{{season.season_number}}"> Season {{season.season_number}} </a></li>
+    </ul>
+    <div class="row">
+        <div class="col-md-6" ng-if="view.details.credits.cast.length > 0">
+            <movie-cast ng-model="view.details.credits.cast" />
+        </div>
+        <div class="col-md-6" ng-if="view.details.credits.crew.length > 0">
+            <movie-crew ng-model="view.details.credits.crew" />
+        </div>
+    </div>
+</div>
