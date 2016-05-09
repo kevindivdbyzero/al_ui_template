@@ -53,8 +53,7 @@ define( [ 'angular',
 
 
             });
-
-            
+                       
 
             $scope.performSearch = function(event) {
                 if (event.which === 13) {
@@ -65,6 +64,8 @@ define( [ 'angular',
             $scope.searchButton = function() {
                 search();
             };
+
+
 
         };
 

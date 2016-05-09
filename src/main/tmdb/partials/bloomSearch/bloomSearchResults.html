@@ -26,15 +26,15 @@
 			<button type="button" class="btn btn-success">Tipo: {{result.media_type}} </button>
 			</center>
 
-			<img ng-src="{{ view.images }}{{ result.profile_path }}" ng-if="result.profile_path" alt="Slide {{ $index+1 }}" width="360" height="245">
+			<a href="/#" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">
+			<img ng-src="{{formatPath(result, result.media_type, view.images)}}" alt="Slide {{ $index+1 }}" width="360" height="245">
+			</a>
 
-			<img ng-src="{{ view.images }}{{ result.poster_path }}" ng-if="result.poster_path" alt="Slide {{ $index+1 }}" width="360" height="245">
-
-			<center>
-				<button type="button" 
-				class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">{{ result.name || result.title }}
-				</button>
+			<center>				
+				<a ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>
+				<a ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>	
 			</center>
+
 
 		</div>
 

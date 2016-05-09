@@ -23,7 +23,7 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var BloomSearchResultsController = function( $scope ) {
+        var BloomSearchResultsController = function( $scope, TMDBAPIService ) {
 
             var config  = angular.module("config");
             $scope.view = {images: config.apiImg};
@@ -42,11 +42,67 @@ define( [ 'angular',
                 return "item";
               }              
             };
+            $scope.formatName = function(result, type){
+              
+                if(type==="movie"){
+                    if(result.original_title){
+                        return result.original_title;    
+                    }else{
+                        return "No name available";
+                    }
+                    
+                }
+                if(type==="tv"){
+                    if(result.original_name){
+                        return result.original_name;   
+                    }else{
+                        return "No name available";
+                    }                    
+                }
+                if(type==="person"){
+                    if(result.name){
+                        return result.name;
+                    }else{
+                        return "No name available";
+                    }                    
+                }
+
+            };
+
+            var defaultImage = "http://www.aspneter.com/aspneter/wp-content/uploads/2016/01/no-thumb.jpg";
+            
+            $scope.formatPath = function(result, type, view_images){
+                
+                if(type==="movie" || type==="tv"){
+                    if(result.poster_path){
+                        return view_images+result.poster_path;
+                    }else{
+                        return defaultImage;
+                    }                                        
+                }
+                if(type==="person"){
+                    if(result.profile_path){
+                        return view_images+result.profile_path;
+                    }else{
+                        return defaultImage;
+                    } 
+                }                
+                
+            };
+
+                
+            TMDBAPIService.getTVShowSeason( 1418, 1).then( function( season ) {
+                console.log("Season information: ", season );
+            } );
+                
+                
+            
+            
             
         };
 
 
-        BloomSearchResultsController.$inject = [ '$scope' ];
+        BloomSearchResultsController.$inject = [ '$scope', 'TMDBAPIService' ];
 
 
         return BloomSearchResultsController;
