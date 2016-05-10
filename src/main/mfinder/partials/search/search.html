@@ -1,0 +1,32 @@
+<form class="" ng-submit="$event.preventDefault()">
+    <md-autocomplete
+            ng-disabled="view.isDisabled"
+            md-no-cache="true"
+            md-search-text="view.searchText"
+            md-items="item in view.getData()"
+            md-item-text="item.title || item.name"
+            md-min-length="3"
+            placeholder=" Search "
+            md-menu-class="autocomplete-custom-template"
+            md-delay="600">
+        <md-item-template>
+          <a href="#/{{item.media_type}}/{{item.id}}">
+          <span class="item-title">
+            <img ng-src="{{view.images}}{{item.foto}}" width="50">
+            <span> {{item.title || item.name}} </span>
+          </span>
+          <span class="item-metadata">
+            <span class="item-metastat">
+              <span aria-label="media type" class="badge">{{item.media_type}}</span>
+            </span>
+            <span class="item-metastat">
+              <span aria-label="rate" class="badge">Rate: {{item.vote_average || item.popularity}}</span>
+            </span>
+          </span>
+          </a>
+        </md-item-template>
+        <md-not-found>
+            Sorry, no info about "{{SearchController.searchText}}" were found.
+        </md-not-found>
+    </md-autocomplete>
+</form>

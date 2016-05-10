@@ -1,0 +1,46 @@
+<md-content md-whiteframe="5" class="contenidos">
+
+    <div ng-cloak class="movieTabs">
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Details">
+                    <md-content>
+                        <div class="row">
+                            <movie-detail ng-model="view" />
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Videos">
+
+                    <md-content>
+
+                        <div class="movieTrailer" ng-repeat="trailer in view.trailers">
+                            <iframe class="youtubeFrame" ng-src="{{trailer}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                    </md-content>
+
+                </md-tab>
+
+                <md-tab label="Credits">
+                    <md-content>
+
+                        <div class="row">
+                            <div class="col-md-6" ng-if="view.details.credits.cast.length > 0">
+                                <movie-cast ng-model="view.details.credits.cast" />
+                            </div>
+                            <div class="col-md-6" ng-if="view.details.credits.crew.length > 0">
+                                <movie-crew ng-model="view.details.credits.crew" />
+                            </div>
+                        </div>
+
+
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+
+    </div>
+
+</md-content>

@@ -1,0 +1,51 @@
+<div ng-cloak class="peopleTabs">
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab ng-repeat=" people in peopleList track by $index" label="{{people.name}}">
+                <md-content>
+
+
+                    <div class="personInfo">
+
+                        <div class="imgPerson col-lg-3" >
+                            <a  href="#/movie/{{ people.id }}" >
+                                <img class="pImg" ng-src="{{view.images}}{{ people.profile_path }}"title="{{ people.name }}" />
+                            </a>
+                        </div>
+
+                        <div class="info col-lg-7">
+                            <h1> {{people.name}} </h1>
+
+                            <md-slider-container>
+                                <span aria-label="people popularity" class="md-body-1">Popularity {{people.popularity}}</span>
+                                <md-slider aria-label="people popularity" flex ng-model="people.popularity" min="0" step="0.01" max="50" class="md-warn" ng-readonly="true" >
+                                </md-slider>
+                            </md-slider-container>
+
+                            <h1>Known For</h1>
+                            <hr>
+                            <div ng-repeat="mov in people.known_for" class="movInfo col-lg-4 col-md-4 col-sm-4">
+                              <img class="mImg" ng-src="{{view.images}}{{ mov.poster_path }}"title="{{ people.name }}"/>
+                              <h4>{{mov.title || mov.original_name}}</h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>
+
+
+
+
+
+
+
+
+

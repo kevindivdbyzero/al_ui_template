@@ -73,6 +73,9 @@ define( [ 'angular' ],
                 paths: {
                     'angular': 'vendor/angular/angular.min',
                     'ngAnimate': 'vendor/angular-animate/angular-animate.min',
+                    'ngAria': 'vendor/angular-aria/angular-aria.min',
+                    'ngMaterial': 'vendor/angular-material/angular-material.min',
+                    'ocNgRepeat': 'vendor/ng-repeat-owl-carousel/dist/ngRepeatOwlCarousel.min',
                     'ui.bootstrap': 'vendor/angular-bootstrap/ui-bootstrap-tpls.min',
                     'ui.select': 'vendor/angular-ui-select/dist/select',
                     'LocalStorageModule': 'vendor/angular-local-storage/angular-local-storage.min',
@@ -90,11 +93,15 @@ define( [ 'angular' ],
                     'angulartics': 'vendor/angulartics/dist/angulartics.min',
                     'angulartics-ga': 'vendor/angulartics/dist/angulartics-ga.min',
                     'hc.marked': 'vendor/angular-marked/angular-marked.min',
-                    'pretty-json': 'vendor/ng-prettyjson/dist/ng-prettyjson.min'
+                    'pretty-json': 'vendor/ng-prettyjson/dist/ng-prettyjson.min',
+                    'mwheel': 'mfinder/src/js/jquery.mousewheel.min'
                 },
                 shim: {
                     'angular': { deps: [], exports: 'angular' },
                     'ngAnimate': {deps: ['angular']},
+                    'ngAria': {deps: ['angular']},
+                    'ngMaterial': {deps: ['angular','ngAnimate','ngAria']}, //
+                    'ocNgRepeat': {deps: ['angular','ngAnimate']}, // 
                     'ui.bootstrap': {deps: ['angular']},
                     'ui.select': {deps: ['angular']},
                     'LocalStorageModule': {deps: ['angular']},
@@ -107,7 +114,8 @@ define( [ 'angular' ],
                     'ng-grid': {deps: ['angular']},
                     'translations': {deps: ['app']},
                     'angulartics': {deps: ['angular']},
-                    'angulartics-ga': {deps: ['angular', 'angulartics']}
+                    'angulartics-ga': {deps: ['angular', 'angulartics']},
+                    'mwheel': {deps: []}
                 }
             };
 

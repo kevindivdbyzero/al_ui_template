@@ -1,0 +1,22 @@
+<md-content md-whiteframe=5 class="contenidos">
+    <div ng-repeat="entity in view.last">
+    	<h1> {{entity.title}} </h1>
+    </div>
+</md-content>
+
+<md-content md-whiteframe=5 class="contenidos">
+    <popular-movies ng-model="view.movies.results" />
+</md-content>
+
+<md-content md-whiteframe=5 class="contenidos">
+    <popular-tv ng-model="view.tv.results" />
+</md-content>
+
+<md-content md-whiteframe=5 class="contenidos">
+    <popular-people ng-model="view.people.results" />
+</md-content>
+
+
+
+
+

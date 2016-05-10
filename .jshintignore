@@ -4,3 +4,5 @@ src/main/mocks/**
 src/main/**/*.test.js
 src/main/vendor/**
 src/main/translations.js
+src/main/mfinder/src/js/owl.carousel.min.js
+src/main/mfinder/src/js/jquery.mousewheel.min.js

@@ -1,0 +1,51 @@
+<div class="popularTv">
+
+    <div class="popularTvHeader">
+
+        <div class="popularTvTitle">
+            <span> Popular TV Series </span>
+        </div>
+
+        <div class="popularTvButtons row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " >
+                <a class=" tvPrevBtn glyphicon glyphicon-circle-arrow-left" aria-hidden="true" ng-click="prevTVS()">
+
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                <a class="tvNextBtn pull-right glyphicon glyphicon-circle-arrow-right" ng-click="nextTVS()" aria-hidden="true">
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+   <div class="tv-carousel">
+       
+        <div ng-repeat="show in tvList track by $index" ng-repeat-owl-carousel carousel-init="tvcarouselInitializer">
+
+
+          <md-card class="card"  title="{{ show.title }}" ng-if="show.poster_path"
+                   ng-class="{'excellent': (movie.vote_average >= 4.5
+                                           && movie.popularity > 2.5
+                                           && movie.vote_count > 1000
+                                           && zoom),
+                   'good': (movie.vote_average < 6.5
+                            && movie.vote_average >= 4
+                            && zoom ),
+                   'zoom':zoom }" ng-mouseenter="zoom = true" ng-mouseleave="zoom = false">
+
+              <img  ng-src="{{view.images}}{{ show.poster_path }}" title="{{ show.title }}" />
+
+              <md-card-actions layout="row" layout-align="end center">
+                  <md-button class="md-raised" href="#" data-toggle="modal" data-target="#"  >Trailer</md-button>
+                  <md-button class="md-raised" href="#/tv/{{ show.id }}">Info</md-button>
+              </md-card-actions>
+
+          </md-card>
+
+        </div>
+    
+    </div>
+</div>

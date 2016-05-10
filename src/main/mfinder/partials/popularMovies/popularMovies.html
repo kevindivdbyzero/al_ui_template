@@ -1,0 +1,58 @@
+<div class="popularMovies">
+
+    <div class="popularMoviesHeader">
+
+        <div class="popularMoviesTitle">
+            <span> Popular Movies </span>
+        </div>
+
+        <div class="popularMoviesButtons row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 " >
+                <a class=" moviePrevBtn glyphicon glyphicon-circle-arrow-left" aria-hidden="true" ng-click="prevMovie()">
+
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+                <a class="movieNextBtn pull-right glyphicon glyphicon-circle-arrow-right" ng-click="nextMovie()" aria-hidden="true">
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="movie-carousel">
+
+
+        <div ng-repeat="movie in movieList track by $index" ng-repeat-owl-carousel carousel-init="carouselInitializer">
+
+          <md-card class="card" title="{{ movie.title }}" ng-if="movie.poster_path"
+                   ng-click="setCurrentMovie(movie.id)"
+                   ng-class="{'excellent': (movie.vote_average >= 4.5
+                                           && movie.popularity > 2.5
+                                           && movie.vote_count > 1000
+                                           && zoom),
+                   'good': (movie.vote_average < 6.5
+                            && movie.vote_average >= 4
+                            && zoom ),
+                   'zoom':zoom }" ng-mouseenter="zoom = true" ng-mouseleave="zoom = false">
+
+
+          <img  ng-src="{{view.images}}{{ movie.poster_path }}"title="{{ movie.title }}" />
+
+
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised" href="#movieTrailerModal" data-toggle="modal" data-target="#movieTrailerModal"  >Trailer</md-button>
+            <md-button class="md-raised" href="#/movie/{{ movie.id }}">Info</md-button>
+          </md-card-actions>
+
+          </md-card>
+        </div>
+
+    </div>
+
+    <!--Movie Trailer Modal-->
+    <movie-trailer ng-model="currentMovie"> </movie-trailer>
+
+</div>

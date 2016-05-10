@@ -1,0 +1,63 @@
+<div class="tvDetail" ng-cloak>
+
+
+    <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4 posterImage" >
+
+        <img md-whiteframe="3" class="imgPoster" src="{{view.images}}{{ detail.details.poster_path }}" />
+
+    </div>
+
+
+
+
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 infoTv">
+
+        <div md-whiteframe="4" class="tvTitle">
+
+            <h1>{{ detail.details.name }}</h1>
+
+            <br>
+            <span class="badge tvGenres" ng-repeat="genre in detail.details.genres">
+                <strong> {{ genre.name }} </strong>
+            </span>
+
+        </div>
+
+        <div md-whiteframe="4" class="tvOverview">
+
+            <div class="overview"> Overview </div>
+
+            <p ng-if="detail.details.overview">
+                {{ detail.details.overview }}
+            </p>
+
+        </div>
+
+
+        <div md-whiteframe="4" class="row tvSubDetails">
+
+            <div class="numbers"> Numbers </div>
+
+            <ul class="list-group col-lg-6">
+                <li class="list-group-item"><strong>First Air Date </strong>{{ detail.details.first_air_date | date }}</li>
+                <li class="list-group-item"><strong>Last Air Date </strong> {{ detail.details.last_air_date }} </li>
+            </ul>
+
+            <ul class="list-group col-lg-6">
+                <li class="list-group-item"><strong>Vote Average</strong> {{ detail.details.vote_average}}</li>
+                <li class="list-group-item"><strong>Vote Count</strong> {{ detail.details.vote_count}}</li>
+            </ul>
+
+        </div>
+
+        <span ng-if="detail.details.homepage"><a href="{{ detail.details.homepage }}" target=_new>{{ detail.details.homepage }}</a></span>
+
+
+        <div class="col-md-12" ng-if="detail.details.similar.results.length != 0">
+            <similar-movies ng-model="detail.details.similar.results" />
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,128 @@
+.popularMovies{
+
+  padding: 5px;
+
+  .popularMoviesHeader{
+
+    color: darkorange !important;
+
+    .popularMoviesTitle{
+      //font-family: 'Alfa Slab One', cursive;
+      font-family: 'Audiowide', cursive;
+      font-weight: lighter;
+      font-size: 30px;
+      text-align: center;
+
+    }
+
+    .popularMoviesButtons{
+      text-decoration: none;
+      font-size: 40px;
+
+
+      .moviePrevBtn{
+        text-decoration: none;
+      }
+      .movieNextBtn{
+        text-decoration: none;
+      }
+    }
+
+  }
+
+
+  .movie-carousel{
+    margin: 0 auto;
+  }
+
+
+  md-card.md-default-theme, md-card{
+    background-color: #212121;
+  }
+
+  .card {
+
+    border-radius: 10px;
+
+    img{
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+
+    &.zoom{
+      transform:translateY(-5px);
+    }
+
+    &.excellent{
+      background-color: green;
+    }
+
+    &.good{
+      background-color: #3d66ff;
+    }
+
+    &.bad{
+      background-color: red;
+    }
+
+
+
+    md-card-actions{
+      md-button{
+
+        margin: 0 auto;
+
+      }
+
+      .md-button{
+
+          &.md-ink-ripple{
+
+          margin: 0 auto;
+          background-color: darkorange;
+          font-weight: bold;
+
+          &.md-focused{
+            background-color: darkorange;
+          }
+
+          &:hover{
+            background-color: #ff9c00;
+          }
+
+
+        }
+
+        &:not(.layout-column){
+
+          &:last-of-type{
+            &:not(.md-icon-button){
+              margin: 0 auto;
+            }
+          }
+
+          &:first-of-type{
+            &:not(.md-icon-button){
+              margin: 0 auto;
+            }
+          }
+
+
+        }
+
+
+
+      }
+
+    }
+
+  }
+
+
+  // Loading movieTrailer css
+  @import "../movieTrailer/movieTrailer.less";
+
+
+}
+
