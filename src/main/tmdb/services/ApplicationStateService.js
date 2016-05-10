@@ -25,14 +25,18 @@ define( [ 'angular',
 
         var ApplicationStateService = function ( $rootScope, localStorageService ) {
 
-            var self            = this;
+            var self = this;
+            
+            self.lastSeleted = { 
+                type:   'none', 
+                media:  {} 
+            };
 
             /**
              * Interprets media.select event when a specific media entity is clicked on in search results or popular items
              * Accepts two parameters: the media type and the definition itself.
              **/
             $rootScope.$on( 'media.select', function( $event, mediaType, mediaDefinition ) {
-                console.log("Selected %s", mediaType, mediaDefinition );
             } );
         };
 
