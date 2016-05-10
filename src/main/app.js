@@ -26,6 +26,7 @@ define([ 'angular',
          'mfinder/partials/search/SearchController',
          'mfinder/partials/home/HomeController',
          'mfinder/partials/movie/MovieController',
+         'mfinder/partials/television/televisionController',
          'mfinder/partials/movieTrailer/movieTrailerController',
          'mfinder/partials/person/PersonController',
          'mfinder/partials/remoteImageLoader/RemoteImageLoader',
@@ -41,16 +42,17 @@ define([ 'angular',
          'mfinder/directives/personCrew',
          'mfinder/directives/personCast',
          'mfinder/directives/movieDetail',
+         'mfinder/directives/tvDetail',
          'mfinder/directives/similarMovies',
          'mfinder/directives/movieCast',
          'mfinder/directives/movieCrew',
          'mfinder/directives/movieTrailer'], 
 
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService,
-              navigationController, SearchController, HomeController, MovieController, movieTrailerController, PersonController, 
+              navigationController, SearchController, HomeController, MovieController, televisionController, movieTrailerController, PersonController,
               RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController,
               navigationDirective, searchDirective, popularMoviesDirective, popularTvDirective, popularPeopleDirective,
-              personDetailDirective, personCrewDirective, personCastDirective, movieDetailDirective,
+              personDetailDirective, personCrewDirective, personCastDirective, movieDetailDirective, tvDetailDirective,
               similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective ) {
     	"use strict";
 
@@ -93,6 +95,8 @@ define([ 'angular',
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
+        app.controller( "televisionController", televisionController );
+
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
 
@@ -102,6 +106,9 @@ define([ 'angular',
         app.directive( "personCrew", personCrewDirective );
         app.directive( "personCast", personCastDirective );
         app.directive( "movieDetail", movieDetailDirective );
+
+        app.directive( "tvDetail", tvDetailDirective );
+
         app.directive( "similarMovies", similarMoviesDirective );
         app.directive( "movieCast", movieCastDirective );
         app.directive( "movieCrew", movieCrewDirective );
@@ -110,6 +117,9 @@ define([ 'angular',
             $routeProvider.when( '/', { templateUrl: '/mfinder/partials/home/home.html', controller: 'HomeController' } );
             $routeProvider.when( '/movie/:id', { templateUrl: '/mfinder/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/mfinder/partials/person/person.html', controller: 'PersonController' } );
+            $routeProvider.when( '/tv/:tv_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
+            //$routeProvider.when( '/tv/:tv_id/season/:season_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
+            //$routeProvider.when( '/tv/:tv_id/season/:season_id/episode/:episode_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';

@@ -1,4 +1,4 @@
-<div class="movieDetail" ng-cloak>
+<div class="tvDetail" ng-cloak>
 
 
     <div class=" col-xs-12 col-sm-4 col-md-4 col-lg-4 posterImage" >
@@ -10,20 +10,20 @@
 
 
 
-    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 infoMovie">
+    <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 infoTv">
 
-        <div md-whiteframe="4" class="movieTitle">
+        <div md-whiteframe="4" class="tvTitle">
 
-            <h1>{{ detail.details.title }}</h1>
-            <h3 ng-if="detail.details.tagline">{{ detail.details.tagline }}</h3>
+            <h1>{{ detail.details.name }}</h1>
+
             <br>
-            <span class="badge movieGenres" ng-repeat="genre in detail.details.genres">
+            <span class="badge tvGenres" ng-repeat="genre in detail.details.genres">
                 <strong> {{ genre.name }} </strong>
             </span>
 
         </div>
 
-        <div md-whiteframe="4" class="movieOverview">
+        <div md-whiteframe="4" class="tvOverview">
 
             <div class="overview"> Overview </div>
 
@@ -34,18 +34,18 @@
         </div>
 
 
-        <div md-whiteframe="4" class="row movieSubDetails">
+        <div md-whiteframe="4" class="row tvSubDetails">
 
             <div class="numbers"> Numbers </div>
 
             <ul class="list-group col-lg-6">
-                <li class="list-group-item"><strong>Release Date </strong>{{ detail.details.release_date | date }}</li>
-                <li class="list-group-item"><strong>Running</strong> Time {{ detail.details.runtime }} minutes</li>
+                <li class="list-group-item"><strong>First Air Date </strong>{{ detail.details.first_air_date | date }}</li>
+                <li class="list-group-item"><strong>Last Air Date </strong> {{ detail.details.last_air_date }} </li>
             </ul>
 
             <ul class="list-group col-lg-6">
-                <li class="list-group-item"><strong>Budget</strong> ${{ detail.details.budget | number }} USD</li>
-                <li class="list-group-item"><strong>Revenue</strong> ${{ detail.details.revenue | number }} USD</li>
+                <li class="list-group-item"><strong>Vote Average</strong> {{ detail.details.vote_average}}</li>
+                <li class="list-group-item"><strong>Vote Count</strong> {{ detail.details.vote_count}}</li>
             </ul>
 
         </div>
@@ -61,4 +61,3 @@
 
 
 </div>
-
