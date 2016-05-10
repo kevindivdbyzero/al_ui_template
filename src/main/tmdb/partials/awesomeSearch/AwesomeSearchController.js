@@ -37,17 +37,13 @@ define( [ 'angular',
 
                 searchPromise = $timeout(function(){
                     searchPromise = undefined;
-                    console.log("newValue="+newValue+",oldValue="+oldValue);
                     if (newValue) {
                         if (newValue.length >= 3) {
-                            console.log("Aguanta buscar!");
                             self.search();
                         }
                     }
                 },500);
             });
-
-
 
             $scope.performSearch = function(event) {
                 if (event.which === 13) {
@@ -58,7 +54,7 @@ define( [ 'angular',
             /**
             * Call the API with the search phrase
             */
-            self.search = function(){
+            self.search = function() {
                 apiSearch.search.multi($scope.searchPhrase).then(function(response){
                     $scope.searchResults = response.data.results;
 

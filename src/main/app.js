@@ -22,6 +22,7 @@ define([ 'angular',
          'config/config',
          'ngRoute', 'ngResource', 'LocalStorageModule',
          'tmdb/services/TMDBAPIService',
+         'tmdb/services/ApplicationStateService',
          'tmdb/partials/search/SearchController',
          'tmdb/partials/home/HomeController',
          'tmdb/partials/movie/MovieController',
@@ -41,7 +42,7 @@ define([ 'angular',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, SearchController, HomeController, MovieController, 
+              TMDBAPIService, ApplicationStateService, SearchController, HomeController, MovieController, 
               PersonController, AwesomeSearchController, AwesomeSearchResultsController,
               RemoteImageLoader, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
@@ -63,7 +64,7 @@ define([ 'angular',
     	}]);
 
         app.service( "TMDBAPIService", TMDBAPIService);
-
+        app.service( "ApplicationStateService", ApplicationStateService );
 
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
@@ -92,6 +93,7 @@ define([ 'angular',
             $routeProvider.when( '/', { templateUrl: '/tmdb/partials/home/home.html', controller: 'HomeController' } );
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
+            $routeProvider.when( '/tv/:id', { templateUrl: '/tmdb/partials/tv/tv.html' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';
