@@ -19,20 +19,8 @@
 		 			details: {},
 		 		};
 
-		 		$scope.images = angular.module("config").apiImg;
-
-
-		 		$scope.tvName = "";
-		 		$scope.tvInfo = "";
-		 		$scope.tvPath = "";
 		 		$scope.idShow = $routeParams.tvshow_id;
-
-		 		TMDBAPIService.getTVShowDetails($routeParams.tvshow_id).then( function( detail ) {
-		 			// console.log("getTVShowDetails: ", detail.data );
-		 			$scope.tvName = detail.data.original_name;
-		 			$scope.tvInfo = detail.data.overview;
-		 			$scope.tvPath = $scope.images+detail.data.poster_path;
-		 		});
+		 		$scope.images = angular.module("config").apiImg;
 
 		 		$scope.listSeasons = undefined;
 		 		TMDBAPIService.getTVShowSeasons($routeParams.tvshow_id).then(function(data){

@@ -24,9 +24,9 @@
                 controller: BloomTelevisionSeasonController,
                 templateUrl: '/tmdb/partials/bloomTelevision/bloomTvSeasons.html',
                 restrict: 'E',
-                scope: {
-                    // tvSeasonsList: '=ngModel'
-                }
+                // scope: {
+                //     // tvSeasonsList: '=ngModel'
+                // }
             };
         };
     }

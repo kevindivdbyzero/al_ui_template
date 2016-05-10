@@ -32,6 +32,7 @@ define([ 'angular',
          'tmdb/partials/movieTrailer/MovieTrailerController',
          'tmdb/partials/bloomTelevision/BloomTelevisionSeasonController',
          'tmdb/partials/bloomTelevision/BloomTelevisionEpisodeController',
+         'tmdb/partials/bloomTelevision/BloomTelevisionController',
          'tmdb/directives/search',
          'tmdb/directives/popularMovies',
          'tmdb/directives/personDetail',
@@ -51,7 +52,8 @@ define([ 'angular',
               RemoteImageLoader,
               BloomSearchController, BloomSearchResultsController,
               MovieTrailerController,BloomTelevisionSeasonController, 
-              BloomTelevisionEpisodeController, searchDirective, popularMoviesDirective, 
+              BloomTelevisionEpisodeController, BloomTelevisionController,
+              searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective,
               bloomSearchDirective, bloomSearchResultsDirective, movieTrailerDirective,
@@ -91,6 +93,8 @@ define([ 'angular',
         app.controller("BloomTelevisionEpisodeController", BloomTelevisionEpisodeController);
         app.directive("bloomTvEpisodes", bloomTvEpisodesDirective);
 
+        app.controller("BloomTelevisionController", BloomTelevisionController);
+
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
         app.controller( "PersonController", PersonController);
@@ -112,9 +116,9 @@ define([ 'angular',
             $routeProvider.when( '/movie/:id', { templateUrl: '/tmdb/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
             $routeProvider.when( '/bloomMovie/:id', { templateUrl: '/tmdb/partials/bloomMovie/bloomMovie.html', controller: 'BloomMovieController' } );
-            $routeProvider.when( '/television/:tvshow_id/', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionSeasonController' } );
-            $routeProvider.when( '/television/:tvshow_id/season/:season_number', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionSeasonController' } );
-            $routeProvider.when( '/television/:tvshow_id/season/:season_id/episode/:episode_id', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionEpisodeController' } );
+            $routeProvider.when( '/television/:tvshow_id/', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionController' } );
+            $routeProvider.when( '/television/:tvshow_id/season/:season_number', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionEpisodeController' } );
+            // $routeProvider.when( '/television/:tvshow_id/season/:season_id/episode/:episode_id', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionEpisodeController' } );
             $routeProvider.otherwise( {
                 template: function() {
                     throw 'An internal error occurred because the given path does not resolve to a known route.';
