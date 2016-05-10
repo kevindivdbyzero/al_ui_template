@@ -43,7 +43,9 @@ define([ 'angular',
          'tmdb/directives/movieCrew',
          'tmdb/directives/bloomSearch',
          'tmdb/directives/bloomSearchResults',
-         'tmdb/directives/movieTrailer' ], 
+         'tmdb/directives/movieTrailer',
+         'tmdb/directives/bloomTvSeasons',
+         'tmdb/directives/bloomTvEpisodes' ], 
     function( angular, config, $location, $resource,  LocalStorageModule, 
               TMDBAPIService, SearchController, HomeController, MovieController, PersonController,
               RemoteImageLoader,
@@ -52,7 +54,8 @@ define([ 'angular',
               BloomTelevisionEpisodeController, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective, movieCrewDirective,
-              bloomSearchDirective, bloomSearchResultsDirective, movieTrailerDirective ) {
+              bloomSearchDirective, bloomSearchResultsDirective, movieTrailerDirective,
+              bloomTvSeasonsDirective, bloomTvEpisodesDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -84,9 +87,9 @@ define([ 'angular',
         app.directive("movieTrailer", movieTrailerDirective);
 
         app.controller("BloomTelevisionSeasonController", BloomTelevisionSeasonController);
-        // app.directive("bloomSeasonResults", bloomEpisodeResultsDirective);
+        app.directive("bloomTvSeasons", bloomTvSeasonsDirective);
         app.controller("BloomTelevisionEpisodeController", BloomTelevisionEpisodeController);
-        // app.directive("bloomEpisodeResults", bloomEpisodeResultsDirective);
+        app.directive("bloomTvEpisodes", bloomTvEpisodesDirective);
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );

@@ -1,11 +1,9 @@
 <div>
+	<center>
 	<h1>{{tvName}} </h1>
 	<p>{{tvInfo}} </p>
 	<img ng-src="{{tvPath}}" width="360" height="505"/>
-	<h1>Seasons:</h1>
-	<div ng-repeat="season in listSeasons">		
-		<li>Season No. : {{season.season_number}}</li>
-		<li>Number of episodes: {{season.episode_count}}</li>
-		<img ng-src="{{images+season.poster_path}}" width="200" height="250"/>
-	</div>
+
+	<bloom-tv-seasons/>
+	</center>
 </div>

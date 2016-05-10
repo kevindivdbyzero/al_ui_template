@@ -25,11 +25,24 @@ define( [ 'angular',
 
         var BloomTelevisionEpisodeController = function($scope, TMDBAPIService, $routeParams ) {
 
-            $scope.view   = {
-                details: {},
-            };
-            
-            console.log("TODO: retrieve episode information here" );
+          $scope.tvEpisodesList = undefined;
+          $scope.idShow = undefined;
+          $scope.season_number = undefined;
+
+
+          $scope.$watch('hasSearchedEpisodes', function(newValue, oldValue){
+            console.log("Cambio algo, por tanto presionaron >>>", newValue);
+
+            if($scope.hasSearchedEpisodes!==undefined){
+              $scope.idShow = $routeParams.tvshow_id;
+              $scope.season_number = $routeParams.season_number;
+             TMDBAPIService.getTVShowSeason( $routeParams.tvshow_id, $routeParams.season_number ).then( function( season ) {
+              console.log("Season information: BloomTelevisionEpisodeController 1==>", season.data.episodes );            
+              $scope.tvEpisodesList = season.data.episodes;
+            }); 
+           }
+           
+         });  
 
         };
 

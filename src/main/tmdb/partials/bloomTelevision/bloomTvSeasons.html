@@ -1,0 +1,21 @@
+<div>
+	<h1>Seasons:</h1>
+	<table>
+		<tr>			
+			<td ng-repeat="season in listSeasons" WIDTH=500>
+
+				<li><b>Season No.: </b>{{season.season_number}}</li>
+				<li><b>Number of episodes: </b>{{season.episode_count}}</li>
+				<a href="/#/television/{{idShow}}/season/{{season.season_number}}" 
+				 ng-click="searchEpisodes()">
+				<img ng-src="{{images+season.poster_path}}" width="100" height="125"/>
+				</a>
+
+			</td>
+		</tr>
+	</table>
+	<br/>
+	
+	<bloom-tv-episodes ng-model="hasSearchedEpisodes"/>
+	
+</div>

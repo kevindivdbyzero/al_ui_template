@@ -1,0 +1,18 @@
+<div ng-show="tvEpisodesList">
+	<h1>Episodes:</h1>
+	<table>
+		<tr>			
+			<td ng-repeat="episode in tvEpisodesList" WIDTH=500>
+
+				<li><b>Episode No.: </b>{{episode.episode_number}}</li>
+				
+				<a href="/#/television/{{idShow}}/season/{{season_number}}/episode/{{episode.id}}">
+					<li><b>Name of episode: </b>{{episode.name}}</li>	
+				</a>
+
+			</td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+</div>
