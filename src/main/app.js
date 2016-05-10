@@ -22,6 +22,7 @@ define([ 'angular',
          'config/config',
          'ngRoute', 'ngResource', 'LocalStorageModule', 'ngMaterial', 'ocNgRepeat',
          'mfinder/services/TMDBAPIService',
+         'mfinder/services/AppStateService',
          'mfinder/partials/navigation/navigationController',
          'mfinder/partials/search/SearchController',
          'mfinder/partials/home/HomeController',
@@ -52,7 +53,7 @@ define([ 'angular',
          'mfinder/directives/episode',
          'mfinder/directives/season'], 
 
-    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService,
+    function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService, AppStateService,
               navigationController, SearchController, HomeController, MovieController, televisionController, movieTrailerController, PersonController,
               RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, episodeController, seasonController,
               navigationDirective, searchDirective, popularMoviesDirective, popularTvDirective, popularPeopleDirective,
@@ -74,6 +75,7 @@ define([ 'angular',
     	}]);
 
         app.service( "TMDBAPIService", TMDBAPIService);
+        app.service( "AppStateService", AppStateService);
 
         app.controller( "navigationController", navigationController);
         app.directive( "navigation", navigationDirective );

@@ -17,21 +17,26 @@
 
 define( [ 'angular',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
-    function( angular, config, TMDBAPIService ) {
+          'mfinder/services/TMDBAPIService',
+          'mfinder/services/AppStateService'],
+    function( angular, config, TMDBAPIService, AppStateService ) {
         "use strict";
 
-        var HomeController = function($scope, TMDBAPIService ) {
+        var HomeController = function($scope, TMDBAPIService, AppStateService ) {
             
          
             $scope.view   = {
+                last: [],
                 movies: [],
                 tv:[],
                 people:[]
             };
 
+            $scope.view.last = AppStateService.getLastVisitedList();
+
             var api = TMDBAPIService.Discover();
             var api_person = TMDBAPIService.Person();
+
             
             api.discover.movies().then(function ( response ) {
                 $scope.view.movies = response.data;
@@ -47,7 +52,7 @@ define( [ 'angular',
             
         };
 
-        HomeController.$inject = [ '$scope', 'TMDBAPIService' ];
+        HomeController.$inject = [ '$scope', 'TMDBAPIService', 'AppStateService' ];
 
         return HomeController;
     }
