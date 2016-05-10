@@ -34,7 +34,6 @@ define( [ 'angular',
             api.discover.movies().then(function ( response ) {
                 $scope.view.movies = response.data;
             });
-            
         };
 
         HomeController.$inject = [ '$scope', 'TMDBAPIService' ];
