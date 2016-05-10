@@ -26,7 +26,15 @@
         <div ng-repeat="show in tvList track by $index" ng-repeat-owl-carousel carousel-init="tvcarouselInitializer">
 
 
-          <md-card class="card"  title="{{ show.title }}" ng-if="show.poster_path">
+          <md-card class="card"  title="{{ show.title }}" ng-if="show.poster_path"
+                   ng-class="{'excellent': (movie.vote_average >= 4.5
+                                           && movie.popularity > 2.5
+                                           && movie.vote_count > 1000
+                                           && zoom),
+                   'good': (movie.vote_average < 6.5
+                            && movie.vote_average >= 4
+                            && zoom ),
+                   'zoom':zoom }" ng-mouseenter="zoom = true" ng-mouseleave="zoom = false">
 
               <img  ng-src="{{view.images}}{{ show.poster_path }}" title="{{ show.title }}" />
 

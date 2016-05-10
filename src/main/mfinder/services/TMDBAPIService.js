@@ -218,18 +218,117 @@ define( [ 'angular',
                     var serviceBase    = this._normalizeEndpoint( serviceVersion, "tv" );
 
                     /*http://docs.themoviedb.apiary.io/#reference/tv/tvid/get */
-                    var getTv = function ( movie ) {
-                        var uri = serviceBase.url + '/tv/' + movie + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,videos,similar,images';
+                    var getTv = function ( tv ) {
+                        var uri = serviceBase.url + '/tv/' + tv + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,videos,similar,images';
                         return $http.get( uri );
                     };
 
+
+                    var getTVShowSeasons = function( tvShowID ) {
+                        return getTv( tvShowID ).then( function( response ) {
+                            var seasons = [];
+                            angular.forEach( response.data.seasons, function( season ) {
+                                seasons.push( season );
+                            } );
+                            return seasons;
+                        } );
+                    };
+
+                    var getTVShowSeason = function( tvShowID, seasonIndex ) {
+                        var req = {
+                            method: 'GET',
+                            url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
+                            params: {
+                                api_key: apiKey
+                            }
+                        };
+
+                        return $http( req );
+                    };
+
+                    var getTVEpisodeInfo = function( tvShowID, seasonIndex, episodeNumber ) {
+                        var req = {
+                            method: 'GET',
+                            url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex + "/episode/" + episodeNumber,
+                            params: {
+                                api_key: apiKey,
+                                append_to_response: 'videos,images'
+                            }
+                        };
+
+                        return $http( req );
+                    };
+
+
                     return {
                         tv: {
-                            tv: getTv
+                            tv_show_info: getTv,
+                            tv_seasons_list: getTVShowSeasons,
+                            tv_season_info: getTVShowSeason,
+                            tv_episode_info: getTVEpisodeInfo
                         }
                     };
                 });
             };
+
+
+
+            this.getChanges = function() {
+                var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
+                return $http.get( url );
+            };
+
+            this.getJobList = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/job/list",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowDetails = function( tvShowID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowSeasons = function( tvShowID ) {
+                return this.getTVShowDetails( tvShowID ).then( function( response ) {
+                    var seasons = [];
+                    angular.forEach( response.data.seasons, function( season ) {
+                        seasons.push( season );
+                    } );
+                    return seasons;
+                } );
+            };
+
+            this.getTVShowSeason = function( tvShowID, seasonIndex ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+
+            };
+
+
+
+
+
             
             
             

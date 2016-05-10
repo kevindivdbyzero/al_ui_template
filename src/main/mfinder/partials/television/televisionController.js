@@ -34,7 +34,7 @@ define( [ 'angular',
 
             var api = TMDBAPIService.Television();
             
-            api.tv.tv($routeParams.tv_id).then( function ( response ) {
+            api.tv.tv_show_info($routeParams.tv_id).then( function ( response ) {
                 $scope.view.details = response.data;
                 
                 console.log("tv-data-response", response);

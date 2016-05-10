@@ -33,6 +33,8 @@ define([ 'angular',
          'mfinder/partials/popularMovies/popularMoviesController',
          'mfinder/partials/popularTv/popularTvController',
          'mfinder/partials/popularPeople/popularPeopleController',
+         'mfinder/partials/television/episodeController',
+         'mfinder/partials/television/seasonController',    
          'mfinder/directives/navigation',
          'mfinder/directives/search',
          'mfinder/directives/popularMovies',
@@ -46,14 +48,16 @@ define([ 'angular',
          'mfinder/directives/similarMovies',
          'mfinder/directives/movieCast',
          'mfinder/directives/movieCrew',
-         'mfinder/directives/movieTrailer'], 
+         'mfinder/directives/movieTrailer',
+         'mfinder/directives/episode',
+         'mfinder/directives/season'], 
 
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService,
               navigationController, SearchController, HomeController, MovieController, televisionController, movieTrailerController, PersonController,
-              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController,
+              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, episodeController, seasonController,
               navigationDirective, searchDirective, popularMoviesDirective, popularTvDirective, popularPeopleDirective,
               personDetailDirective, personCrewDirective, personCastDirective, movieDetailDirective, tvDetailDirective,
-              similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective ) {
+              similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective, episodeDirective, seasonDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -89,13 +93,24 @@ define([ 'angular',
 
         app.controller( "movieTrailerController", movieTrailerController);
         app.directive( "movieTrailer", movieTrailerDirective);
-       
 
 
+        app.controller( "episodeController", episodeController );
+        app.directive( "episode", episodeDirective );
+
+
+        app.controller( "seasonController", seasonController );
+        app.directive( "season", seasonDirective );
+        
+        
+        
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
         app.controller( "televisionController", televisionController );
+
+
+        
 
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
@@ -118,7 +133,7 @@ define([ 'angular',
             $routeProvider.when( '/movie/:id', { templateUrl: '/mfinder/partials/movie/movie.html', controller: 'MovieController' } );
             $routeProvider.when( '/person/:id', { templateUrl: '/mfinder/partials/person/person.html', controller: 'PersonController' } );
             $routeProvider.when( '/tv/:tv_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
-            //$routeProvider.when( '/tv/:tv_id/season/:season_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
+            $routeProvider.when( '/tv/:tv_id/season/:season_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
             //$routeProvider.when( '/tv/:tv_id/season/:season_id/episode/:episode_id', { templateUrl: '/mfinder/partials/television/television.html', controller: 'televisionController' } );
             $routeProvider.otherwise( {
                 template: function() {

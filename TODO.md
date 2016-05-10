@@ -4,3 +4,4 @@
 - give popularPeople a better style
 - hide scroll on search results
 - create tv season and episode routes and directives
+- !!! Get season info !!! -- not working
