@@ -42,7 +42,7 @@ define( [ 'angular',
 
                 TMDBAPIService.getConfiguration()
                 .then(  function( configResponse ) {
-                            console.log("Got response!", configResponse );
+                            //console.log("Got response!", configResponse );
                             baseURL = configResponse.data.images.base_url;
                             localStorage.set("base_url", baseURL );                            
                         }, function( reason ) {

@@ -1,7 +1,13 @@
-<!--
+<div>
 
+	<div ng-show="{{recentSearch.length}}">
+		<h1>Recent search about movies:</h1>
+		<div ng-repeat="movie in recentSearch">	
+			<a href="/#/movie/{{movie.id}}"><li><h3> {{movie.name}} </h3></li></a>
+		</div>
+	</div>
+	<awesome-search/>
+
+<!-- <popular-movies ng-model="view.movies.results" />
 -->
-
-<awesome-search/>
-
-<popular-movies ng-model="view.movies.results" />
+</div>

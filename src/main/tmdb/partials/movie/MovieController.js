@@ -19,11 +19,12 @@
 define( [ 'angular',
           'ngRoute',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
-    function( angular, $routeParams, config, TMDBAPIService ) {
+          'tmdb/services/TMDBAPIService',
+          'tmdb/services/exampleService'],
+    function( angular, $routeParams, config, TMDBAPIService, exampleService ) {
         "use strict";
 
-        var MovieController = function($scope, TMDBAPIService, $routeParams ) {
+        var MovieController = function($rootScope, $scope, TMDBAPIService, exampleService, $routeParams ) {
 
             $scope.view   = {
                 details: {},
@@ -32,11 +33,15 @@ define( [ 'angular',
             var api = TMDBAPIService.Movie();
             api.movie.movie($routeParams.id).then( function ( response ) {
                 $scope.view.details = response.data;
+                var data = {id:"",name:"",};
+                data.id = response.data.id;
+                data.name = response.data.original_title;                
+                $rootScope.$emit('saver.event', data);
             });
 
         };
 
-        MovieController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+        MovieController.$inject = [ '$rootScope', '$scope', 'TMDBAPIService','exampleService', '$routeParams' ];
 
         return MovieController;
     }

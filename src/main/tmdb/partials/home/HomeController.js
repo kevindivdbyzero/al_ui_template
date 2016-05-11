@@ -17,27 +17,32 @@
 
 define( [ 'angular',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
-    function( angular, config, TMDBAPIService ) {
+          'tmdb/services/TMDBAPIService',
+          'tmdb/services/exampleService'],
+    function( angular, config, TMDBAPIService, exampleService ) {
         "use strict";
 
-        var HomeController = function($scope, TMDBAPIService ) {
+        var HomeController = function($scope, TMDBAPIService, exampleService ) {
 
             $scope.view   = {
                 movies: [],
             };
+
+
+            $scope.recentSearch = exampleService.getHistorySearches();
 
             var config  = angular.module("config");
             $scope.view = {urlImg: config.apiImg};
 
             var api = TMDBAPIService.Discover();
             api.discover.movies().then(function ( response ) {
-                $scope.view.movies = response.data;
+                $scope.view.movies = response.data;                
             });
+
             
         };
 
-        HomeController.$inject = [ '$scope', 'TMDBAPIService' ];
+        HomeController.$inject = [ '$scope', 'TMDBAPIService', 'exampleService' ];
 
         return HomeController;
     }
