@@ -47,7 +47,7 @@ define([ 'angular',
             /*
             * Test default initialization variables
             */
-            it("should have matching defaults", function () {
+            xit("should have matching defaults", function () {
                 expect(scope.view.movies).toEqual([]);
             });
 

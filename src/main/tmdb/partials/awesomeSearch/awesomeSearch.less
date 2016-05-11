@@ -1,59 +1,44 @@
 .awesome-search {
 	padding: 10px;
 
-	.header
-	{
-	 background: #777;
-	 color: #fff;
-	 font-size: 12pt;
-	 height: 50px;
-	 padding-top: 1rem;
-	 text-align: center;
-	 width: 100%;
-	}
-	.sticky-search
-	{
-	 background: #f2f2f2;
-	 border: 1px solid #ccc;
-	 box-sizing: border-box;
-	 webkit-box-sizing: border-box;
-	 moz-box-sizing: border-box;
-	 outline: none;
-	 padding: 0.5rem;
-	        display: block;
-	 font-size: 1.5rem;
-	 width: 100%;
-	}
-
-	.bodyarea
-	{
-	 display: block;
-	 height: 2000px;
-	 width: 100%;
-	}
-
 	.awesome-search-results {
 		padding: 20px;
 
 		li {
 			list-style: none;
+            max-width: 25%;
+            overflow-x: hidden;
+            height: 225px;
+            margin-bottom: 30px;
 
-			span.badge {
-				position: absolute;
-				left: 10px;
-				bottom: 20px;
-			}
+            a {
 
-			img {
-				margin-bottom: 30px;
-			}
+                span.badge {
+                    position: absolute;
+                    left: 10px;
+                    bottom: 20px;
+                }
 
-			a {
-				position: absolute;
-				bottom: 0px;
-				left: 0px;
-			}
+                img {
+                }
 
+                span.blank {
+                    margin-bottom: 25px;
+                    min-height: 135px;
+                    margin: 0;
+                    padding: 0;
+                    border: 1px solid black;
+                    display: inline-block;
+                }
+
+            }
+            span {
+                a {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 20px;
+                }
+            }
 		}
 	}
 

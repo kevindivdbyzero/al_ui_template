@@ -1,21 +1,14 @@
 <div class="awesome-search-results">
-	<div class="container">
-		<div ng-repeat="result in resultList" 
-		class="col-xs-3">
-			<a href="#{{result.id}}" data-toggle="modal" 
-			data-target="#{{result.id}}" 
-			ng-click="setModalAction(result.media_type, result.id)">
-			<img ng-src="{{result.foto}}" title="{{result.title}} as {{result.character}}" width="65" height="97" ng-if="result.foto" />
-			</a>
-			<span class="badge">{{result.media_type}}</span>
-			<span>
-			<a href="/#/movie/{{result.id}}" style="font-size:8pt">{{result.formatName}}</a>
-			</span>
-			
-		</div>
-
-		<!--<movie-trailer ng-model="currentMovie"> </movie-trailer>-->
-		<results-modal object='currentObject' media_type='media_type'>
-
-	</div>
-</div>	
+	<ul>
+		<li ng-repeat="result in resultList" class="col-md-3">
+            <a ng-href="/#/{{result.media_type}}/{{result.id}}">
+                <img ng-src="{{view.images}}{{result.foto}}" title="{{result.title}} as {{result.character}}" width="125" ng-if="result.foto" />
+                <span class="blank" ng-if="!result.foto"></span>
+                <span class="badge">{{result.media_type}}</span>
+            </a>
+            <span>
+                <a ng-href="/#/{{result.media_type}}/{{result.id}}">{{result.name || result.title}}</a>
+            </span>
+		</li>
+	</ul>
+</div>

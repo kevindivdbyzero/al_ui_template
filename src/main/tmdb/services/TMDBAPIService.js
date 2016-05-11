@@ -23,9 +23,172 @@ define( [ 'angular',
     function ( angular ) {
         "use strict";
 
-        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location ) {
+        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location, $q ) {
 
+            var self            = this;
+            var config          = angular.module("config");
+            var serviceVersion  = 3;
+            var apiBaseUrl      = config.apiUrl + serviceVersion;
+            var apiKey          = config.apiKey;
             this.ServiceCache = [];
+
+            this.getConfiguration = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/configuration",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getChanges = function() {
+                var url = config.apiUrl + serviceVersion + "/movie/changes?api_key=" + apiKey;
+                return $http.get( url );
+            };
+
+            this.getJobList = function() {
+                var req = {
+                    method: "GET",
+                    url: apiBaseUrl + "/job/list",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowDetails = function( tvShowID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getTVShowSeasons = function( tvShowID ) {
+                return this.getTVShowDetails( tvShowID ).then( function( response ) {
+                    var seasons = [];
+                    angular.forEach( response.data.seasons, function( season ) {
+                        seasons.push( season );
+                    } );
+                    return seasons;
+                } );
+            };
+
+            this.getTVShowSeason = function( tvShowID, seasonIndex ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+
+            };
+
+            this.getAuthenticationToken = function() {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/authentication/token/new",
+                    params: {
+                        api_key: apiKey
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.authorizeAuthToken = function( token, username, password ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/authentication/token/validate_with_login",
+                    params: {
+                        api_key: apiKey,
+                        request_token: token,
+                        username: username,
+                        password: password
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.createSession = function( requestToken ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/authentication/session/new",
+                    params: {
+                        api_key: apiKey,
+                        request_token: requestToken
+                    }
+                };
+
+                return $http( req );
+            };
+
+            this.getAccountDetails = function( sessionID ) {
+                var req = {
+                    method: 'GET',
+                    url: apiBaseUrl + "/account",
+                    params: {
+                        api_key: apiKey,
+                        session_id: sessionID
+                    }
+                };
+                return $http( req );
+            };
+
+            this.authenticate = function( username, password ) {
+                return self.getAuthenticationToken().then( function( tokenResponse ) {
+                    if ( ! tokenResponse.data.success || ! tokenResponse.data.request_token ) {
+                        return $q.reject( "Failed to get a token from /authentication/token/new" );
+                    }
+
+                    var requestToken = tokenResponse.data.request_token;
+
+                    return self.authorizeAuthToken( requestToken, username, password ).then( function( authResponse ) {
+                        if ( ! authResponse.data.success ) {
+                            return $q.reject("Failed to authorize a token with /authentication/token/validate_with_login endpoint" );
+                        }
+
+                        return self.createSession( requestToken ).then( function( sessionResponse ) {
+                            if ( ! sessionResponse.data.success || ! sessionResponse.data.session_id ) {
+                                return $q.reject( "Failed to create a session with the authentication/session/new endpoint" );
+                            }
+
+                            var sessionID = sessionResponse.data.session_id;
+
+                            return self.getAccountDetails( sessionID ).then( function( accountResponse ) {
+                                console.log( "Account information: ", accountResponse );
+
+                                var authenticationResult = {
+                                    sessionID: sessionID,
+                                    userID: accountResponse.data.id,
+                                    fullName: accountResponse.data.name,
+                                    userName: accountResponse.data.username,
+                                    profileImageURL: "http://www.gravatar.com/avatar/" + accountResponse.data.avatar.gravatar.hash
+                                };
+
+                                console.log("Resolving promise with", authenticationResult );
+                                return authenticationResult;
+                            } );
+
+                        } );
+                    } );
+
+                } );
+            };
+
 
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
@@ -200,7 +363,7 @@ define( [ 'angular',
             };
         };
 
-        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', '$resource', 'localStorageService', '$location' ];
+        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', '$resource', 'localStorageService', '$location', '$q' ];
 
         return TMDBAPIService;
 }
