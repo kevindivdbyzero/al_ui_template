@@ -22,7 +22,7 @@ define([ 'angular',
          'config/config',
          'ngRoute', 'ngResource', 'LocalStorageModule',
          'tmdb/services/TMDBAPIService',
-         'tmdb/services/ApplicationStateService',
+         'tmdb/services/AppStateService',
          'tmdb/partials/search/SearchController',
          'tmdb/partials/home/HomeController',
          'tmdb/partials/movie/MovieController',
@@ -42,7 +42,7 @@ define([ 'angular',
          'tmdb/directives/awesomeSearch',
          'tmdb/directives/awesomeSearchResults'], 
     function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, ApplicationStateService, SearchController, HomeController, MovieController, 
+              TMDBAPIService, AppStateService, SearchController, HomeController, MovieController, 
               PersonController, AwesomeSearchController, AwesomeSearchResultsController,
               RemoteImageLoader, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
@@ -64,7 +64,7 @@ define([ 'angular',
     	}]);
 
         app.service( "TMDBAPIService", TMDBAPIService);
-        app.service( "ApplicationStateService", ApplicationStateService );
+        app.service( "AppStateService", AppStateService );
 
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
         app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );

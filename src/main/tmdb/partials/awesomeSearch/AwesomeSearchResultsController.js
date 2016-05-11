@@ -21,17 +21,21 @@ define( [ 'angular',
     function( angular, config, TMDBAPIService ) {
         "use strict";
 
-        var AwesomeSearchResultsController = function($scope, TMDBAPIService ) {
+        var AwesomeSearchResultsController = function($rootScope,$scope, TMDBAPIService ) {
 
 
             var config  = angular.module("config");
             $scope.view = {
             	images: config.apiImg
             };
+
+            $scope.help = function( thing ) {
+                $rootScope.$emit('selected.media', thing );
+            };
             
         };
 
-        AwesomeSearchResultsController.$inject = [ '$scope', 'TMDBAPIService' ];
+        AwesomeSearchResultsController.$inject = [ '$rootScope', '$scope', 'TMDBAPIService' ];
 
         return AwesomeSearchResultsController;
     }

@@ -6,8 +6,9 @@
                 <span class="badge">{{result.media_type}}</span>
             </a>
             <span>
-                <a href="">{{result.name || result.title}}</a>
+                <a ng-href="/#/{{result.media_type}}/{{result.id}}">{{result.name || result.title}}</a>
             </span>
+            <span ng-click="help(result)"> Test Text Thingy </span>
 		</li>
 	</ul>
 </div>

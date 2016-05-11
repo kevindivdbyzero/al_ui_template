@@ -17,11 +17,12 @@
 
 define( [ 'angular',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
-    function( angular, config, TMDBAPIService ) {
+          'tmdb/services/TMDBAPIService',
+          'tmdb/services/AppStateService'],
+    function( angular, config, TMDBAPIService, AppStateService ) {
         "use strict";
 
-        var AwesomeSearchController = function($scope, TMDBAPIService, $timeout ) {
+        var AwesomeSearchController = function($rootScope, $scope, TMDBAPIService, $timeout, AppStateService ) {
             var self = this;
 
             var apiSearch = TMDBAPIService.Search();
@@ -29,7 +30,12 @@ define( [ 'angular',
 
             var searchPromise;
 
-            $scope.searchPhrase = "";
+            $scope.searchPhrase = AppStateService.getLastSearch();
+
+            $scope.help = function( thingy, $event ) {
+                console.log("Clicked a thingy");
+                $event.stopPropagation();
+            };
 
             $scope.$watch('searchPhrase',function(newValue,oldValue){
                 
@@ -55,6 +61,7 @@ define( [ 'angular',
             * Call the API with the search phrase
             */
             self.search = function() {
+
                 apiSearch.search.multi($scope.searchPhrase).then(function(response){
                     $scope.searchResults = response.data.results;
 
@@ -63,7 +70,6 @@ define( [ 'angular',
                             // Get images for persons 
                             apiPerson.person.person(item.id).then( function(r) {
                                 item.foto = r.data.profile_path;
-                                console.log(r.data.profile_path);
                             });
                         }
                         else {
@@ -74,9 +80,14 @@ define( [ 'angular',
                 });
             };
 
+            $rootScope.$on( '$routeChangeStart', function( $event ) {
+                AppStateService.setLastSearch( $scope.searchPhrase );
+                console.log("Saved search phrase: %s", $scope.searchPhrase );
+            } );
+
         };
 
-        AwesomeSearchController.$inject = [ '$scope', 'TMDBAPIService', '$timeout' ];
+        AwesomeSearchController.$inject = [ '$rootScope', '$scope', 'TMDBAPIService', '$timeout', 'AppStateService' ];
 
         return AwesomeSearchController;
     }
