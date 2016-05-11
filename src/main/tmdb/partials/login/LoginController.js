@@ -40,7 +40,8 @@ define( [ 'angular',
                     "(Optional) Catch the 'authenticated' event in AppStateService and cache it so that the user session persists across application loads.",
                     "Catch the 'authenticated' event in appHeader and adjust the partial to exclude the login form.",
                     "(Optional) When the user is authenticated, show their gravatar and username in the right part of the header!",
-                    "On the movie details page, IF the user is authenticated, allow them to set a rating for that movie using the POST method."
+                    "On the movie details page, IF the user is authenticated, allow them to set a rating for that movie using the POST method.",
+                    "(Optional) Figure out how to make the AppStateService's startup routine communicate authenticated state to the rest of the application *without* using $timeout for 100 ms."
                 ];
                 window.alert("We just authenticated " + userSession.fullName + "!  Now we need to do some additional work.\n\n" + objectives.join("\n\n") ); 
             };
