@@ -2,6 +2,7 @@ define( [   'angular',                /* I need angular */
             'LocalStorageModule' ],  /* And another one */
         function( angular, LocalStorageModule ) 
         {
+            "use strict";
             var AppStateService = function( $rootScope, $timeout ) {
                 console.log("AppStateService instantiated" );
 
