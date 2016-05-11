@@ -19,11 +19,12 @@
 define( [ 'angular',
           'ngRoute',
           'config/config',
-          'tmdb/services/TMDBAPIService'],
+          'tmdb/services/TMDBAPIService',
+          'tmdb/services/AppStateService'],
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var PersonController = function($scope, TMDBAPIService, $routeParams ) {
+        var PersonController = function($scope, TMDBAPIService, $routeParams, AppStateService ) {
 
             $scope.view   = {
                 details: {}
@@ -32,11 +33,12 @@ define( [ 'angular',
             var api = TMDBAPIService.Person();
             api.person.person($routeParams.id).then( function ( response ) {
                 $scope.view.details = response.data;
+                $scope.$emit('selected_item', $scope.view.details);
             });
 
         };
 
-        PersonController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+        PersonController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams', 'AppStateService' ];
 
         return PersonController;
     }

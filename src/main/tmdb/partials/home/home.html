@@ -1,7 +1,22 @@
-<!--
 
--->
 
 <awesome-search></awesome-search>
+
+<div class="history">
+    <h1>
+			Recent History
+	</h1>
+   <div class="container">
+       <div ng-repeat = "item in view.history" class="col-xs-5">
+           	<a href="#{{item.id}}"></a>
+            <span ng-if="item.media_type =='tv'">
+                <a href="/#/television/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>
+            </span>
+            <span ng-if="item.media_type =='movie'">
+                <a href="/#/movie/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>
+			</span>
+       </div>
+   </div> 
+</div>
 
 <popular-movies ng-model="view.movies.results"></popular-movies>

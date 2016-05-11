@@ -35,6 +35,26 @@ define( [ 'angular',
             var defaultImage = "https://simpleicon.com/wp-content/uploads/movie-1.png";
 
             $scope.searchPhrase = "";
+            var baseURL = "some url";
+            
+            $rootScope.$on( '$routeChangeSuccess', function() {
+                 console.log("Route changed; looking for configuration data" );
+
+
+                TMDBAPIService.getConfiguration()
+                .then(  function( configResponse ) {
+                            baseURL = configResponse.data.images.base_url;
+                            localStorage.set("base_url", baseURL );                            
+                        }, function( reason ) {
+                            console.log("FAIL!", reason );
+                        } );
+
+                
+                
+                baseURL = localStorage.get("base_url");
+                
+             } );
+
 
             $scope.$watch('searchPhrase',function(newValue,oldValue){
                 //console.log("newValue="+newValue+",oldValue="+oldValue);

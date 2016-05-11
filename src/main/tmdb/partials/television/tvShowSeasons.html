@@ -1,0 +1,11 @@
+<div>
+    <h1>Seasons</h1>
+    <div ng-repeat="view.details.seasons in seasonList">
+        <div style="float: left; margin: 10px; width: 100px; height: 150px;" ng-if="credit.profile_path">
+            <a href="#/tv/{{tvShow_id}}/season/{{ season.number }}">
+                <!--<img src="{{view.images}}{{ credit.profile_path }}" width="50" height="75" ng-if="credit.profile_path" />-->
+            </a>
+            <br />
+        </div>
+    </div>
+</div>

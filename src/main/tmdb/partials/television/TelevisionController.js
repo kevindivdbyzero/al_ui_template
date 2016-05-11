@@ -26,13 +26,14 @@ define( [ 'angular',
         var TelevisionController = function($scope, TMDBAPIService, $routeParams ) {
 
             $scope.view   = {
-                details: {},
+                details: {}
             };
             
             TMDBAPIService.getTVShowDetails( $routeParams.tvshow_id ).then( function( response ) {
                 console.log("Television!", response.data );
+                $scope.view.details = response.data;
+                $scope.view.tvShow_id = $routeParams.tvshow_id;
             } );
-
         };
 
         TelevisionController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
