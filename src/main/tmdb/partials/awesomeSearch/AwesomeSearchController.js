@@ -73,7 +73,11 @@ define( [ 'angular',
                             });
                         }
                         else {
-                            item.foto = item.poster_path;
+                            if ( item.poster_path ) {
+                                item.foto = item.poster_path;
+                            } else {
+                                item.foto = null;
+                            }
                         }
                     });
 

@@ -23,6 +23,8 @@ define([ 'angular',
          'ngRoute', 'ngResource', 'LocalStorageModule',
          'tmdb/services/TMDBAPIService',
          'tmdb/services/AppStateService',
+         'tmdb/partials/appHeader/AppHeaderController',
+         'tmdb/partials/login/LoginController',
          'tmdb/partials/search/SearchController',
          'tmdb/partials/home/HomeController',
          'tmdb/partials/movie/MovieController',
@@ -40,14 +42,19 @@ define([ 'angular',
          'tmdb/directives/movieCast',
          'tmdb/directives/movieCrew',
          'tmdb/directives/awesomeSearch',
-         'tmdb/directives/awesomeSearchResults'], 
+         'tmdb/directives/awesomeSearchResults',
+         'tmdb/directives/appHeader',
+         'tmdb/directives/login' ], 
     function( angular, config, $resource, $location, LocalStorageModule, 
-              TMDBAPIService, AppStateService, SearchController, HomeController, MovieController, 
+              TMDBAPIService, AppStateService, 
+              AppHeaderController, LoginController,
+              SearchController, HomeController, MovieController, 
               PersonController, AwesomeSearchController, AwesomeSearchResultsController,
               RemoteImageLoader, searchDirective, popularMoviesDirective, 
               personDetailDirective, personCrewDirective, personCastDirective,
               movieDetailDirective, similarMoviesDirective, movieCastDirective,
-              movieCrewDirective, awesomeSearchDirective, awesomeSearchResultsDirective ) {
+              movieCrewDirective, awesomeSearchDirective, awesomeSearchResultsDirective,
+              appHeaderDirective, loginDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -67,19 +74,21 @@ define([ 'angular',
         app.service( "AppStateService", AppStateService );
 
         app.controller( "AwesomeSearchResultsController", AwesomeSearchResultsController );
-        app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
 
         app.controller( "AwesomeSearchController", AwesomeSearchController );
-        app.directive( "awesomeSearch", awesomeSearchDirective );
 
         app.controller( "SearchController", SearchController);
-        app.directive( "search", searchDirective );
 
         app.controller( "HomeController", HomeController );
         app.controller( "MovieController", MovieController );
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
 
+        app.directive( "search", searchDirective );
+        app.directive( "appHeader", appHeaderDirective );
+        app.directive( "login", loginDirective );
+        app.directive( "awesomeSearch", awesomeSearchDirective );
+        app.directive( "awesomeSearchResults", awesomeSearchResultsDirective );
         app.directive( "popularMovies", popularMoviesDirective );
         app.directive( "personDetail", personDetailDirective );
         app.directive( "personCrew", personCrewDirective );

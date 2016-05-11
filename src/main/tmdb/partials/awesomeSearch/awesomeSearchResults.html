@@ -3,12 +3,12 @@
 		<li ng-repeat="result in resultList" class="col-md-3">
             <a ng-href="/#/{{result.media_type}}/{{result.id}}">
                 <img ng-src="{{view.images}}{{result.foto}}" title="{{result.title}} as {{result.character}}" width="125" ng-if="result.foto" />
+                <span class="blank" ng-if="!result.foto"></span>
                 <span class="badge">{{result.media_type}}</span>
             </a>
             <span>
                 <a ng-href="/#/{{result.media_type}}/{{result.id}}">{{result.name || result.title}}</a>
             </span>
-            <span ng-click="help(result)"> Test Text Thingy </span>
 		</li>
 	</ul>
 </div>
