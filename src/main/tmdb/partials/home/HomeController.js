@@ -22,7 +22,7 @@ define( [ 'angular',
     function( angular, config, TMDBAPIService, AppStateService ) {
         "use strict";
 
-        var HomeController = function($scope, TMDBAPIService ) {
+        var HomeController = function($scope, TMDBAPIService, AppStateService ) {
 
             $scope.view   = {
                 movies: [],

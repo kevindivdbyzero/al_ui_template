@@ -7,14 +7,16 @@
 			Recent History
 	</h1>
    <div class="container">
-       <div ng-repeat = "item in view.history" class="col-xs-5">
-           	<a href="#{{item.id}}"></a>
-            <span ng-if="item.media_type =='tv'">
-                <a href="/#/television/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>
-            </span>
-            <span ng-if="item.media_type =='movie'">
-                <a href="/#/movie/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>
-			</span>
+       <div ng-repeat = "item in view.userHistory" class="col-xs-5">
+           <span ng-if="item.name">{{item.name}}</span>
+           <span ng-if="item.title">{{item.title}}</span>
+   <!--        	<a href="#{{item.id}}"></a>-->
+   <!--         <span ng-if="item.media_type =='tv'">-->
+   <!--             <a href="/#/television/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>-->
+   <!--         </span>-->
+   <!--         <span ng-if="item.media_type =='movie'">-->
+   <!--             <a href="/#/movie/{{item.id}}" style="font-size:8pt">{{item.formatName}}</a>-->
+			<!--</span>-->
        </div>
    </div> 
 </div>

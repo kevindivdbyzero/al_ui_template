@@ -33,7 +33,7 @@ define( [ 'angular',
             var api = TMDBAPIService.Movie();
             api.movie.movie($routeParams.id).then( function ( response ) {
                 $scope.view.details = response.data;
-                console.log("Movie details: " + $scope.view.details);
+                console.log("Movie details: " + $scope.view.details.title);
                 $scope.$emit('selected_item', $scope.view.details);
             });
 

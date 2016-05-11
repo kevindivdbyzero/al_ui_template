@@ -15,7 +15,7 @@ define( [ 'angular',
             $rootScope.$on('selected_item', function(event, item){
                 if(historyArray.length <= 10){
                     historyArray.push(item);
-                    console.log("New item added to history ");
+                    console.log("New item added to history " + item);
                 }else{
                     historyArray.splice(historyArray.length - 1, 1);
                     console.log("List full, deleting oldest item from history");
