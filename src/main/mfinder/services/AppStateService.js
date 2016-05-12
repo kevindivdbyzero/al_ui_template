@@ -13,16 +13,29 @@
  *
  */
 define( ['angular',                
-        'config/config',],
+        'config/config',
+        'LocalStorageModule'],
     function ( angular, $rootScope ) {
 
         "use strict";
 
-        var AppStateService = function ($rootScope) {
+        var AppStateService = function ($rootScope, $timeout, localStorageService) {
         
 
 
-        var self = this;    
+        var self = this;
+        var userSession = null;
+
+        // need to implement lastSearch state when create an advance search page
+        var lastSearch = '';    
+
+        self.getLastSearch = function() {
+                    return lastSearch;
+                };
+
+        self.setLastSearch = function( search ) {
+            lastSearch = search;
+        };
 
 
             
@@ -69,11 +82,45 @@ define( ['angular',
             self.setLastVisited(entity);
         });
 
+
+        $rootScope.$on( 'user.authenticated', function( $event, newSession ) {
+                    userSession = newSession;
+                    console.log("AppStateService - new session", newSession );
+                    var encodedSession = JSON.stringify( newSession );
+                    localStorageService.set( "_session", encodedSession );
+                    } );
+
+                /**
+                 * Service Initialization -- Runs only on application startup 
+                 */
+        $timeout( function() {
+            console.log("Firing initialization on first route change" );
+            var existingSession = localStorageService.get( "_session" );
+            if ( existingSession ) {
+                try {
+                    var sessionData = JSON.parse( existingSession );
+                    $rootScope.$broadcast( "user.authenticated", sessionData );
+                } catch( e ) {
+                    console.error("Session is corrupt" );
+                    localStorageService.remove( "_session" );
+                }
+            }
+        }, 100 );
+
+
+
+
+
+
+
+
+
+
             
 
         };
 
-        AppStateService.$inject = ['$rootScope'];
+        AppStateService.$inject = ['$rootScope', '$timeout', 'localStorageService'];
 
         return AppStateService;
     }

@@ -19,8 +19,8 @@
 define( [ 'angular',
           'ngRoute',
           'config/config',
-          'mfinder/services/TMDBAPIService'],
-    function( angular, $routeParams, config, TMDBAPIService ) {
+          'mfinder/services/TMDBAPIService',],
+    function( angular, $routeParams, config, TMDBAPIService, AppStateService ) {
         "use strict";
 
         var navigationController = function($scope, TMDBAPIService, $routeParams ) {
@@ -29,7 +29,7 @@ define( [ 'angular',
 
         };
 
-        navigationController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+        navigationController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams', 'AppStateService' ];
 
         return navigationController;
     }

@@ -36,6 +36,7 @@ define([ 'angular',
          'mfinder/partials/popularPeople/popularPeopleController',
          'mfinder/partials/television/episodeController',
          'mfinder/partials/television/seasonController',    
+         'mfinder/partials/login/loginController',
          'mfinder/directives/navigation',
          'mfinder/directives/search',
          'mfinder/directives/popularMovies',
@@ -51,14 +52,15 @@ define([ 'angular',
          'mfinder/directives/movieCrew',
          'mfinder/directives/movieTrailer',
          'mfinder/directives/episode',
-         'mfinder/directives/season'], 
+         'mfinder/directives/season',
+         'mfinder/directives/login'], 
 
     function( angular, config, $resource, $location, LocalStorageModule, ngMaterial, ocNgRepeat, TMDBAPIService, AppStateService,
               navigationController, SearchController, HomeController, MovieController, televisionController, movieTrailerController, PersonController,
-              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, episodeController, seasonController,
+              RemoteImageLoader, popularMoviesController, popularTvController, popularPeopleController, episodeController, seasonController, loginController,
               navigationDirective, searchDirective, popularMoviesDirective, popularTvDirective, popularPeopleDirective,
               personDetailDirective, personCrewDirective, personCastDirective, movieDetailDirective, tvDetailDirective,
-              similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective, episodeDirective, seasonDirective ) {
+              similarMoviesDirective, movieCastDirective, movieCrewDirective, movieTrailerDirective, episodeDirective, seasonDirective, loginDirective ) {
     	"use strict";
 
         /** @constructs app */
@@ -103,6 +105,10 @@ define([ 'angular',
 
         app.controller( "seasonController", seasonController );
         app.directive( "season", seasonDirective );
+
+
+        app.controller( "loginController", loginController );
+        app.directive( "login", loginDirective );
         
         
         
