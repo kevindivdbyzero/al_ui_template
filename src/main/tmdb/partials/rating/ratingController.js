@@ -23,7 +23,7 @@ define( [ 'angular',
 
 		    $scope.rateOnClick = function(){
 		        $scope.view.actualRate = $scope.view.currentRate;
-		        apiMovie.setRating(movie_id, $scope.view.actualRate);
+		        apiMovie.setRating($scope.movie_id, $scope.view.actualRate);
 		    };
 
         };

@@ -82,7 +82,7 @@ define([ 'angular',
         app.controller( "MovieController", MovieController );
         app.controller( "PersonController", PersonController);
         app.controller( "RemoteImageLoader", RemoteImageLoader );
-        app.controller( "RatingController", RatingController )
+        app.controller( "RatingController", RatingController );
 
         app.directive( "search", searchDirective );
         app.directive( "appHeader", appHeaderDirective );

@@ -249,7 +249,7 @@ define( [ 'angular',
                     
                     var setMovieRating = function(movie, rating){
                        // http://api.themoviedb.org/3/movie/id/rating
-                       var uri = serviceBase.url + '/movie/' + movie + '/rating'
+                       var uri = serviceBase.url + '/movie/' + movie + '/rating';
                        $http.post(uri, rating);
                     };
 
