@@ -246,10 +246,17 @@ define( [ 'angular',
                         var uri = serviceBase.url + '/movie/' + movie + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,releases,videos,similar,reviews,images';
                         return $http.get( uri );
                     };
+                    
+                    var setMovieRating = function(movie, rating){
+                       // http://api.themoviedb.org/3/movie/id/rating
+                       var uri = serviceBase.url + '/movie/' + movie + '/rating'
+                       $http.post(uri, rating);
+                    };
 
                     return {
                         movie: {
-                            movie: getMovie
+                            movie: getMovie,
+                            setRating: setMovieRating
                         }
                     };
                 });
