@@ -44,6 +44,7 @@ define( [   'angular',                /* I need angular */
                         }
                     }
                 }, 100 );
+                
             };
 
             AppStateService.$inject = [ '$rootScope', '$timeout', 'localStorageService' ];
