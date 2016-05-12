@@ -117,7 +117,7 @@ define([ 'angular',
             $routeProvider.when( '/person/:id', { templateUrl: '/tmdb/partials/person/person.html', controller: 'PersonController' } );
             $routeProvider.when( '/bloomMovie/:id', { templateUrl: '/tmdb/partials/bloomMovie/bloomMovie.html', controller: 'BloomMovieController' } );
             $routeProvider.when( '/television/:tvshow_id/', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionController' } );
-            $routeProvider.when( '/television/:tvshow_id/season/:season_number', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionEpisodeController' } );
+            $routeProvider.when( '/television/:tvshow_id/season/:season_number', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTvEpisodes.html', controller: 'BloomTelevisionEpisodeController' } );
             // $routeProvider.when( '/television/:tvshow_id/season/:season_id/episode/:episode_id', { templateUrl: '/tmdb/partials/bloomTelevision/bloomTelevision.html', controller: 'BloomTelevisionEpisodeController' } );
             $routeProvider.otherwise( {
                 template: function() {

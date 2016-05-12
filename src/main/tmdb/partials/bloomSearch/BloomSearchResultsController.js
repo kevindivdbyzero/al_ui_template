@@ -23,7 +23,7 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var BloomSearchResultsController = function( $scope, TMDBAPIService ) {
+        var BloomSearchResultsController = function( $scope, $timeout, TMDBAPIService ) {
 
             var config  = angular.module("config");
             $scope.view = {images: config.apiImg};
@@ -90,19 +90,19 @@ define( [ 'angular',
                 
             };
 
-                
-            TMDBAPIService.getTVShowSeason( 1418, 1).then( function( season ) {
-                console.log("Season information: ", season );
-            } );
-                
-                
-            
+            $scope.moveToDiv = function(){
+                $timeout(function(){
+                    $('html,body').animate({
+                        scrollTop: $("#divInfoTv").offset().top
+                    }, 2000);
+                }, 30);                
+            };
             
             
         };
 
 
-        BloomSearchResultsController.$inject = [ '$scope', 'TMDBAPIService' ];
+        BloomSearchResultsController.$inject = [ '$scope', '$timeout', 'TMDBAPIService' ];
 
 
         return BloomSearchResultsController;

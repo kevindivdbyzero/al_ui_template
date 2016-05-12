@@ -23,7 +23,7 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var BloomTelevisionEpisodeController = function($scope, TMDBAPIService, $routeParams ) {
+        var BloomTelevisionEpisodeController = function($scope, $timeout, TMDBAPIService, $routeParams ) {
 
           $scope.tvEpisodesList = undefined;
           $scope.idShow = undefined;
@@ -39,11 +39,13 @@ define( [ 'angular',
             }); 
           }
 
+          
+
 
 
         };
 
-        BloomTelevisionEpisodeController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+        BloomTelevisionEpisodeController.$inject = [ '$scope','$timeout', 'TMDBAPIService', '$routeParams' ];
 
         return BloomTelevisionEpisodeController;
     }

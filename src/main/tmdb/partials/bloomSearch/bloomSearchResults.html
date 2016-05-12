@@ -31,8 +31,8 @@
 			</a>
 
 			<center>				
-				<a ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>
-				<a ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>	
+				<a ng-click="moveToDiv()" ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>
+				<a ng-click="moveToDiv()" ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>	
 			</center>
 
 
