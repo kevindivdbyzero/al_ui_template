@@ -26,9 +26,7 @@
                 <md-tab label="Seasons">
                     <md-content>
 
-                        <season ng-model="view.details.seasons[0].season_number" ></season>
-                        <episode></episode>
-
+                        <season ng-repeat="season in view.details.seasons" ng-model="season.season_number" ></season>
 
                     </md-content>
                 </md-tab>

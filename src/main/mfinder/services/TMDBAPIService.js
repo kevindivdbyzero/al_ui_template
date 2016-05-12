@@ -219,7 +219,7 @@ define( [ 'angular',
 
                     /*http://docs.themoviedb.apiary.io/#reference/tv/tvid/get */
                     var getTv = function ( tv ) {
-                        var uri = serviceBase.url + '/tv/' + tv + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,videos,similar,images';
+                        var uri = serviceBase.url + '/tv/' + tv + '?api_key=' + serviceBase.apiKey + '&append_to_response=credits,videos,similar,images';
                         return $http.get( uri );
                     };
 
@@ -239,7 +239,8 @@ define( [ 'angular',
                             method: 'GET',
                             url: apiBaseUrl + "/tv/" + tvShowID + "/season/" + seasonIndex,
                             params: {
-                                api_key: apiKey
+                                api_key: apiKey,
+                                append_to_response: 'videos,images'
                             }
                         };
 

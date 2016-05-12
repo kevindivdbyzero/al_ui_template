@@ -52,6 +52,91 @@
         }
 
       }
+
+      .season{
+
+          margin: 0 auto;
+          width: 95%;
+
+
+         .seasonContainer{
+
+           margin-top: 10px;
+
+           background-color: #282828;
+
+
+           .seasonImgWrapper{
+
+
+             .seasonImg{
+               width: 100%;
+               height: auto;
+             }
+
+             // apply on every class that start with .seasonImgWrapper and has any col-* classes
+             &[class*=' col-']{
+               padding-left: 0;
+             }
+
+             &[class*=' col-xs']{
+               padding-left: 0;
+               padding-right: 0;
+
+               &.seasonImg{
+                 float: none !important;
+               }
+
+             }
+             &[class*=' col-sm']{
+               padding-left: 0;
+               padding-right: 0;
+
+               &.seasonImg{
+                 float: none !important;
+               }
+
+             }
+
+
+           }
+
+           .seasonData{
+
+             padding: 5px;
+             color: whitesmoke;
+
+
+             .seasonTitle{
+               color: darkorange;
+               font-weight: bolder;
+               font-size: 20px;
+             }
+
+             .seasonOverview{
+                padding: 3px;
+                height: auto;
+               .overviewTitle{
+                 color: darkorange;
+                 font-weight: bold;
+               }
+               .overviewContent{
+
+               }
+
+             }
+
+             .seasonButtons{
+               width: 100%;
+               float: right;
+             }
+
+           }
+
+         }
+      }
+
+
     }
   }
 }

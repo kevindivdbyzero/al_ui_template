@@ -33,12 +33,13 @@ define( [ 'angular',
 
             var api = TMDBAPIService.Television();
 
-            api.tv.tv_season_info($routeParams.tv_id, $routeParams.season_id).then( function ( response ) {
+            api.tv.tv_season_info($routeParams.tv_id, $scope.seasonId).then( function ( response ) {
                 $scope.view.details = response.data;
-
-                console.log("tv-season-data-response", response);
-                console.log("tv-season-data-response-name", response.data.name);
-                console.log("tv-season-data-response-over", response.data.overview);
+                
+                $scope.view.details.tv_id = $routeParams.tv_id; 
+                // console.log("tv-season-data-response", response);
+                // console.log("tv-season-data-response-name", response.data.name);
+                // console.log("tv-season-data-response-over", response.data.overview);
 
                 var trailers = response.data.videos.results;
 
