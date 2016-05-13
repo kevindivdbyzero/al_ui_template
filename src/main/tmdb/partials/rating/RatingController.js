@@ -17,13 +17,16 @@ define( [ 'angular',
                 max_rate : 10,
             };
             $scope.hoveringOver = function(value){
+                console.log("hovering");
 		    	$scope.view.currentRate = value;
 			    $scope.view.percent = 100 * (value / $scope.view.max_rate);
 		    };
 
 		    $scope.rateOnClick = function(){
+		        console.log("clicking" + $scope.movieId);
 		        $scope.view.actualRate = $scope.view.currentRate;
-		        apiMovie.setRating($scope.movie_id, $scope.view.actualRate);
+		        console.log("actual rate: " + $scope.view.actualRate);
+		        apiMovie.movie.setRating($scope.movieId, $scope.view.actualRate);
 		    };
 
         };

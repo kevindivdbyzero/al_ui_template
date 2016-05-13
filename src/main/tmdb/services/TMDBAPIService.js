@@ -19,11 +19,12 @@ define( [ 'angular',
           'ngRoute',
           'ngResource',
           'LocalStorageModule',
-          'config/config' ], 
+          'config/config',
+          'tmdb/services/AppStateService'], 
     function ( angular ) {
         "use strict";
 
-        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location, $q ) {
+        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location, $q, AppStateService ) {
 
             var self            = this;
             var config          = angular.module("config");
@@ -249,8 +250,12 @@ define( [ 'angular',
                     
                     var setMovieRating = function(movie, rating){
                        // http://api.themoviedb.org/3/movie/id/rating
-                       var uri = serviceBase.url + '/movie/' + movie + '/rating';
-                       $http.post(uri, rating);
+                       var uri = serviceBase.url + '/movie/' + movie + '/rating'  + '?api_key=' + serviceBase.apiKey + "&session_id=" + AppStateService.getUserSession();
+                       $http.post(uri, rating).then(function(){
+                                                       console.log("successful rate");
+                                                   }, function(){
+                                                       console.log("unsuccessful rate");
+                                                   });
                     };
 
                     return {
@@ -261,6 +266,10 @@ define( [ 'angular',
                     };
                 });
             };
+            
+            this.setRating = function(){
+                
+            }
 
             /* http://docs.themoviedb.apiary.io/reference/people */
             this.Person = function () {
@@ -370,7 +379,9 @@ define( [ 'angular',
             };
         };
 
-        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', '$resource', 'localStorageService', '$location', '$q' ];
+        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', 
+                                   '$resource', 'localStorageService', 
+                                   '$location', '$q', 'AppStateService' ];
 
         return TMDBAPIService;
 }

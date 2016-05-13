@@ -13,6 +13,9 @@ define( [   'angular',                /* I need angular */
                     return lastSearch;
                 };
 
+                 self.getUserSession= function (){
+                      return userSession;
+                 }
                 self.setLastSearch = function( search ) {
                     lastSearch = search;
                 };
@@ -45,6 +48,8 @@ define( [   'angular',                /* I need angular */
                     }
                 }, 100 );
             };
+            
+           
 
             AppStateService.$inject = [ '$rootScope', '$timeout', 'localStorageService' ];
 

@@ -13,7 +13,7 @@ define( [ 'angular',
                 templateUrl: '/tmdb/partials/rating/rating.html',
                 restrict: 'E',
                 scope: {
-                    movie_id: '='
+                    movieId: '='
                 }
             };
         };
