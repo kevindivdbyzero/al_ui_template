@@ -14,8 +14,9 @@ define( [   'angular',                /* I need angular */
                 };
 
                  self.getUserSession= function (){
-                      return userSession;
-                 }
+                      console.log(userSession['sessionID']);
+                      return userSession['sessionID'];
+                 };
                 self.setLastSearch = function( search ) {
                     lastSearch = search;
                 };

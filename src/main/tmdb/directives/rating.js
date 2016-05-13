@@ -13,7 +13,8 @@ define( [ 'angular',
                 templateUrl: '/tmdb/partials/rating/rating.html',
                 restrict: 'E',
                 scope: {
-                    movieId: '='
+                    itemId: '=',
+                    itemType: '='
                 }
             };
         };

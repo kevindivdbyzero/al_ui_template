@@ -248,28 +248,55 @@ define( [ 'angular',
                         return $http.get( uri );
                     };
                     
-                    var setMovieRating = function(movie, rating){
-                       // http://api.themoviedb.org/3/movie/id/rating
-                       var uri = serviceBase.url + '/movie/' + movie + '/rating'  + '?api_key=' + serviceBase.apiKey + "&session_id=" + AppStateService.getUserSession();
-                       $http.post(uri, rating).then(function(){
-                                                       console.log("successful rate");
-                                                   }, function(){
-                                                       console.log("unsuccessful rate");
-                                                   });
-                    };
+                    // var setMovieRating = function(movie, rating){
+                    //   // http://api.themoviedb.org/3/movie/id/rating
+                    //   var uri = serviceBase.url + '/movie/' + movie + '/rating'  + '?api_key=' + serviceBase.apiKey + "&session_id=" + AppStateService.getUserSession();
+                    //   $http.post(uri, rating).then(function(){
+                    //                                   console.log("successful rate");
+                    //                               }, function(){
+                    //                                   console.log("unsuccessful rate");
+                    //                               });
+                    // };
 
                     return {
                         movie: {
                             movie: getMovie,
-                            setRating: setMovieRating
+                           // setRating: setMovieRating
                         }
                     };
                 });
             };
             
-            this.setRating = function(){
+            this.setRating = function(type, id, rating){
+                var sessionID = AppStateService.getUserSession();
+                var req;
+                if(type === 'movie'){
+                     req = {
+                        method: 'POST',
+                        url: apiBaseUrl + "/movie/" + id + "/rating",
+                        params: {
+                            api_key: apiKey,
+                            session_id: sessionID,
+                        },
+                        data: {value: rating}
+                    };
                 
-            }
+                }else{
+                    if(type === 'tv'){
+                        req = {
+                            method: 'POST',
+                            url: apiBaseUrl + "/tv/" + id + "/rating",
+                            params: {
+                                api_key: apiKey,
+                                session_id: sessionID
+                            },
+                            data: {'value' : rating}
+                    };
+                        
+                    }
+                }
+                return $http( req );
+            };
 
             /* http://docs.themoviedb.apiary.io/reference/people */
             this.Person = function () {

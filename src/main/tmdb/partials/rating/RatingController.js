@@ -10,7 +10,6 @@ define( [ 'angular',
         "use strict";
 
         var RatingController = function($scope, TMDBAPIService) {
-            var apiMovie = TMDBAPIService.Movie();
             $scope.view = {
                 currentRate: 7,
                 percent: 0,
@@ -23,10 +22,18 @@ define( [ 'angular',
 		    };
 
 		    $scope.rateOnClick = function(){
-		        console.log("clicking" + $scope.movieId);
+		        console.log("clicking");
 		        $scope.view.actualRate = $scope.view.currentRate;
 		        console.log("actual rate: " + $scope.view.actualRate);
-		        apiMovie.movie.setRating($scope.movieId, $scope.view.actualRate);
+		        TMDBAPIService.setRating($scope.itemType, $scope.itemId, 
+		                                 $scope.view.actualRate)
+		                                 .then(function(){
+		                                     console.log("successful rating");
+		                                 },
+		                                 function(){
+		                                     console.log("unsuccessful rating");
+		                                 });
+		        //apiMovie.movie.setRating($scope.movieId, $scope.view.actualRate);
 		    };
 
         };
