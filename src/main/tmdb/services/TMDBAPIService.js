@@ -248,20 +248,9 @@ define( [ 'angular',
                         return $http.get( uri );
                     };
                     
-                    // var setMovieRating = function(movie, rating){
-                    //   // http://api.themoviedb.org/3/movie/id/rating
-                    //   var uri = serviceBase.url + '/movie/' + movie + '/rating'  + '?api_key=' + serviceBase.apiKey + "&session_id=" + AppStateService.getUserSession();
-                    //   $http.post(uri, rating).then(function(){
-                    //                                   console.log("successful rate");
-                    //                               }, function(){
-                    //                                   console.log("unsuccessful rate");
-                    //                               });
-                    // };
-
                     return {
                         movie: {
                             movie: getMovie,
-                           // setRating: setMovieRating
                         }
                     };
                 });
