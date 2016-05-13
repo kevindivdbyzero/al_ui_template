@@ -26,14 +26,20 @@ define( [ 'angular',
 
             $scope.recentSearch = MyOwnService.getHistorySearches();
 
+            console.log("$scope.recentSearch ===> ", $scope.recentSearch);
+
             $scope.showMovieInfo = function(idParametro, idType){   
-              console.log("Se va a mostrar desde BloomHomeController");
+              
               console.log("idParametro ===> idMovie ==> ", idParametro);
               console.log("idParametro ===> idType ==> ", idType);             
 
               $rootScope.$emit('showModalForRecentSearch.event', idParametro, idType);
               
             };
+
+            $rootScope.$on('updateSearches.event', function($event){
+              $scope.recentSearch = MyOwnService.getHistorySearches();
+            });
 
 
         };

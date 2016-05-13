@@ -23,7 +23,7 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService, $sce ) {
       "use strict";
 
-      var MovieTrailerController = function($rootScope, $scope, TMDBAPIService, $routeParams, $sce ) {
+      var MovieTrailerController = function($rootScope, $scope,$timeout, TMDBAPIService, $routeParams, $sce ) {
 
             var api = TMDBAPIService.Movie();
 
@@ -32,6 +32,7 @@ define( [ 'angular',
               dataToSave.id = data.id;
               dataToSave.name = data.original_title;                
               $rootScope.$emit('saver.event', dataToSave);
+              $rootScope.$emit('updateSearches.event');
             };
 
             var buscarInfoMovie = function(){
@@ -70,24 +71,32 @@ define( [ 'angular',
 
                 if($scope.idType==="movie"){
                   buscarInfoMovie();                  
-                  console.log("Se esta buscando una movie");
+                  console.log("Searching a movie");
                 }
 
                 if($scope.idType==="person"){
                   buscarInfoPerson();                  
-                  console.log("Se esta buscando una persona");
+                  console.log("Searching a person");
                 }
 
             });
 
             $rootScope.$on('showModalForRecentSearch.event', function($event, idMovie, idType){
+              
+              // $timeout(function() {
+              $scope.idType = idType;
               $scope.idMovie = idMovie;
-              $("#myModal").modal('show');              
+              //   $("#myModal").modal('show');  
+              // }, 2000);
+              
+              //buscarInfoMovie();
+              $("#myModal").modal('show');
+              
             });
 
       };
 
-      MovieTrailerController.$inject = ['$rootScope', '$scope', 'TMDBAPIService', '$routeParams', '$sce' ];
+      MovieTrailerController.$inject = ['$rootScope', '$scope','$timeout', 'TMDBAPIService', '$routeParams', '$sce' ];
 
       return MovieTrailerController;
     }

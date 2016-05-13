@@ -5,7 +5,7 @@
   <span class="caret"></span></button>
   <ul class="dropdown-menu" if="recentSearch.length>0">
     <li ng-repeat="movie in recentSearch" ng-if="$index < 10">
-    	<a href="" ng-click="showMovieInfo(movie.id, 'movie')">{{movie.name}} {{$index}}</a>
+    	<a href="" ng-click="showMovieInfo(movie.id, 'movie')">{{movie.name}}</a>
     </li>
   </ul>
   <ul class="dropdown-menu" ng-if="recentSearch.length==0">

@@ -15,28 +15,30 @@
 define( [ 'angular',
           'config/config',
           'LocalStorageModule'], 
-    function ( angular, config, LocalStorageModule ) {
+    function ( angular) {
         "use strict";
 
-        var MyOwnService = function ( $rootScope, $scope, localStorageService ) {
+        var MyOwnService = function ( $rootScope, localStorage ) {
 
-            var self = this;
+            var self = this;            
 
-            var historySearches = [];
-
-            localStorageService.set("history_searches", "Carlos was were" );
-            console.log("localStorage===>",localStorageService.get("history_searches"));
+            if(!localStorage.get("history_searches")){
+                localStorage.set("history_searches", []);                
+            }
 
             self.getHistorySearches = function(){
-                return localStorageService.get("history_searches");
+                return localStorage.get("history_searches");
             };
 
             self.setHistorySearches = function(data){
+                var historySearches = localStorage.get("history_searches");
                 historySearches.push(data);
                 localStorage.set("history_searches", historySearches );
             };
 
             var thereAreDuplicates = function (data){
+
+                var historySearches = localStorage.get("history_searches");
 
                 for (var i = 0; i < historySearches.length; i++) {                    
                     if(data.id === historySearches[i].id){                        
@@ -46,7 +48,9 @@ define( [ 'angular',
                 return false;
             };
 
-            self.handleSaverEvent = function( $event, data ) {                
+            self.handleSaverEvent = function( $event, data ) {
+                var historySearches = localStorage.get("history_searches");
+
                 if(!thereAreDuplicates(data)||(historySearches.length===0)){                    
                     self.setHistorySearches(data);                    
                 }                
@@ -56,7 +60,7 @@ define( [ 'angular',
             
         };
 
-        MyOwnService.$inject = ['$rootScope', '$scope'];
+        MyOwnService.$inject = ['$rootScope', 'localStorageService'];
 
         return MyOwnService;
 }
