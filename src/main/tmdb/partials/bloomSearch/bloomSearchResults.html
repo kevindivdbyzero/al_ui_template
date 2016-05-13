@@ -26,13 +26,17 @@
 			<button type="button" class="btn btn-success">Tipo: {{result.media_type}} </button>
 			</center>
 
-			<a href="/#" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">
-			<img ng-src="{{formatPath(result, result.media_type, view.images)}}" alt="Slide {{ $index+1 }}" width="360" height="245">
+			<a ng-if="result.media_type =='movie' || result.media_type =='person'" href="/#" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">
+				<img ng-src="{{formatPath(result, result.media_type, view.images)}}" alt="Slide {{ $index+1 }}" width="360" height="245">
+			</a>
+
+			<a ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" ng-click="moveToDiv()">
+				<img ng-src="{{formatPath(result, result.media_type, view.images)}}" alt="Slide {{ $index+1 }}" width="360" height="245">
 			</a>
 
 			<center>				
 				<a ng-click="moveToDiv()" ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>
-				<a ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">More info about ... {{formatName(result, result.media_type)}}</a>
+				<a ng-if="result.media_type =='movie'" href="" style="font-size:16pt" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">More info about ... {{formatName(result, result.media_type)}}</a>
 				<a ng-if="result.media_type =='person'" href="" style="font-size:16pt" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">More info about ... {{formatName(result, result.media_type)}}</a>	
 			</center>
 

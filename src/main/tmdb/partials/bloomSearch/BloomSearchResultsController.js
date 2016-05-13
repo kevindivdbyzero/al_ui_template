@@ -69,7 +69,7 @@ define( [ 'angular',
 
             };
 
-            var defaultImage = "http://www.aspneter.com/aspneter/wp-content/uploads/2016/01/no-thumb.jpg";
+            var defaultImage = "../images/no-image.jpg";
             
             $scope.formatPath = function(result, type, view_images){
                 

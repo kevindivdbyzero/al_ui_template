@@ -23,9 +23,16 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService, $sce ) {
       "use strict";
 
-      var MovieTrailerController = function($scope, TMDBAPIService, $routeParams, $sce ) {
+      var MovieTrailerController = function($rootScope, $scope, TMDBAPIService, $routeParams, $sce ) {
 
             var api = TMDBAPIService.Movie();
+
+            var saveSearchMovie = function(data){
+              var dataToSave = {id:"",name:"",};
+              dataToSave.id = data.id;
+              dataToSave.name = data.original_title;                
+              $rootScope.$emit('saver.event', dataToSave);
+            };
 
             var buscarInfoMovie = function(){
               api.movie.movie($scope.idMovie).then( function ( response ) {
@@ -37,7 +44,7 @@ define( [ 'angular',
                   $("#frameVideo").attr('src', '');
                 }                
                 $scope.info = response.data.overview;
-
+                saveSearchMovie(response.data);
               });
             };
 
@@ -69,14 +76,18 @@ define( [ 'angular',
                 if($scope.idType==="person"){
                   buscarInfoPerson();                  
                   console.log("Se esta buscando una persona");
-                } 
+                }
 
-                            
+            });
+
+            $rootScope.$on('showModalForRecentSearch.event', function($event, idMovie, idType){
+              $scope.idMovie = idMovie;
+              $("#myModal").modal('show');              
             });
 
       };
 
-      MovieTrailerController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams', '$sce' ];
+      MovieTrailerController.$inject = ['$rootScope', '$scope', 'TMDBAPIService', '$routeParams', '$sce' ];
 
       return MovieTrailerController;
     }

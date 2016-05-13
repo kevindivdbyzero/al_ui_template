@@ -50,6 +50,14 @@ define( [ 'angular',
           $scope.showInfoEpisode = function(episode){
             $scope.showEpisodes = false;
             $rootScope.$emit('showInfoEpisode.event', episode);
+
+            
+            $timeout(function(){
+              $('html,body').animate({
+                scrollTop: $("#divInfoEpisode").offset().top
+              }, 2000);
+            }, 100);                
+
           };
 
           $rootScope.$on('backEpisodes.event', function($event){
