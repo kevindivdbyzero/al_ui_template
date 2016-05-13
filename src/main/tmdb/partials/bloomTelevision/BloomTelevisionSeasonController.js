@@ -13,7 +13,7 @@
 		 function( angular, $routeParams, config, TMDBAPIService ) {
 		 	"use strict";
 
-		 	var BloomTelevisionSeasonController = function($scope, $timeout, TMDBAPIService, $routeParams ) {
+		 	var BloomTelevisionSeasonController = function($rootScope, $scope, $timeout, TMDBAPIService, $routeParams ) {
 
 		 		$scope.view   = {
 		 			details: {},
@@ -29,7 +29,6 @@
 		 			$scope.listSeasons = data;
 		 		});
 
-		 		$scope.hasSearchedEpisodes = undefined;
 
 		 		var moveToDiv = function(){
 		 			$timeout(function(){
@@ -38,23 +37,23 @@
 		 				}, 2000);
 		 			}, 100);                
 		 		};
+
+		 		$scope.mostrarSeasons = true;
 		 		
-		 		$scope.searchEpisodes = function(){
-		 			if($scope.hasSearchedEpisodes){
-		 				$scope.hasSearchedEpisodes = false;
-		 			}else{
-		 				$scope.hasSearchedEpisodes = true;
-		 			}
+		 		$scope.searchEpisodes = function(numSeason){		 			
 		 			moveToDiv();
+		 			$scope.mostrarSeasons = false;
+		 			$rootScope.$emit('showEpisodes.event', numSeason);
 		 		};
 
-
-
+		 		$rootScope.$on('backSeasons.event', function($event){
+		 			$scope.mostrarSeasons = true;
+		 		});		 		
 		 		
 
 		 	};
 
-		 	BloomTelevisionSeasonController.$inject = [ '$scope', '$timeout', 'TMDBAPIService', '$routeParams' ];
+		 	BloomTelevisionSeasonController.$inject = [ '$rootScope', '$scope', '$timeout', 'TMDBAPIService', '$routeParams' ];
 
 		 	return BloomTelevisionSeasonController;
 		 }

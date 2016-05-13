@@ -1,18 +1,30 @@
-<div id="divEpisodes" ng-show="season_number">
-	<h1>Episodes:</h1>
-	<table>
-		<tr>			
-			<td ng-repeat="episode in tvEpisodesList" WIDTH=500>
-
-				<li><b>Episode No.: </b>{{episode.episode_number}}</li>
-				
-				<a href="/#/television/{{idShow}}/season/{{season_number}}/episode/{{episode.id}}">
-					<li><b>Name of episode: </b>{{episode.name}}</li>	
-				</a>
-
-			</td>
-		</tr>
-	</table>
+<div id="divEpisodes" ng-show="showEpisodes" style="padding-left: 40px;">
 	<br/>
+	<button class="btn btn-success btn-lg" ng-click="backSeasons()">
+		<b><=== Back to Seasons</b>
+	</button>
+	<h2>Episodes:</h2>
 	<br/>
+	<div class="container">
+		<div ng-repeat="episode in tvEpisodesList">
+
+			<div class="row">
+				<div class="col-md-1">
+					<b>Episode {{episode.episode_number}}</b>
+				</div>
+				<div class="col-md-1">
+					<button class="btn btn-info btn-md" ng-click="showInfoEpisode(episode)">
+						{{episode.name}}
+					</button>	
+				</div>				
+			</div>
+			<!-- <a href="/#/television/{{idShow}}/season/{{season_number}}/episode/{{episode.id}}">
+				<b>{{episode.name}}</b>
+			</a> -->
+
+			<br/>
+		</div>
+
+	</div>
+
 </div>

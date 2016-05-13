@@ -1,9 +1,30 @@
-<div id="divInfoTv">
+<div id="divInfoTv" >
 	<center>
-	<h1>{{tvName}} </h1>
-	<p>{{tvInfo}} </p>
-	<img ng-src="{{tvPath}}" width="260" height="380"/>
-
-	<bloom-tv-seasons/>
-	</center>
+		
+			<h1 class="jumbotron">{{tvName}} </h1>	
+		
+	</center>	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<br/>
+					<p align="justify"><font size="4">{{tvInfo}}</font></p>
+					<hr/>
+					<img class="img-responsive" ng-src="{{tvPath}}" width="360" height="480"/>
+					<br/>		
+				</div>
+				<div class="col-md-8">
+					<div>
+						<bloom-tv-seasons/>
+					</div>
+					<div>
+						<bloom-tv-episodes/>
+					</div>
+					<div>
+						<bloom-episode/>
+					</div>					
+				</div>
+			</div>		
+		</div>	
+	
 </div>

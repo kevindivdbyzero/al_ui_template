@@ -23,29 +23,43 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var BloomTelevisionEpisodeController = function($scope, $timeout, TMDBAPIService, $routeParams ) {
+        var BloomTelevisionEpisodeController = function($rootScope, $scope, $timeout, TMDBAPIService, $routeParams ) {
 
           $scope.tvEpisodesList = undefined;
           $scope.idShow = undefined;
-          $scope.season_number = undefined;
+          $scope.showEpisodes = false;
 
 
-          if($routeParams.season_number){
-            $scope.idShow = $routeParams.tvshow_id;
-            $scope.season_number = $routeParams.season_number;
-            TMDBAPIService.getTVShowSeason( $routeParams.tvshow_id, $routeParams.season_number ).then( function( season ) {
+          $rootScope.$on('showEpisodes.event',function($event, numSeason){
+            // $scope.idShow = $routeParams.tvshow_id;
+            // $scope.season_number = $routeParams.season_number;
+            TMDBAPIService.getTVShowSeason( $routeParams.tvshow_id, numSeason ).then( function( season ) {
               console.log("Season information: BloomTelevisionEpisodeController==>", season.data.episodes );            
               $scope.tvEpisodesList = season.data.episodes;
+              $scope.showEpisodes = true;
             }); 
-          }
 
-          
+            
+          });
 
+          $scope.backSeasons = function(){            
+            $scope.showEpisodes = false;
+            $rootScope.$emit('backSeasons.event');
+          };
+
+          $scope.showInfoEpisode = function(episode){
+            $scope.showEpisodes = false;
+            $rootScope.$emit('showInfoEpisode.event', episode);
+          };
+
+          $rootScope.$on('backEpisodes.event', function($event){
+            $scope.showEpisodes = true;
+          });
 
 
         };
 
-        BloomTelevisionEpisodeController.$inject = [ '$scope','$timeout', 'TMDBAPIService', '$routeParams' ];
+        BloomTelevisionEpisodeController.$inject = [ '$rootScope','$scope','$timeout', 'TMDBAPIService', '$routeParams' ];
 
         return BloomTelevisionEpisodeController;
     }

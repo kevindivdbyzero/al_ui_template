@@ -17,8 +17,8 @@
 				<div class="modal-body">
 				<p>{{info}}</p>
 				
-				<div ng-show="urlVideo">
-					<iframe id="frameVideo" width="565" height="315" ng-src="{{urlVideo}}" frameborder="0" allowfullscreen>
+				<div class="embed-responsive embed-responsive-16by9" ng-show="urlVideo">
+					<iframe class="embed-responsive-item" id="frameVideo" width="565" height="315" ng-src="{{urlVideo}}" frameborder="0" allowfullscreen>
 					</iframe>	
 				</div>
 

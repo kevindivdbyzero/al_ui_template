@@ -23,7 +23,7 @@ define( [ 'angular',
           function( angular, $routeParams, config, TMDBAPIService ) {
             "use strict";
 
-            var BloomTelevisionController = function($scope, TMDBAPIService, $routeParams ) {
+            var BloomTelevisionController = function($rootScope, $scope, $timeout, TMDBAPIService, $routeParams, $document ) {
 
              $scope.images = angular.module("config").apiImg;
 
@@ -40,9 +40,23 @@ define( [ 'angular',
                 $scope.tvPath = $scope.images+detail.data.poster_path;
               });
              
+
+             $rootScope.$on('moveDivTVInfo.event',function(){
+              // var divInfoTv = angular.element(document.getElementById('divInfoTv'));
+              // console.log("divInfoTv?======> ", divInfoTv);
+              // $document.scrollTo(divInfoTv, 30, 1000);              
+              //$document.scrollToElementAnimated(divInfoTv);
+              console.log("Llego a on moveDivTVInfo.event");
+
+              $timeout(function(){
+                $('html,body').animate({scrollTop: $("#divInfoTv").offset().top}, 2000);
+              }, 100);
+
+            });
+
            };
 
-           BloomTelevisionController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams' ];
+           BloomTelevisionController.$inject = ['$rootScope', '$scope', '$timeout', 'TMDBAPIService', '$routeParams'];
 
            return BloomTelevisionController;
     }

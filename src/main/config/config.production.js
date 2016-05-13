@@ -11,14 +11,14 @@ define( [ 'angular' ],
              */
             config.standardRequireModules = [   'angular', 'ngAnimate', 'ui.bootstrap',
                                                 'ngSanitize', 'ui.select', 'ngRoute', 'gettext', 'app',
-                                                'LocalStorageModule'
+                                                'LocalStorageModule', 'duScroll'
                                                 ];
 
             /**
              * These are the angular modules that every application module should require in order to execute.
              */
             config.standardAngularModules = [   'ngRoute', 'ngResource', 'gettext', 'LocalStorageModule',
-                                                'config'    ];
+                                                'config', 'duScroll' ];
 
             /**
              * Development or production
@@ -86,7 +86,8 @@ define( [ 'angular' ],
                     'angular-mocks': 'vendor/angular-mocks/angular-mocks',
                     'ngResource': 'vendor/angular-resource/angular-resource.min',
                     'ngRoute': 'vendor/angular-route/angular-route.min',
-                    'ngSanitize': 'vendor/angular-sanitize/angular-sanitize.min'
+                    'ngSanitize': 'vendor/angular-sanitize/angular-sanitize.min',
+                    'duScroll': 'vendor/angular-scroll/angular-scroll.min'
                 },
                 shim: {
                     'angular': { deps: [], exports: 'angular' },
@@ -98,7 +99,8 @@ define( [ 'angular' ],
                     'angular-mocks': {deps: ['angular']},
                     'ngResource': {deps: ['angular']},
                     'ngRoute': {deps: ['angular']},
-                    'ngSanitize': {deps: ['angular']}
+                    'ngSanitize': {deps: ['angular']},
+                    'duScroll': {deps:['angular']}
                 }
             };
 

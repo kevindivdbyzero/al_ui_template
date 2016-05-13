@@ -23,7 +23,7 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService ) {
         "use strict";
 
-        var BloomSearchResultsController = function( $scope, $timeout, TMDBAPIService ) {
+        var BloomSearchResultsController = function( $rootScope, $scope, $timeout, TMDBAPIService ) {
 
             var config  = angular.module("config");
             $scope.view = {images: config.apiImg};
@@ -92,17 +92,17 @@ define( [ 'angular',
 
             $scope.moveToDiv = function(){
                 $timeout(function(){
-                    $('html,body').animate({
-                        scrollTop: $("#divInfoTv").offset().top
-                    }, 2000);
-                }, 30);                
+                    $rootScope.$emit('moveDivTVInfo.event');
+                }, 100);                
             };
+
+            
             
             
         };
 
 
-        BloomSearchResultsController.$inject = [ '$scope', '$timeout', 'TMDBAPIService' ];
+        BloomSearchResultsController.$inject = ['$rootScope', '$scope', '$timeout','TMDBAPIService' ];
 
 
         return BloomSearchResultsController;

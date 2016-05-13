@@ -32,7 +32,8 @@
 
 			<center>				
 				<a ng-click="moveToDiv()" ng-if="result.media_type =='tv'" href="/#/television/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>
-				<a ng-click="moveToDiv()" ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt">More info about ... {{formatName(result, result.media_type)}}</a>	
+				<a ng-if="result.media_type =='movie'" href="/#/movie/{{result.id}}" style="font-size:16pt" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">More info about ... {{formatName(result, result.media_type)}}</a>
+				<a ng-if="result.media_type =='person'" href="" style="font-size:16pt" data-toggle="modal" data-target="#myModal" ng-click="showMovieInfo(result.id, result.media_type)">More info about ... {{formatName(result, result.media_type)}}</a>	
 			</center>
 
 
@@ -42,7 +43,7 @@
 
 	<!-- Left and right controls -->
 	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-		<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+		<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>		
 		<span class="sr-only">Anterior</span>
 	</a>
 	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
