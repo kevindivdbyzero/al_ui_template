@@ -64,7 +64,7 @@ define( ['angular',
         self.setLastVisited = function(entity){
 
             if( searchVisited(entity) ) {
-                console.log("The movie is already in the list ========================================================");
+                console.log("The movie is already in the list");
             }else{
                 console.log("Storing movie the movie :", entity.title);
                 lastVisited.push(entity);
@@ -89,6 +89,12 @@ define( ['angular',
                     var encodedSession = JSON.stringify( newSession );
                     localStorageService.set( "_session", encodedSession );
                     } );
+
+            
+            $rootScope.$on( 'user.logout', function( $event ) {
+                userSession = null;
+                localStorageService.remove( "_session");
+            } );    
 
                 /**
                  * Service Initialization -- Runs only on application startup 

@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                   </button>
 
-                   <a class="navbar-brand" href="#/">MFinder</a>
+                   <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-film"></span>MFinder</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,18 +37,15 @@
 
                   </ul>
 
-                  <login></login>
+                  <login ng-if=" !view.authenticated " ></login>
 
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
+                  <ul ng-if="view.authenticated" class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <img style="margin: 0 auto" width="25px" src="{{view.session.profileImageURL}}"/> {{view.session.userName }} <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#"> Profile </a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#/" ng-click="logout($event)">Log Out</a></li>
                       </ul>
                     </li>
                   </ul>

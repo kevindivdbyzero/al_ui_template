@@ -23,13 +23,32 @@ define( [ 'angular',
     function( angular, $routeParams, config, TMDBAPIService, AppStateService ) {
         "use strict";
 
-        var navigationController = function($scope, TMDBAPIService, $routeParams ) {
+        var navigationController = function($scope, $rootScope, TMDBAPIService, $routeParams ) {
 
+            $scope.view = {
+                authenticated: false,
+                session: null
+            };
+
+            $scope.$on( "user.authenticated", function( $event, userSession ) {
+                $scope.view.authenticated = true;
+                $scope.view.session = userSession;
+            } );
+
+            $scope.$on( 'user.logout', function( $event ) {
+                $scope.view.authenticated = false;
+                $scope.view.session = null;                
+            } );
             
+            
+            $scope.logout = function ($event) {
+                $rootScope.$broadcast('user.logout', $event);
+            }
+                        
 
         };
 
-        navigationController.$inject = [ '$scope', 'TMDBAPIService', '$routeParams', 'AppStateService' ];
+        navigationController.$inject = [ '$scope', '$rootScope' , 'TMDBAPIService', '$routeParams', 'AppStateService' ];
 
         return navigationController;
     }

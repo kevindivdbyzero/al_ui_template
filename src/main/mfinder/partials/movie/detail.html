@@ -5,6 +5,26 @@
 
         <img md-whiteframe="3" class="imgPoster" src="{{view.images}}{{ detail.details.poster_path }}" />
 
+        <md-fab-speed-dial md-open="true" md-direction="right"
+                           ng-class="md-fling">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn">
+                    <md-icon  md-svg-src="/src/main/mfinder/img/icons/ic_stars_black_48px.svg"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="" aria-label="Twitter"></md-icon>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="img/icons/facebook.svg" aria-label="Facebook"></md-icon>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon md-svg-src="img/icons/hangout.svg" aria-label="Google Hangout"></md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+
     </div>
 
 

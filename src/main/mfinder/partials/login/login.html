@@ -1,5 +1,17 @@
 <div class="login">
-    <input type="text" size="16" placeholder="User name" ng-model="view.username" />
-    <input type="password" size="16" placeholder="Password" ng-model="view.password" />
-    <button class="btn btn-primary" ng-click="authenticate($event)"><span class="fa fa-chevron-circle-right"></span></button>
+    <form class="navbar-form navbar-right" role="search">
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" class="form-control" placeholder="Username" ng-model="view.username" aria-describedby="sizing-addon3">
+        </div>
+
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+            <input type="password" class="form-control" placeholder="Password" ng-model="view.password" aria-describedby="sizing-addon3">
+        </div>
+
+    <button class="btnLogin btn btn-primary btn-sm" ng-click="authenticate($event)"><span class="glyphicon glyphicon-arrow-right"></span></button>
+    </form>
+
 </div>

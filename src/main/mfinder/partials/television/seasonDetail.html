@@ -1,0 +1,40 @@
+<md-content md-whiteframe="5" class="contenidos">
+    <div class="seasonDetail">
+        <div ng-cloak class="seasonTabs">
+            <md-content>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Details">
+                        <md-content>
+                            <div class="row">
+                                <!--<tv-detail ng-model="view" />-->
+                            </div>
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab label="Trailers">
+
+                        <md-content>
+
+                            <div class="seasonTrailer" ng-repeat="trailer in view.trailers">
+                                <iframe class="youtubeFrame" ng-src="{{trailer}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+
+                        </md-content>
+
+                    </md-tab>
+
+                    <md-tab label="Episodes">
+                        <md-content>
+
+                            <episode ng-repeat="episode in " ng-model="" ></episode>
+
+                        </md-content>
+                    </md-tab>
+
+                    <
+                </md-tabs>
+            </md-content>
+
+        </div>
+    </div>
+</md-content>
