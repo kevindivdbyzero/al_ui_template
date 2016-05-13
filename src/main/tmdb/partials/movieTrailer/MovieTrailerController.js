@@ -94,6 +94,13 @@ define( [ 'angular',
               
             });
 
+            $scope.rating = 1;
+             $scope.sendRating = function(rating){
+                 $rootScope.$emit('movie.rating',rating,$scope.idMovie);
+                 console.log("Sending rating==>"+ rating+ " Idmovie: "+ $scope.idMovie);                
+                 $scope.rating = 1;
+             };
+
       };
 
       MovieTrailerController.$inject = ['$rootScope', '$scope','$timeout', 'TMDBAPIService', '$routeParams', '$sce' ];

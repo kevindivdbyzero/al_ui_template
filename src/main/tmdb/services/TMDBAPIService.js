@@ -189,6 +189,46 @@ define( [ 'angular',
                 } );
             };
 
+            this.sendRating = function( idMovie, rate ) {
+ 
+                 var existingSession = localStorageService.get( "_session" );
+                 var sessionID = "";
+ 
+                 if ( existingSession ) {
+                         try {
+                             var sessionData = JSON.parse( existingSession );
+                             sessionID = sessionData.sessionID;
+                             console.log("recuperando sessionID sendRating", sessionID);
+                         } catch( e ) {
+                             console.error("Session is corrupt" );                            
+                         }
+                 }
+ 
+ 
+                 var req = {
+                     method: 'POST',
+                     url: apiBaseUrl + "/movie/"+idMovie+"/rating",
+                     params: {
+                         api_key: apiKey,
+                         session_id: sessionID
+                     },
+                     data: {value: rate}
+                 };
+                 return $http( req );
+             };
+ 
+             $rootScope.$on('movie.rating',function($event, rate, idMovie){
+                 console.log("Received rating "+ rate);
+                 self.sendRating(idMovie, rate).then(function(response){
+                     console.log("State send of your rating ===> ", response);
+                     if(response.data.status_message==="The item/record was updated successfully."){
+                         window.alert("Your rating has been send :D !");
+                     }
+                 }, function(errorCallBack){
+                     window.alert("Your rating has not been send, please try later :( ");
+                 });
+             });
+
             /* http://docs.themoviedb.apiary.io/reference/discover */
             /*
              * We support very little of this API, it has many many options.
