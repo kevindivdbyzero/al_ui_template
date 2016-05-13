@@ -41,6 +41,16 @@ define( [ 'angular',
               $scope.recentSearch = MyOwnService.getHistorySearches();
             });
 
+            $scope.view = {
+                authenticated: false,
+                session: null
+            };
+
+            $scope.$on( "user.authenticated", function( $event, userSession ) {
+                $scope.view.authenticated = true;
+                $scope.view.session = userSession;
+            } );
+
 
         };
 
