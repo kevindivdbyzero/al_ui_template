@@ -18,7 +18,7 @@ define( [ 'angular' ],
              * These are the angular modules that every application module should require in order to execute.
              */
             config.standardAngularModules = [   'ngRoute', 'ngResource', 'gettext', 'LocalStorageModule',
-                                                'config', 'ngAnimate', 'ui.bootstrap'];
+                                                'config', 'ngAnimate', 'ui.bootstrap', 'mm.foundation'];
 
             /**
              * Development or production
