@@ -1,6 +1,16 @@
 <md-content md-whiteframe=5 class="contenidos">
-    <div ng-repeat="entity in view.last">
-    	<h1> {{entity.title}} </h1>
+    <div class="lastVisited" ng-repeat="entity in view.last">
+
+    <div class="movieVisitedWrapper">
+    	<div class="imgBox">
+    		<img ng-src="{{view.images}}{{entity.poster_path}}">
+    	</div>
+
+    	<div>
+    		<span class="title">{{entity.title}}</span>
+    	</div>
+    </div>
+
     </div>
 </md-content>
 

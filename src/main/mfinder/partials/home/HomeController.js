@@ -26,6 +26,7 @@ define( [ 'angular',
             
          
             $scope.view   = {
+                images: config.apiImg,
                 last: [],
                 movies: [],
                 tv:[],
