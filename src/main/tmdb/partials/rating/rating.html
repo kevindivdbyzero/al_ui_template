@@ -1,0 +1,12 @@
+<form class="form-group">
+    <uib-rating class="form-control" ng-model="view.actualRate" 
+       max="max"  on-hover="hoveringOver(value)" 
+       ng-click="rateOnClick()" titles="['one','two','three']" 
+       aria-labelledby="default-rating" required>
+    </uib-rating>
+    <span class="label" ng-class="{'label-warning': view.percent<30, 
+                                 'label-info': view.percent>=30 && view.percent<70, 
+                                 'label-success': view.percent>=70}" 
+                                  ng-show="view.actualRate">{{view.percent}}%
+    </span>
+</form>

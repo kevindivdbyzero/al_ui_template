@@ -19,11 +19,12 @@ define( [ 'angular',
           'ngRoute',
           'ngResource',
           'LocalStorageModule',
-          'config/config' ], 
+          'config/config',
+          'tmdb/services/AppStateService'], 
     function ( angular ) {
         "use strict";
 
-        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location, $q ) {
+        var TMDBAPIService = function ( $rootScope, $http, $timeout, $resource, localStorageService, $location, $q, AppStateService ) {
 
             var self            = this;
             var config          = angular.module("config");
@@ -246,13 +247,44 @@ define( [ 'angular',
                         var uri = serviceBase.url + '/movie/' + movie + '?api_key=' + serviceBase.apiKey + '&append_to_response=alternative_titles,credits,releases,videos,similar,reviews,images';
                         return $http.get( uri );
                     };
-
+                    
                     return {
                         movie: {
-                            movie: getMovie
+                            movie: getMovie,
                         }
                     };
                 });
+            };
+            
+            this.setRating = function(type, id, rating){
+                var sessionID = AppStateService.getUserSession();
+                var req;
+                if(type === 'movie'){
+                     req = {
+                        method: 'POST',
+                        url: apiBaseUrl + "/movie/" + id + "/rating",
+                        params: {
+                            api_key: apiKey,
+                            session_id: sessionID,
+                        },
+                        data: {value: rating}
+                    };
+                
+                }else{
+                    if(type === 'tv'){
+                        req = {
+                            method: 'POST',
+                            url: apiBaseUrl + "/tv/" + id + "/rating",
+                            params: {
+                                api_key: apiKey,
+                                session_id: sessionID
+                            },
+                            data: {'value' : rating}
+                    };
+                        
+                    }
+                }
+                return $http( req );
             };
 
             /* http://docs.themoviedb.apiary.io/reference/people */
@@ -363,7 +395,9 @@ define( [ 'angular',
             };
         };
 
-        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', '$resource', 'localStorageService', '$location', '$q' ];
+        TMDBAPIService.$inject = [ '$rootScope', '$http', '$timeout', 
+                                   '$resource', 'localStorageService', 
+                                   '$location', '$q', 'AppStateService' ];
 
         return TMDBAPIService;
 }
